@@ -1,0 +1,217 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* inicio carta */
+div.contenedor{
+    background-color: #EAECEE;
+    box-shadow: 3px 0px 10px -2px rgba(0,0,0,0.75);
+    height: 175px;
+    width: 45%;
+    margin-left: 3%;
+    margin-top: 8%;
+    border-radius: 5px 5px 5px 5px;
+    grid-template-columns: auto auto;
+    position: relative;
+    display: inline-grid;
+}
+div.contenedor-imagen{
+    position: absolute;
+    height: 118px;
+    width: 35%;
+    margin-top: 3%;
+    margin-left: 3%;
+    border-radius: 50% 50% 50% 50%;
+    z-index: 5;
+}
+img.foto{
+    position: absolute;
+    height: 118px;
+    border: 3px solid #EAEDED;
+    width: 100%;
+    border-radius: 50% 50% 50% 50%;
+    z-index: 5;
+}
+div.contenedor-txt{
+    background-color: #FBFCFC;
+    position: absolute;
+    height: 138px;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+}
+h2{
+    color: #1B2631;
+    margin-left: 43%;
+    margin-top: 9%;
+    font-size: 1.2em;
+}
+hr{
+    margin-top: 1%;
+    width: 9%;
+    border-radius: 2px;
+    border: 2px solid #EAECEE;
+    margin-left: 45%;
+}
+p{
+    color: #839192 ;
+    margin-left: 43%;
+    margin-top: 4%; 
+    font-size: .8em;
+    font-weight: 550;
+}
+p.letra{
+    margin-left: 43%;
+    margin-top: 2%;  
+}
+button.boton1:hover{
+    background-color: #00ACC1;
+}
+button.boton:hover{
+    background-color: #48C9B0;
+}
+button.boton1{
+    background-color: #0097A7;
+    height: 41px;
+    width: 12%;
+    margin-left: 63%;
+    margin-top: 5%;
+    position: absolute;
+    border:none;
+    border-radius: 50% 50% 50% 50%;
+}
+button.boton{
+    background-color: #1ABC9C;
+    height: 41px;
+    width: 12%;
+    margin-left: 80%;
+    margin-top: 5%;
+    position: absolute;
+    border:none;
+    border-radius: 50% 50% 50% 50%;
+}
+i.fas{
+    color: #fff;
+    font-size: 1.2em;
+}
+button#atras{
+    background-color:#0097A7;
+    border: none;
+    border-radius: 3px;
+    height: 35px;
+    width: 11%; 
+    margin-left: 6%;
+    margin-top: 5%;
+}
+button#atras:hover{
+    background-color: #00ACC1;
+}
+/*fin carta*/
+
+/*inicio formulario registro elemento*/
+div#form-registro-elemento, .codigo-barras{
+    width: 45%;
+	margin: auto;
+	margin-top: 3%;
+    border-radius: 3%;
+    border: 1.5px solid #D5D8DC;
+}
+div#form-registro-elemento{
+    height: 350px;
+}
+h3.registrar-elemento{
+    margin-top: 6%;
+    text-align: center;
+    font-size: 1.6em;
+    color: #202124;
+}
+hr.linea-ele{
+    margin-top: .5%;
+    width: 6%;
+    border-radius: 2px;
+    border:2px solid #EAECEE;
+    margin-left: 47%;
+}
+div#registro{
+    width: 100%;
+    text-align: center;
+	position: relative;
+	top: 7%;
+}
+input.input{
+    width: 63%;
+    padding: 10px; 
+    margin: 7px;
+    margin-left: 4%;
+    background-color: #F8F9F9;
+    border:none;
+    border-radius: 3%;
+}
+div.subir-foto{
+    height: 30px;
+    width: 67%;
+    margin-left: 17%;
+    margin-top: 2%;
+    position: relative;
+    background-color: #fff;
+    border: 2px dashed #C8C8C8;
+}
+p.txt-subir-foto{
+    text-align: left;
+    color: #85929E;
+    margin-top: 5px;
+}
+input.btn-subir-foto{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+input.input_btn{
+    background: #0097A7;
+    color: #fff;
+    margin: auto;
+    border: none;
+    border-radius: 4%;
+    padding: 9px 40px;
+    margin-left: 37%;
+    margin-top: 4%;
+    cursor: pointer;
+}
+input.input_btn:hover{
+    background-color: #00ACC1;
+}
+.serial{
+    text-decoration: none;
+    color: #000;
+}
+/*fini formulario registro ele*/
+/*generar codigo barras*/
+.generar-serial{
+    color: #1B2631;
+    margin-left: 2%;
+    margin-top: 5%;
+    font-size: 1em;
+}
+.input_btn-serial{
+    background: #0097A7;
+    color: #fff;
+    margin: auto;
+    border: none;
+    border-radius: 4%;
+    padding: 9px 50px;
+    margin-left: -68%;
+    margin-top: -2%;
+    cursor: pointer;
+}
+.input_btn-serial:hover{
+    background-color:#00ACC1; 
+}
+.codigo-barras{
+    height: 230px;
+}
+
