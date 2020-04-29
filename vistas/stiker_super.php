@@ -25,10 +25,28 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-        
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del supervisor.
+     *           $_SESSION        almacena elnumero de documento del supervisor.
+     * 
+     */
         $documento=$_SESSION['super'];
+        /**
+         *  consulta a la base de datos 
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * 
+         */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
-
+         /**
+         *  ciclo para mostrar informacion personal del supervisor
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         *                              la foto y los nombres del supervisor.
+         */
         foreach ($personas as $persona):
     ?>
     <!-- inicio fotos y botones de menu -->
@@ -73,17 +91,36 @@
 
         <?php
             include '../conexi/conexion.php';
-            
+     /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del supervisor.
+     *           $_SESSION        almacena elnumero de documento del supervisor.
+     * 
+     */
             $documento=$_SESSION['super'];
+        /**
+         *  consulta a la base de datos 
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * 
+         */
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos 
             WHERE numero_documento_persona = $documento AND estado_elemento <> '0'");
-
+         /**
+         *  ciclo para mostrar el numero serial del elemento
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         *                              el codigo serial del elemento.
+         */
             foreach ($elementos as $elemento):
         ?>
         
         <?php
         endforeach
     ?> 
+    <!-- manda por la url la variable persona que contiene el numero del documento -->
         <a href="../vistas/generar_super.php?elemento=<?php echo $elemento['numero_serial_elemento'];?>">
             <input type="submit" class="input_btn-serial" name="buscar" value="Buscar">
         </a>     

@@ -1,9 +1,26 @@
 <?php
 session_start();
 include '../conexi/conexion.php';
-
+     /**
+     * obtiene la sesion 
+     *
+     * isset            verifica que la sesion si este definida.
+     * $_session        contiene el numero de documento del supervisor.
+     * $_GET            contiene el numero serial del elemento. 
+     *            
+     */
 if (isset($_SESSION['super'])) {
     if ($_GET['elemento']) {
+    /**
+     * consulta a la base de datos
+     *
+     * @var string $sola           Contiene el get con la variable elemento envida
+     *                             por la url.
+     * @var string $quey           Contiene la consulta a la base de datos, donde el
+     *                             el numero seria debe ser igual a la variable sola.    
+     *@var string $consulta        Realiza la consulta a la base de datos.
+     *@var string $elemento        Almacena los datos de la consulta.   
+     */
             $sola = $_GET['elemento'];
             $query = "SELECT * FROM tbl_elementos where numero_serial_elemento=$sola";
 
@@ -50,10 +67,31 @@ if (isset($_SESSION['super'])) {
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-        
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del supervisor.
+     *           $_SESSION        almacena elnumero de documento del supervisor.
+     * 
+     */
         $documento=$_SESSION['super'];
+        /**
+        *  consulta a la base de datos 
+        * 
+        * @var string  $personas       se esta almacenando la consulta a la base de datos
+        *                              donde el documento debe ser igual a la variable
+        *                              $documento.
+        * 
+        */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
-
+         /**
+         *  ciclo para mostrar informacion personal del supervisor
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+                                        la foto, nombre y apellido del supervisor.
+         * 
+         */
         foreach ($personas as $persona):
     ?>
 
@@ -81,6 +119,7 @@ if (isset($_SESSION['super'])) {
     <!-- fin foto y botones de menu -->
 
     <!--inicio_actualizar_informacion-->
+         <!-- manda por la url la variable persona que contiene el numero de documento -->
         <div  id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <form action="../phpCode/codigo_informacion_supervisor.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
                 <h3 id="titulo-editar">Actualizar información</h3>
@@ -109,7 +148,7 @@ if (isset($_SESSION['super'])) {
                         <input id="btn-subir-foto" type="file" name="foto">
                     </div>
 
-                    <input type="submit" class="input-btn-editar" name="guardar" value="Actualizar"> 
+                    <input type="submit" class="input-btn-editar" name="guardar" value="Actualizar"> <!-- manda por la url la variable persona que contiene el numero de documento -->
                     <a href="#openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" id="item-login">cambiar clave </a>
                 </div>
             </form>
@@ -117,6 +156,7 @@ if (isset($_SESSION['super'])) {
     <!--fin_actualizar_informacion-->
 
     <!--inicio cambiar contraseña-->
+         <!-- manda por la url la variable persona que contiene el numero de documento -->
     <div id="openModal2?persona=<?php echo $persona['numero_documento_persona'];?>" class="modalDialog">
             <a href="#close" title="Cerrar" class="close" id="close-clave">X</a>
             <form action="../phpCode/cambiar_clave_supervisor.php" method="POST" id="formulario-clave">

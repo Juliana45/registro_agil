@@ -37,11 +37,29 @@
 <!-- inicio lado izquierdo -->
 <div class="contenedor-izquierdo">
     <?php
-        include '../conexi/conexion.php';
-        
+        include '../conexi/conexion.php'; 
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del usuario
+     *           $_SESSION        almacena elnumero de documento del usuario
+     * 
+     */
         $documento=$_SESSION['user'];
+        /**
+         *  consulta a la base de datos 
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         * 
+         */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
-
+        /**
+         *  ciclo para mostrar informacion personal del usuario
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         * 
+         */
         foreach ($personas as $persona):
     ?>
     <!-- inicio fotos y botones de menu -->
@@ -68,6 +86,7 @@
     <!-- fin foto y botones de menu -->
 
     <!--inicio_actualizar_informacion-->
+        <!-- manda por la url la variable persona que contiene el numero del documento -->
         <div  id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <form action="../phpCode/codigo_informacion_usuario.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
                 <a href="#close" title="Cerrar" class="close">X</a>
@@ -104,6 +123,8 @@
     <!--fin_actualizar_informacion-->
 
     <!--inicio cambiar contraseña-->
+
+    <!-- manda por la url la variable persona que contiene el numero del documento -->
         <div id="openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <a href="#close" title="Cerrar" class="close" id="close-clave">X</a>
             <form action="../phpCode/cambiar_clave_usuario.php" method="POST" id="formulario-clave">

@@ -27,10 +27,28 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-        
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del vigilante
+     *           $_SESSION        almacena elnumero de documento del vigilante
+     */
         $documento=$_SESSION['vigi'];
-        $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
+        /**
+        *  consulta a la base de datos la foto y los nombres del vigilante
+        * 
+        * @var string  $personas       se esta almacenando la consulta a la base de datos
+        * 
+        */
 
+        $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
+         /**
+         *  ciclo para mostrar informacion personal del vigilante
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         *                              la foto y los nombres del vigilante.
+         */
         foreach ($personas as $persona):
     ?>
     <!-- inicio fotos y botones de menu -->

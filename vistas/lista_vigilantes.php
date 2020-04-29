@@ -40,9 +40,21 @@
         </thead>
         <?php
           include '../conexi/conexion.php';
-   
+        /**
+         *  consulta a la base de datos 
+         * 
+         * @var string  $infrmacion      Se esta almacenando la consulta a la base 
+         *                               de datos donde se muestran todos los vigilantes
+         *                               registrados.
+         */
         $informacion = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE rol_persona = 'vigilante'");
-
+         /**
+         *  ciclo para listar todos los vigilantes
+         * 
+         * @var string  $informacion     Se esta almacenando la consulta a la base de datos.
+         * @var string  $info            Se esta almacenando el dato de la consulta y se muestra
+         *                               numero de documento, nombre, apellido y el estado del vigilante.
+         */
          foreach ($informacion as $info):
         ?>
         <tr>
@@ -53,6 +65,14 @@
             <td><?php echo $info['estado_persona']; ?></td>      
 
             <?php
+
+            /**
+             * mostrar estado del vigilante
+             * 
+             * @var string $info            Se almacena el estado del vigilante.
+             * @var string desactivar       Se almacena el estado desactivar.
+             * @var string activar          Se almacena el estado activar.
+             */
                 if ($info['estado_persona'] == 'activo') {
             ?>
 
@@ -62,7 +82,6 @@
             <?php
                 }else{
             ?>
-
             <td><a href="../phpCode/codigo_habilitar.php?activar=<?php echo $info['numero_documento_persona']; ?>">
                 <button id="boto_ingreso" name="activar" value="activar">Activar</button></a>
             </td>

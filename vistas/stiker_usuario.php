@@ -26,15 +26,34 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-        
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del usuario.
+     *           $_SESSION        almacena elnumero de documento del usuario.
+     * 
+     */
         $documento=$_SESSION['user'];
+        /**
+         *  consulta a la base de datos 
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * 
+         */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
-
+         /**
+         *  ciclo para mostrar informacion personal del usuario
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         *                              la foto y los nombres del usuario.
+         */
         foreach ($personas as $persona):
     ?>
     <!-- inicio fotos y botones de menu -->
         <div class="contenedor-foto">
             <?php echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
+
             <button class="editar" id="icono-sticker"><a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>"> <i class="fas fa-user-edit"></i></a></button>
         </div>
 
@@ -73,17 +92,36 @@
 
         <?php
             include '../conexi/conexion.php';
-            
+    /**
+     * obetiene la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del usuario.
+     *           $_SESSION        almacena elnumero de documento del usuario.
+     * 
+     */
             $documento=$_SESSION['user'];
+        /**
+         *  consulta a la base de datos 
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * 
+         */
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos 
             WHERE numero_documento_persona = $documento AND estado_elemento <> '0'");
-
+         /**
+         *  ciclo para mostrar el numero serial del elemento
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         *                              el codigo serial del elemento.
+         */
             foreach ($elementos as $elemento):
         ?>
         
         <?php
         endforeach
     ?> 
+    <!-- manda por la url la variable persona que contiene el numero del documento -->
         <a href="../vistas/generar_usuario.php?elemento=<?php echo $elemento['numero_serial_elemento'];?>">
             <input type="submit" class="input_btn-serial" name="buscar" value="Buscar">
         </a>     

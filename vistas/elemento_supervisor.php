@@ -25,11 +25,33 @@
 <hr class="linea-ele">
     <?php
         include '../conexi/conexion.php';
-        
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       Se esta almacenando la sesion del supervisor.
+     *           $_SESSION        almacena elnumero de documento del supervisor.
+     * 
+     */
         $documento=$_SESSION['super'];
+        /**
+         *  consulta a la base de datos 
+         * 
+         * @var string  $elementos       Se esta almacenando la consulta a la base 
+         *                               de datos donte el estado del elemento debe 
+         *                               ser diferente a 0 y el numero de documento
+         *                               debe ser igual al de la sesion.
+         * 
+         */
         $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos 
         WHERE numero_documento_persona = $documento AND estado_elemento<> '0'");
-
+         /**
+         *  ciclo para mostrar el elemento
+         * 
+         * @var string  $elementos      Se esta almacenando la consulta a la base de datos.
+         * @var string  $elemento       Se esta almacenando el dato de la consulta y se muestra
+         *                              la foto y el nombre, la descripcion y el numero serial 
+         *                              del elemento del supervisor.
+         */
         foreach ($elementos as $elemento):
     ?>
         <div class="contenedor">
@@ -43,10 +65,10 @@
                     <?php echo $elemento['descripcion_elemento'];?>
                 </p>
                 <p class="letra"><?php echo $elemento['numero_serial_elemento'];?></p>
-
+            <!-- manda por la url la variable desactivar que contiene el numero serial del elemento -->
                 <a href="../phpCode/eliminar_elemento_supervisor.php?desactivar=<?php echo $elemento['numero_serial_elemento']; ?>" 
                 onClick="return confirm('¿Estas seguro que desea eliminar?');"><button class="boton"><i class="fas fa-trash-alt"></i></button></a>
-
+            <!-- manda por la url la variable elemento que contiene el numero serial del elemento -->
             <a href="editar_elemento_supervisor.php?elemento=<?php echo $elemento['numero_serial_elemento']?>">
             <button class="boton1"><i class="icono-editar fas fa-pencil-alt"></i></button>
                 </a>

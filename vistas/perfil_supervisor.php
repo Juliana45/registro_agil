@@ -22,6 +22,7 @@
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
    
     <script>
+    
         $(document).ready(function(){
 
             $('#formulario-elemento').click(function(){
@@ -44,10 +45,28 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-        
-        $documento=$_SESSION['super'];
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del supervisor
+     *           $_SESSION        almacena elnumero de documento del supervisor
+     * 
+     */
+    $documento=$_SESSION['super'];
+        /**
+        *  consulta a la base de datos 
+        * 
+        * @var string  $personas       se esta almacenando la consulta a la base de datos
+        * 
+        */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
-
+         /**
+         *  ciclo para mostrar informacion personal del supervisor
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         * 
+         */
         foreach ($personas as $persona):
     ?>
 
@@ -76,6 +95,7 @@
     <!-- fin foto y botones de menu -->
 
     <!--inicio_actualizar_informacion-->
+            <!-- manda por la url la variable persona que contiene el numero del documento -->
         <div  id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <form action="../phpCode/codigo_informacion_supervisor.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
                 <h3 id="titulo-editar">Actualizar información</h3>
@@ -112,6 +132,7 @@
     <!--fin_actualizar_informacion-->
 
     <!--inicio cambiar contraseña-->
+            <!-- manda por la url la variable persona que contiene el numero del documento -->
     <div id="openModal2?persona=<?php echo $persona['numero_documento_persona'];?>" class="modalDialog">
             <a href="#close" title="Cerrar" class="close" id="close-clave">X</a>
             <form action="../phpCode/cambiar_clave_supervisor.php" method="POST" id="formulario-clave">

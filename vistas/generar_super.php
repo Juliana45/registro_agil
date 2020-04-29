@@ -26,10 +26,31 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-        
+    /**
+     * obtener la sesion
+     *
+     * @var int  $documento       se esta almacenando la sesion del supervisor.
+     *           $_SESSION        almacena elnumero de documento del supervisor.
+     * 
+     */       
         $documento=$_SESSION['super'];
+        /**
+        *  consulta a la base de datos 
+        * 
+        * @var string  $personas       se esta almacenando la consulta a la base de datos
+        *                              donde el documento debe ser igual a la variable
+        *                              $documento.
+        * 
+        */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
-
+         /**
+         *  ciclo para mostrar informacion personal del supervisor
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+                                        la foto, nombre y apellido del supervisor.
+         * 
+         */
         foreach ($personas as $persona):
     ?>
         <!-- inicio fotos y botones de menu -->
@@ -71,9 +92,27 @@
     <!-- inicio codigo barras -->
     <?php
         include '../conexi/conexion.php';
-        
+     /**
+     * obtiene la sesion
+     *
+     * isset            verifica que la sesion si este definida.
+     * $_session        contiene el numero de documento del supervisor.
+     * $_GET            contiene el numero serial del elemento. 
+     *            
+     */
         if (isset($_SESSION['super'])) {
             if($_GET['elemento']){
+    /**
+     * consulta a la base de datos
+     *
+     * @var string $codigo         Contiene el get con la variable elemento envida
+     *                             por la url.
+     * @var string $sql            Contiene la consulta a la base de datos, donde el
+     *                             el numero seria debe ser igual a la variable codigo.    
+     *@var string $result          Realiza la consulta a la base de datos.
+     *@var string $arraycodigo     Almacena un vector donde se guarda la foto y el numero serial 
+     *                             generado.   
+     */
                 $codigo = $_GET['elemento'];
                 $sql = "SELECT * FROM tbl_elementos WHERE numero_serial_elemento = $codigo";
                 $result = mysqli_query($conexion,$sql);
@@ -86,7 +125,15 @@
                         <td>Código de barras</td>
                     </tr>
         
-                <?php while($ver=mysqli_fetch_row($result)): 
+                <?php
+                /**
+                 * ciclo que muestra stikers.
+                 *
+                 * @var int $ver               Almacena el resultado de la variable result.
+                 * @var string $arraycodigo    Convierte la variable ver en un string.
+                 *                                         
+                 */
+                 while($ver=mysqli_fetch_row($result)): 
                     $arraycodigo[]=(String)$ver[0];
                 ?>
 
