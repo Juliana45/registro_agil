@@ -74,9 +74,9 @@
         <?php
             include '../conexi/conexion.php';
             
-            $documento=$_SESSION['user'];
+            $documento = $_SESSION['user'];
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos 
-            WHERE numero_documento_persona = $documento AND estado_elemento <> '0'");
+            WHERE numero_documento_persona = $documento AND estado_elemento <> '0' ");
 
             foreach ($elementos as $elemento):
         ?>

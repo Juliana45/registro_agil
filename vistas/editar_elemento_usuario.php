@@ -53,7 +53,7 @@
     <!-- inicio fotos y botones de menu -->
         <div class="contenedor-foto">
             <?php echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
-            <button class="editar"><a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>"> <i class="fas fa-user-edit"></i></a></button>
+            <button class="editar" id="icono-sticker"><a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>"> <i class="fas fa-user-edit"></i></a></button>
         </div>
 
         <h3 class="nombre">
@@ -64,8 +64,8 @@
         <hr class="linea">
 
         <div class="conenerdor-items">
-            <a href="#" id="formulario-elemento"> <button class="item1">Regisrar Elementos</button><br></a>
-            <a href="#" id="elemento"><button class="item2">Elementos</button><br></a>
+            <a href="#" id="formulario-elemento"> <button class="item1" id="item-sticker">Regisrar Elementos</button><br></a>
+            <a href="#" id="elemento"><button class="item2" id="item-sticker">Elementos</button><br></a>
             <a href="../phpCode/salir.php"><button class="item3">Salir <i class="fas fa-door-open"></i></button><br></a>
         </div>
     <!-- fin foto y botones de menu -->

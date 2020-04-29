@@ -23,7 +23,7 @@ if(isset($_GET["ingreso"])){
 
         header('Location: ../vistas/verificacion.php');
 
-    }else{ 
+}else{ 
         header('Location: ../vistas/verificacion.php');
     
     }

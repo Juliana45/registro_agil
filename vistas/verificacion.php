@@ -36,7 +36,9 @@
     <!-- inicio fotos y botones de menu -->
         <div class="contenedor-foto">
             <?php echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
-            <button class="editar" id="icono-sticker"><a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>"> <i class="fas fa-user-edit"></i></a></button>
+            <button class="editar" id="icono-sticker"><a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>"> 
+                <i class="fas fa-user-edit"></i></a>
+            </button>
         </div>
 
         <h3 class="nombre">
@@ -162,7 +164,8 @@
             if(isset($_POST['submit'])){
 
             $search = $_POST['busqueda'];
-            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos  WHERE numero_documento_persona like '%$search%' and estado_elemento='1'");
+            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos WHERE numero_documento_persona like '%$search%' 
+            and estado_elemento = '1'");
                 
             while ($elemento =  mysqli_fetch_array($elementos)) {
         ?>
@@ -199,10 +202,12 @@
         <table>
             <?php
                 if(isset($_POST['submit1'])){
+
                     $conexion = mysqli_connect("localhost","root","","registroagil");
 
                     $fecha = $_POST['fecha1'];
-                     $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
+                    
+                    $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
                     WHERE tbl_elementos.numero_serial_elemento=tbl_historial.numero_serial_elemento AND
                     CAST(hora_ingreso_historial AS DATE) =  '$fecha' ");
             ?>

@@ -2,17 +2,23 @@
   session_start();
   include 'conexi/conexion.php';
 
+  /**
+   * inicia los perfiles 
+   * 
+   * user  inicia sesion el usuario
+   * super inicia sesion el supervisor
+   * vigi inicia sesion el vigilante
+   * 
+   */
   if (isset($_SESSION['user'])) { 
 
     echo "<script> window.location='perfil_usuario.php'; </script>";
-
   }else if (isset($_SESSION['super'])) {
-    echo "<script> window.location='perfil_supervisor.php'; </script>";
 
+    echo "<script> window.location='perfil_supervisor.php'; </script>";
   }else if (isset($_SESSION['vigi'])) {
 
     echo "<script> window.location='perfil_vigilante.php'; </script>";
-
   }
 ?>
 
@@ -46,9 +52,8 @@
   </header>
 <!--Fin_header-->
 
-<!--inicio_modal-->
-  <div class="fondo">
-
+<div class="fondo">
+  <!--inicio ventana modal-->
     <!--inicio_login-->
       <div  id="openModal" class="modalDialog">
       <a href="#close" class="close">X</a>
@@ -132,9 +137,8 @@
         </form>
     </div>
     <!--fin olvidaste tu contraseña-->
-
-  </div>
-<!--fin_modal-->
+  <!--fin ventana modal-->
+</div>
 
 <!--inicio_como funciona-->
 <div class="como_funciona">
@@ -180,7 +184,7 @@
 </div>
 <!--fin_como funciona-->
 
-<!--inicio_linea--> 
+<!--inicio linea de tiempo--> 
 <br><br><center>
   <div class="linea-tiempo">
     <br><br>
@@ -207,7 +211,7 @@
     <br><br><br>
   </div>
 </center><br><br>
-<!--fin_linea-->
+<!--fin linea de tiempo-->
 
 <!--inicio_footer-->
 <div class="footer">

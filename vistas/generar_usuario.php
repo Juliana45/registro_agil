@@ -86,7 +86,7 @@
                         <td>Código de barras</td>
                     </tr>
         
-                <?php while($ver=mysqli_fetch_row($result)): 
+                <?php while($ver = mysqli_fetch_row($result)): 
                     $arraycodigo[]=(String)$ver[0];
                 ?>
 
