@@ -2,9 +2,24 @@
 
 include "../conexi/conexion.php";
 
+/**
+ * Editar la informacion de los elementos del usuario
+ * 
+ * strlen    Obtener la longitud de una cadena string
+ * trim      eliminar espacios en blanco u otros caracteres al inicio y final de una cadena de texto
+ *'registro_ele'     se esta verificando que si se le haya dado click en el boton registro_ele 
+ * 
+ * se definen las variables para capturar la informacion de los input
+ * @var string $numero_serial
+ * @var string $nombre
+ * @var string $descripcion
+ * @var string $foto     
+ */
 if(isset($_POST['registro_ele'])) {
-    if(strlen($_POST['numero_serial']) >=1 && strlen($_POST['nombre']) >=1 && 
-    strlen($_POST['descripcion']) >=1){
+    /**
+     * si todos los campos estan llenos 
+     */
+    if(strlen($_POST['numero_serial']) >=1 && strlen($_POST['nombre']) >=1 && strlen($_POST['descripcion']) >=1){
 
         $numero_serial = trim($_REQUEST['numero_serial']);
         $nombre = trim($_REQUEST['nombre']);
@@ -14,15 +29,18 @@ if(isset($_POST['registro_ele'])) {
         $destino = "../img/".$foto;
         copy($ruta,$destino);
    
-        mysqli_query($conexion,"UPDATE tbl_elementos SET nombre_elemento='$nombre',descripcion_elemento='$descripcion',foto_elemento='$foto'
-         WHERE numero_serial_elemento='$numero_serial'");
+        /**
+         * se realiza la consulta a la base de datos para actualizar los datos
+        */
+        mysqli_query($conexion,"UPDATE tbl_elementos SET nombre_elemento='$nombre',descripcion_elemento='$descripcion',
+        foto_elemento='$foto' WHERE numero_serial_elemento='$numero_serial'");
+            
             echo '<script>alert("Los datos se actualizaron correctamente") ;</script>';
             header('Location: ../vistas/perfil_usuario.php');
-        }else{
-       echo '<script>alert("Complete los campos") ;</script>';
-            header('Location: ../vistas/perfil_usuario.php');
-       }
-
-   
+    }else{
+        echo '<script>alert("Complete los campos") ;</script>';
+        header('Location: ../vistas/perfil_usuario.php');
+    }
+    
 } 
 ?>

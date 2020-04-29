@@ -92,6 +92,7 @@
 
         <?php
             include '../conexi/conexion.php';
+<<<<<<< HEAD
     /**
      * obetiene la sesion
      *
@@ -115,6 +116,13 @@
          * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
          *                              el codigo serial del elemento.
          */
+=======
+            
+            $documento = $_SESSION['user'];
+            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos 
+            WHERE numero_documento_persona = $documento AND estado_elemento <> '0' ");
+
+>>>>>>> cdf31a0ca875609a4b08b6a2228f227cd2fb60c3
             foreach ($elementos as $elemento):
         ?>
         

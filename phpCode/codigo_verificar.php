@@ -2,14 +2,13 @@
 
     include "../conexi/conexion.php";
 
+    /**
+     * Buscador de elementos 
+     */
     $search = $_POST['busqueda'];
-    /* $cedula = 
-    if (mysqli_num_rows($cedula)>30){
-        $cedula = search.substr(52,62);
-    } */
-
+    
     $query = mysqli_query($conexion, "SELECT * FROM tbl_elementos WHERE numero_serial_elemento='$search'");
-   /*  $json[]=array(); */
+
     if(mysqli_num_rows($query)>0){
         
         while($row = mysqli_fetch_array($query)){
@@ -22,6 +21,6 @@
            
            <?php 
         }
-        /* echo $cedula; */
+
     }
 ?>
