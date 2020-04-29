@@ -1,4 +1,10 @@
 <?php
+    /**
+     *session_start()  se autoinicia una sesión
+     * 
+     * $_SESSION       almacena el numero de documaneto del vigilante
+    */
+
     session_start();
     include '../conexi/conexion.php';
 
@@ -27,7 +33,9 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-        
+        /**
+         * vale 
+         */
         $documento=$_SESSION['vigi'];
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
 
@@ -71,6 +79,7 @@
     <!-- barras -->
     <div id="barra">
         <!-- buscador historial -->
+        
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" class="buscador-fecha">
             <input type="date" name="fecha1" id="bus-fecha" value="<?php echo date("Y-m-d");?>" >
             <input type="submit" name="submit1" id="fecha" value="Buscar">
@@ -157,13 +166,27 @@
         <!-- fin registrar usuario -->
    
     <!--inicio_resultado/buscador-->
+    
     <div class="resultado_buscar">
         <?php
+            /**
+             * El condicional indica si se presionó el boton llamado submit 
+             * 
+             * @var string $search      almacena los datos ingresados en el campo busqueda
+             * @var string $elementos   almacena la consulta a la base de datos
+             * 
+             */
             if(isset($_POST['submit'])){
 
             $search = $_POST['busqueda'];
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos  WHERE numero_documento_persona like '%$search%' and estado_elemento='1'");
-                
+            
+            /**
+             * Buscador de elementos mediante el numero de documento 
+             *  WHILE                    Mientras elemento contenga contenido a mostrar recorrer
+             * 
+             * @var string $elemento     Almacena cada dato entrado en la consulta $elementos
+             */
             while ($elemento =  mysqli_fetch_array($elementos)) {
         ?>
             <div class="contenedor-carta">
@@ -194,15 +217,25 @@
     </div>
     <!-- fin barras --> 
 
-    <!--inicio_historial-->
+    <!--inicio_historial_fecha-->
     <br><br>
         <table>
             <?php
+            /**
+             * Buscador del historial por fecha
+             * 
+             * Condicional que inicia la busqueda al presionar el boton llamado submit1 
+             * 
+             * @var string $conexion    almacena la conexion a la base de datos
+             * @var date $fecha         almacena la fecha en el campo llamado fecha1
+             * @var string $historial1  almacena la consulta a la base de datos
+             * 
+             */
                 if(isset($_POST['submit1'])){
                     $conexion = mysqli_connect("localhost","root","","registroagil");
 
                     $fecha = $_POST['fecha1'];
-                     $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
+                    $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
                     WHERE tbl_elementos.numero_serial_elemento=tbl_historial.numero_serial_elemento AND
                     CAST(hora_ingreso_historial AS DATE) =  '$fecha' ");
             ?>
@@ -215,6 +248,9 @@
                 </tr>
             </thead>
                 <?php
+                    /**
+                     * While         mientras la consulta tenga resultados se mostrarán
+                     */
                     while($elemento1 =  mysqli_fetch_array($historial1)){
                 ?>
             <tr>
