@@ -10,7 +10,17 @@
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
    
     <script>
+            /**
+            * se recarga solo una parte de la pagina
+            *
+            */
         $(document).ready(function(){
+            /**
+            * #sin-serial               Cuando se le da click en el boton regisro elemento
+            *                           se activara el id.
+            * #contenido                Este es el id del contenedor donde se va va a traer 
+            *                           otra pagina.
+            */
             $('#sin-serial').click(function(){
             $("#contenido").load("../vistas/elemento_sin_serial_super.php");
             });
@@ -25,18 +35,19 @@
         <h3 class="registrar-elemento">Registrar Elemento</h3>
         <hr class="linea-ele">
         <div id="registro">
-            <form action="../phpCode/codigo_elemento_supervisor.php" method="POST" enctype="multipart/form-data">
+            <form action="../phpCode/codigo_elemento_supervisor.php" method="POST" enctype="multipart/form-data" onsubmit="return validar_elemento();">
+
                 <input class="input" type="text" id="input" name="nombre" placeholder="Nombre"
                 onkeypress="return Letras(event)" onpaste="return false">
-                <input class="input" type="text" id="input2" name="descripcion" placeholder ="Descripción"
-                onkeypress="return Letrasynumeros(event)" onpaste="return false">
-                <input class="input" type="text" id="input3" name="numero_serial" placeholder ="Código serial" 
-                onkeypress="return numeros(event)" onpaste="return false" required><br>
+                
+                <input class="input" type="text" id="input2" name="descripcion" placeholder ="Descripción" onkeypress="return Letrasynumeros(event)" onpaste="return false">
+
+                <input class="input" type="text" id="input3" name="numero_serial" placeholder ="Código serial" onkeypress="return numeros(event)" onpaste="return false" ><br>
                 <a href="#" id="sin-serial" class="serial">No tiene código serial</a>
 
                 <div class="subir-foto">
                     <p class="txt-subir-foto">subir foto</p> 
-                    <input class="btn-subir-foto" type="file" name="foto" required>
+                    <input class="btn-subir-foto" id="foto_ele" type="file" name="foto" >
                 </div>
 
                 <input class="input_btn" type="submit" id="submit" name="registro_ele" value="Guardar">
@@ -44,6 +55,6 @@
         </div>
     </div>
 <!-- formulario registro elemento --> 
-
+ 
 </body>
 </html>

@@ -29,8 +29,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/validacion_num.js"></script>
-    <script type="text/javascript" src="js/validacion_letra.js"></script>
+    <script type="text/javascript" src="js/validacion.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/registro.css">
@@ -57,7 +56,7 @@
     <!--inicio_login-->
       <div  id="openModal" class="modalDialog">
       <a href="#close" class="close">X</a>
-        <form action="phpCode/codigo_login.php" method="POST" id="formulario-login">
+        <form action="phpCode/codigo_login.php" method="POST" id="formulario-login" onsubmit="return validar_login();">
           <h2 id="titulo-registro">Iniciar Sesión</h2>
           
           <div id="contenedor-registro">
@@ -68,10 +67,10 @@
                   <option value="ce">Cédula de Extrangería</option>
             </select>            
 
-            <input type="text" class="input-login" name="documento2" placeholder="Número de documento" 
-            onkeypress="return numeros(event)" onpaste=" return false" required>
+            <input type="text" class="input-login" id="documento2" name="documento2" placeholder="Número de documento" 
+            onkeypress="return numeros(event)" onpaste=" return false">
 
-            <input type="password" class="input-login" name="clave" placeholder="Contraseña" required>
+            <input type="password" class="input-login" name="clave" placeholder="Contraseña" >
 
             <input type="submit" class="input-btn-login" name="iniciar" value="Iniciar sesion">
 
@@ -87,30 +86,30 @@
     <!--inicio_registro-->
       <div  id="openModal1" class="modalDialog">
         <a href="#close" id="close-registro" class="close">X</a>
-        <form action="phpCode/codigo_usuario.php" method="POST" id="formulario-registro" enctype="multipart/form-data">
+        <form action="phpCode/codigo_usuario.php" method="POST" id="formulario-registro" enctype="multipart/form-data" onsubmit="return validar_registro();">
           <h2 id="titulo-registro">Registrate</h2>
           
           <div id="contenedor-registro">
-            <input type="text" class="input-registro" name="nombre1" placeholder="Primer Nombre" 
+            <input type="text" class="input-registro" id="nombre1" name="nombre1" placeholder="Primer Nombre" 
             onkeypress="return Letras(event)" onpaste="return false" required>
 
-            <select  name="tipo" class="input-registro" required>
+            <select  name="tipo" id="tipo_docu" class="input-registro" required>
               <option hidden>Tipo de Documento</option>
               <option value="cc">Cédula de Ciudadanía</option>
               <option value="ti">Tarjeta de Identidad</option>
               <option value="ce">Cédula de Extranjería</option>
             </select>
 
-            <input type="text" class="input-registro" name="nombre2" placeholder="Segundo Nombre"
+            <input type="text" class="input-registro" id="nombre2" name="nombre2" placeholder="Segundo Nombre"
             onkeypress="return Letras(event)" onpaste=" return false">
-            <input type="text" class="input-registro" name="documento_r" placeholder="Número de documento" 
+            <input type="text" class="input-registro" id="documento" name="documento_r" placeholder="Número de documento" 
             onkeypress="return numeros(event)" onpaste=" return false" required>
-            <input type="text" class="input-registro" name="apellido1" placeholder="Primer Apellido" 
-            onkeypress="return Letras(event)" onpaste=" return false"required>
-            <input type="text" class="input-registro" name="correo" placeholder="Correo" required>
-            <input type="text" class="input-registro" name="apellido2" placeholder="Segundo Apellido"
+            <input type="text" class="input-registro" id="apellido1" name="apellido1" placeholder="Primer Apellido" 
+            onkeypress="return Letras(event)" onpaste=" return false" required>
+            <input type="text" class="input-registro" id="correo" name="correo" placeholder="Correo" required>
+            <input type="text" class="input-registro" id="apellido2" name="apellido2" placeholder="Segundo Apellido"
             onkeypress="return Letras(event)" onpaste=" return false">
-            <input type="password" class="input-registro" name="clave_r" placeholder="Contraseña" required>
+            <input type="password" class="input-registro" id="clave" name="clave_r" placeholder="Contraseña" required>
             <div id="subir-foto" class="input-registro">
                 <p  id="txt-subir-foto">subir foto</p> 
                 <input id="btn-subir-foto" type="file" name="foto">

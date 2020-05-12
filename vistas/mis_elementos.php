@@ -17,8 +17,17 @@
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
    
     <script>
+            /**
+            * se recarga solo una parte de la pagina
+            *
+            */
         $(document).ready(function(){
-
+            /**
+            * #editar-elemento          Cuando se le da click en el boton regisro elemento
+            *                           se activara el id.
+            * #contenido                Este es el id del contenedor donde se va va a traer 
+            *                           otra pagina.
+            */
             $('#editar-elemento').click(function(){
             $("#contenido").load("../vistas/editar_elemento_usuario.php");
             });

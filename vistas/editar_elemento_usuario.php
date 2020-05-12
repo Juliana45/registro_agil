@@ -11,16 +11,7 @@
      */
     if (isset($_SESSION['user'])) {
         if ($_GET['elemento']) {
-    /**
-     * consulta a la base de datos
-     *
-     * @var string $sola           Contiene el get con la variable elemento envida
-     *                             por la url.
-     * @var string $quey           Contiene la consulta a la base de datos, donde el
-     *                             el numero seria debe ser igual a la variable sola.    
-     *@var string $consulta        Realiza la consulta a la base de datos.
-     *@var string $elemento        Almacena los datos de la consulta.   
-     */
+
                 $sola = $_GET['elemento'];
                 $query = "SELECT * FROM tbl_elementos where numero_serial_elemento = $sola";
 
@@ -32,9 +23,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="../js/validacion_num.js"></script>
-    <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+    <script type="text/javascript" src="../js/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/mis_elementos.css">
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
@@ -42,18 +31,6 @@
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <title>Registro ágil</title>
-    <script>
-        $(document).ready(function(){
-
-            $('#formulario-elemento').click(function(){
-            $("#contenido").load("../vistas/formulario-elemento.php");
-            });
-
-            $('#elemento').click(function(){
-            $("#contenido").load("../vistas/mis_elementos.php");
-            });
-        });
-    </script>
 </head>
 <body>
 
@@ -149,7 +126,7 @@
         <!-- manda por la url la variable persona que contiene el numero de documento -->
         <div id="openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <a href="#close" title="Cerrar" class="close" id="close-clave">X</a>
-            <form action="../phpCode/cambiar_clave_usuario.php" method="POST" id="formulario-clave">
+            <form action="../phpCode/cambiar_clave_usuario.php" method="POST" id="formulario-clave" >
                 <h3 id="titulo-editar">Cambiar clave</h3>
                 <hr class="linea-ele">
                 <div id="editar-clave">
@@ -183,7 +160,7 @@
         <h3 class="registrar-elemento">Actualizar Elemento</h3>
         <hr class="linea-ele">
         <div id="registro">
-        <form action="../phpCode/codigo_editar_usuario.php" method="POST" enctype="multipart/form-data">
+        <form action="../phpCode/codigo_editar_usuario.php" method="POST" enctype="multipart/form-data" onsubmit="return validar_elemento();">
             <input class="input" type="text" id="input" name="nombre" value="<?php echo $elemento['nombre_elemento'];?>"
             onkeypress="return Letras(event)" onpaste="return false">
             <input class="input" type="text" id="input2" name="descripcion" value="<?php echo $elemento['descripcion_elemento'];?>"
@@ -192,7 +169,7 @@
 
                 <div class="subir-foto">
                     <p class="txt-subir-foto">subir foto</p> 
-                    <input class="btn-subir-foto" type="file" name="foto" required>
+                    <input class="btn-subir-foto" id="foto_ele" type="file" name="foto">
                 </div>
 
             <input class="input_btn" type="submit" id="submit" name="registro_ele" value="Guardar">

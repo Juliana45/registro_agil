@@ -25,19 +25,20 @@ if (isset($_POST['siguiente'])) {
 	/**
 	 * si los campos estan llenos
 	 */
-	if (strlen($_POST['nombre1']) >=1 &&  strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
-	strlen($_POST['tipo']) >=1 && strlen($_POST['documento_e']) >=1 && strlen($_POST['clave_e']) >=1) {
+	if (strlen($_POST['nombre1']) >=1 &&  strlen($_POST['apellido1']) >=1 && 
+	strlen($_POST['tipo']) >=1 && strlen($_POST['documento']) >=1 && strlen($_POST['clave_e']) >=1) {
 		/**
 		 * se compara que las claves esten iguales
 		 */
 		if ($_POST['clave_e'] == $_POST['clave2']) {
 			
 			$visitante = "usuario";
-			$documento = trim($_POST['documento_e']) ;
+			$documento = trim($_POST['documento']) ;
 			$nombre1 = trim($_POST['nombre1']);
 			$nombre2 = trim($_POST['nombre2']);
 			$apellido1 = trim($_POST['apellido1']);
 			$apellido2 = trim($_POST['apellido2']);
+			$correo = trim($_POST['correo']);
 			$tipo_documento = trim($_POST['tipo']);
 			$clave = trim($_POST['clave_e']);
 			$clave2= trim($_POST['clave2']); 
@@ -47,8 +48,8 @@ if (isset($_POST['siguiente'])) {
         	 * @var $resultado      realiza la consulta a la base de datos 
         	*/
 			$insertar = "INSERT INTO tbl_personas(numero_documento_persona,nombre1_persona,nombre2_persona,apellido1_persona,
-			apellido2_persona,tipo_documento_persona,clave_persona,rol_persona) values('$documento','$nombre1','$nombre2','$apellido1',
-			$apellido2','$tipo_documento',SHA('$clave'),'$visitante')";
+			apellido2_persona,tipo_documento_persona,clave_persona,correo_persona,rol_persona) values('$documento','$nombre1','$nombre2','$apellido1',
+			'$apellido2','$tipo_documento',SHA('$clave'),'$correo','$visitante')";
 			$resultado = mysqli_query($conexion,$insertar);
 
 			/**

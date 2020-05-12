@@ -9,9 +9,7 @@
 <html lang="en">
 <head>
     <title>Registro ágil</title>
-    <script type="text/javascript" src="../js/validacion_num.js"></script>
-    <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+<!--     <script type="text/javascript" src="../js/validacion.js"></script> -->
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" type="text/css" href="../css/perfil_supervisor.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
@@ -97,32 +95,32 @@
 
 <!-- inicio registro vigilante -->
 <div  id="openModal-vigi" class="modalDialog">
-    <form action="../phpCode/codigo_vigilante.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
+    <form action="../phpCode/codigo_vigilante.php" method="POST" id="formulario-editar" enctype="multipart/form-data" onsubmit="return validar_visi();">
         <h2 id="titulo-editar">Registrar vigilante</h2>
         <hr class="linea-ele">
         <a href="#close" title="Cerrar" class="close">X</a>
         <div id="contenedor-editar">
-            <input class="input-editar" type="text" name="nombre1" placeholder="Primer nombre"
+            <input class="input-editar" type="text" id="nom1" name="nombre1" placeholder="Primer nombre"
             onkeypress="return Letras(event)" onpaste="return false">
 
-            <select class="input-editar" name="tipo">
+            <select class="input-editar" id="tipo_vi" name="tipo">
                 <option hidden>Tipo de Documento</option>
                 <option value="cc">Cédula de Ciudadanía</option>
                 <option value="ti">Tarjeta de Identidad</option>
                 <option value="ce">Cédula de Extranjería</option>
             </select>
 
-            <input class="input-editar" type="text" name="nombre2" placeholder=" Segundo nombre"
+            <input class="input-editar" type="text" id="nom2" name="nombre2" placeholder=" Segundo nombre"
             onkeypress="return Letras(event)" onpaste="return false">
-            <input class="input-editar" type="text" name="documento" placeholder ="Número documento"
+            <input class="input-editar" type="text" id="docu" name="documento" placeholder ="Número documento"
             onkeypress="return numeros(event)" onpaste="return false">
-            <input class="input-editar" type="text" name="apellido1" placeholder ="Primer apellido"
+            <input class="input-editar" type="text" id="ape1" name="apellido1" placeholder ="Primer apellido"
             onkeypress="return Letras(event)" onpaste="return false">
-            <input class="input-editar" type="password" name="clave" placeholder ="contraseña">
-            <input class="input-editar" type="text" name="apellido2" placeholder ="Segundo apellido"
+            <input class="input-editar" type="password" id="clave_e" name="clave" placeholder ="contraseña">
+            <input class="input-editar" type="text" id="ape2" name="apellido2" placeholder ="Segundo apellido"
             onkeypress="return Letras(event)" onpaste="return false">
             <input class="input-editar" type="password" name="clave2" placeholder =" Confirmar contraseña">
-            <input type="text" class="input-editar" name="correo" placeholder="Correo" required>
+            <input type="text" class="input-editar" id="correo" name="correo" placeholder="Correo" required>
 
             <select class="input-editar" name="estado">
                 <option hidden>Estado</option>

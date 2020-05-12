@@ -33,9 +33,7 @@ if (isset($_SESSION['super'])) {
 <html lang="en">
 <head>
     <title>Editar Elemento</title>
-    <script type="text/javascript" src="../js/validacion_num.js"></script>
-    <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+    <script type="text/javascript" src="../js/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/mis_elementos.css">
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
@@ -43,23 +41,6 @@ if (isset($_SESSION['super'])) {
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <title>Registro ágil</title>
-
-    <script>
-        $(document).ready(function(){
-
-            $('#formulario-elemento').click(function(){
-            $("#contenido").load("../vistas/formulario-elemento-super.php");
-            });
-
-            $('#elemento').click(function(){
-            $("#contenido").load("../vistas/elemento_supervisor.php");
-            });
-
-            $('#listar').click(function(){
-            $("#contenido").load("../vistas/lista_vigilantes.php");
-            });
-        });
-    </script>
 </head>
 <body>
 
@@ -121,7 +102,7 @@ if (isset($_SESSION['super'])) {
     <!--inicio_actualizar_informacion-->
          <!-- manda por la url la variable persona que contiene el numero de documento -->
         <div  id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
-            <form action="../phpCode/codigo_informacion_supervisor.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
+            <form action="../phpCode/codigo_informacion_supervisor.php" method="POST" id="formulario-editar" enctype="multipart/form-data" >
                 <h3 id="titulo-editar">Actualizar información</h3>
                 <hr class="linea-ele">
                 <a href="#close" title="Cerrar" class="close">X</a>
@@ -195,7 +176,7 @@ if (isset($_SESSION['super'])) {
         <h3 class="registrar-elemento">Actualizar Elemento</h3>
         <hr class="linea-ele">
         <div id="registro">
-        <form action="../phpCode/codigo_editar_supervisor.php" method="POST" enctype="multipart/form-data">
+        <form action="../phpCode/codigo_editar_supervisor.php" method="POST" enctype="multipart/form-data" onsubmit="return validar_elemento();">
             <input class="input" type="text" id="input" name="nombre" value="<?php echo $elemento['nombre_elemento'];?>"
             onkeypress="return Letras(event)" onpaste="return false">
             <input class="input" type="text" id="input2" name="descripcion" value="<?php echo $elemento['descripcion_elemento'];?>"

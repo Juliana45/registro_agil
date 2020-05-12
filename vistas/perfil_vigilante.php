@@ -10,9 +10,7 @@
 <head>
     <title>Registro ágil</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="../js/validacion_num.js"></script>
-    <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+    <script type="text/javascript" src="../js/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
     integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
@@ -20,8 +18,18 @@
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
    
     <script>
+            /**
+            * se recarga solo una parte de la pagina
+            *
+            */
         $(document).ready(function(){
-
+            /**
+            * #formulario-elemento      cuando se le da click en el boton regisro elemento
+            *                           se activara el id.
+            * #contenido                este es el id del contenedor donde se va va a traer 
+            *                           otra pagina.
+            */
+            
             $('#formulario-elemento').click(function(){
             $("#contenido").load("../vistas/formulario-elemento-vigilante.php");
             });
@@ -89,22 +97,22 @@
     <!--inicio_actualizar_informacion-->
             <!-- manda por la url la variable persona que contiene el numero del documento -->
         <div id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
-            <form action="../phpCode/codigo_informacion_vigilante.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
+            <form action="../phpCode/codigo_informacion_vigilante.php" method="POST" id="formulario-editar" enctype="multipart/form-data" onsubmit="return validar_info();">
                 <a href="#close" title="Cerrar" class="close">X</a>
                 <h3 id="titulo-editar">Actualizar información</h3>
                 <hr class="linea-ele">
                 <div id="contenedor-editar">
-                    <input type="text" class="input-editar" name="nombre1" value="<?php echo $persona['nombre1_persona'];?>"
+                    <input type="text" class="input-editar" id="nombre1" name="nombre1" value="<?php echo $persona['nombre1_persona'];?>"
                     onkeypress="return Letras(event)" onpaste="return false">
-                    <input type="text" class="input-editar" name="nombre2"  value="<?php echo $persona['nombre2_persona'];?>"
+                    <input type="text" class="input-editar" id="nombre2" name="nombre2"  value="<?php echo $persona['nombre2_persona'];?>"
                     onkeypress="return Letras(event)" onpaste="return false">
-                    <input type="text" class="input-editar" name="apellido1"  value="<?php echo $persona['apellido1_persona'];?>"
+                    <input type="text" class="input-editar" id="apellido1" name="apellido1"  value="<?php echo $persona['apellido1_persona'];?>"
                     onkeypress="return Letras(event)" onpaste="return false">
-                    <input type="text" class="input-editar" name="apellido2"  value="<?php echo $persona['apellido2_persona'];?>"
+                    <input type="text" class="input-editar" id="apellido2" name="apellido2"  value="<?php echo $persona['apellido2_persona'];?>"
                     onkeypress="return Letras(event)" onpaste="return false">
-                    <input type="text" name="documento" hidden class="input-editar" value="<?php echo $persona['numero_documento_persona'];?>">
+                    <input type="text"  id="documento" name="documento" hidden class="input-editar" value="<?php echo $persona['numero_documento_persona'];?>">
 
-                    <select  name="tipo" class="input-editar" required>
+                    <select  name="tipo" id="tipo" class="input-editar" required>
                         <option hidden ><?php echo $persona['tipo_documento_persona'];?></option>
                         <option value="cc">Cédula de Ciudadanía</option>
                         <option value="ti">Tarjeta de Identidad</option>
@@ -127,13 +135,13 @@
             <!-- manda por la url la variable persona que contiene el numero del documento -->
         <div id="openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <a href="#close" title="Cerrar" class="close" id="close-clave">X</a>
-            <form action="../phpCode/cambiar_clave_vigilante.php" method="POST" id="formulario-clave">
+            <form action="../phpCode/cambiar_clave_vigilante.php" method="POST" id="formulario-clave" onsubmit="return validar_contra();">
                 <h3 id="titulo-editar">Cambiar clave</h3>
                 <hr class="linea-ele">
                 <div id="editar-clave">
                 <input type="text" name="documento" hidden class="input" value="<?php echo $persona['numero_documento_persona'];?>">
-                <input type="password" class="input" name="clave" placeholder="Contraseña nueva" required>
-                <input type="password" class="input" name="clave2" placeholder="Confirmar contraseña nueva" required>
+                <input type="password" class="input" id="clave" name="clave" placeholder="Contraseña nueva" required>
+                <input type="password" class="input" id="clave2" name="clave2" placeholder="Confirmar contraseña nueva" required>
                 <input type="submit" class="input-btn" name="enviar" value="Enviar">
                 <br><br>
                 </div>

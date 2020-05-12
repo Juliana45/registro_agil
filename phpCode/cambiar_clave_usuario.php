@@ -30,8 +30,8 @@ if (isset($_POST['enviar'])) {
             echo '<script>alert("Los datos se actualizaron correctamente") ;</script>';
             echo "<script>window.location='../vistas/perfil_usuario.php';</script>";  
     }else{
-       echo '<script>alert("Complete los campos") ;</script>';
-       echo "<script>window.location='../formulario.php';</script>";
+       echo '<script>alert("Las contraseñas deben estar igual") ;</script>';
+       echo "<script>window.location='../vistas/perfil_usuario.php';</script>";
     }
 }
 

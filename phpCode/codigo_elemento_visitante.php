@@ -31,6 +31,7 @@ if(isset($_POST['Guardar'])) {
         $descripcion = trim($_REQUEST['descripcion']);
         $foto = $_FILES['foto'] ['name'] ;
         $ruta =$_FILES['foto'] ['tmp_name'];
+        $estado='1';
         $destino = "../img/".$foto;
         copy($ruta,$destino);
         
@@ -39,7 +40,7 @@ if(isset($_POST['Guardar'])) {
          * @var $resultado      realiza la consulta a la base de datos 
         */
         $insertar = "INSERT INTO tbl_elementos(numero_serial_elemento,nombre_elemento,descripcion_elemento,foto_elemento,
-        numero_documento_persona) VALUES('$numero_serial','$nombre','$descripcion','$destino','$documento')";    
+        numero_documento_persona,estado_elemento) VALUES('$numero_serial','$nombre','$descripcion','$destino','$documento','$estado')";    
         $resultado = mysqli_query($conexion,$insertar);
 
             /**

@@ -27,7 +27,7 @@ if (isset($_POST['guardar'])) {
 	 * si todos los campos estan llenos
 	 */
 	if (strlen($_POST['nombre1']) >=1 && strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
-	strlen($_POST['tipo']) >=1 && strlen($_POST['documento']) >=1 && strlen($_POST['clave']) >=1 && strlen($_POST['estado']) >=1) {
+	strlen($_POST['tipo']) >=1 && strlen($_POST['documento']) >=1 && strlen($_POST['clave']) >=1 && strlen($_POST['estado']) >=1 && strlen($_POST['correo']) >=1) {
 		/**
 		 * se compara si las claves son iguales
 		 */
@@ -40,6 +40,7 @@ if (isset($_POST['guardar'])) {
 			$apellido1 = trim($_POST['apellido1']);
 			$apellido2 = trim($_POST['apellido2']);
 			$tipo_documento = trim($_POST['tipo']);
+			$correo=trim($_POST['correo']);
 			$clave = trim($_POST['clave']);
 			$clave2= trim($_POST['clave2']);
 			$estado = trim($_POST['estado']);
@@ -49,8 +50,8 @@ if (isset($_POST['guardar'])) {
         	 * @var $resultado      realiza la consulta a la base de datos 
         	*/
 			$insertar = "INSERT INTO tbl_personas(numero_documento_persona,nombre1_persona,nombre2_persona,apellido1_persona,
-			apellido2_persona,tipo_documento_persona,clave_persona,rol_persona,estado_persona) values
-			('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$tipo_documento',SHA('$clave'),'$vigilante','$estado')";
+			apellido2_persona,tipo_documento_persona,clave_persona,foto_persona,correo_persona,rol_persona,estado_persona) values
+			('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$tipo_documento',SHA('$clave'),'$correo','$vigilante','$estado')";
   			$resultado = mysqli_query($conexion,$insertar);
 
 			/**

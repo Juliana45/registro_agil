@@ -18,9 +18,7 @@
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="../js/validacion_num.js"></script>
-    <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+    <script type="text/javascript" src="../js/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" type="text/css" href="../css/verificacion.css">
     <link rel="stylesheet" type="text/css" href="../css/mis_elementos.css">
@@ -33,18 +31,13 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-<<<<<<< HEAD
     /**
      * obtener la sesion
      *
      * @var int  $documento       se esta almacenando la sesion del vigilante
      *           $_SESSION        almacena elnumero de documento del vigilante
      */
-=======
-        /**
-         * vale 
-         */
->>>>>>> cdf31a0ca875609a4b08b6a2228f227cd2fb60c3
+
         $documento=$_SESSION['vigi'];
         /**
         *  consulta a la base de datos la foto y los nombres del vigilante
@@ -111,8 +104,8 @@
         <!-- fin buscador historial -->
 
         <!-- buscador elementos -->    
-        <form action="#" method="post" class="buscador">
-            <input type="search" name="busqueda" id="bus" value=""  placeholder="Buscar"  autocomplete="off" />
+        <form action="#" method="post" class="buscador" onsubmit="return validar_buscador();">
+            <input type="search" id="bus" name="busqueda" onkeypress="return numeros(event)"  value=""  placeholder="Buscar"  autocomplete="off" />
             <button type="submit" name="submit" id="buscar-ele"><i class="fas fa-search"></i></button>   
         </form>
         <!-- fin buscador --> 
@@ -121,43 +114,44 @@
         <a href="#openModal" ><button id="registra-visitante">Registrar visitante</button><br></a>
 
         <div id="openModal" class="modalDialog">
-            <form action="../phpCode/codigo_visitante.php" method="POST" id="formulario-editar">
+            <form action="../phpCode/codigo_visitante.php" method="POST" id="formulario-editar" onsubmit="return validar_visi();">
                 <a href="#close" title="Cerrar" class="close">X</a>
                 <h3 id="titulo-editar">Registrar visitante</h3>
                 <hr class="linea-ele">
                 <div id="contenedor-editar">
-                    <input type="text" class="input-editar" name="nombre1" placeholder="Primer Nombre" required>
-                    <select  name="tipo" class="input-editar" required>
+                    <input type="text" class="input-editar" id="nom1" name="nombre1" placeholder="Primer Nombre" onkeypress="return Letras(event)">
+                    <select  name="tipo" id="tipo_vi" class="input-editar">
                         <option hidden>Tipo de Documento</option>
                         <option value="cc">Cédula de Ciudadanía</option>
                         <option value="ti">Tarjeta de Identidad</option>
                         <option value="ce">Cédula de Extranjería</option>
                     </select>
-                    <input type="text" class="input-editar" name="nombre2" placeholder="Segundo Nombre">
-                    <input type="text" class="input-editar" name="documento_e" placeholder="Número de documento" required>
-                    <input type="text" class="input-editar" name="apellido1" placeholder="Primer Apellido" required>
-                    <input type="password" class="input-editar" name="clave_e" placeholder="Contraseña" required>
-                    <input type="text" class="input-editar" name="apellido2" placeholder="Segundo Apellido">
-                    <input type="password" class="input-editar" name="clave2" placeholder="Repita su contraseña" required>
+                    <input type="text" class="input-editar" id="nom2" name="nombre2" placeholder="Segundo Nombre" onkeypress="return Letras(event)">
+                    <input type="text" class="input-editar" id="docu" name="documento" placeholder="Número de documento" onkeypress="return numeros(event)">
+                    <input type="text" class="input-editar" id="ape1" name="apellido1" placeholder="Primer Apellido" onkeypress="return Letras(event)">
+                    <input type="password" class="input-editar" id="clave_e" name="clave_e" placeholder="Contraseña">
+                    <input type="text" class="input-editar" id="ape2" name="apellido2" placeholder="Segundo Apellido" onkeypress="return Letras(event)">
+                    <input type="password" class="input-editar" name="clave2" placeholder="Repita su contraseña">
+                    <input type="text" class="input-editar" id="correo" name="correo" placeholder="Correo">
                     <input type="submit" class="input-btn-visitante" name="siguiente" value="Siguiente">  
                 </div> 
             </form>
         </div>
 
         <div  id="openModal1" class="modalDialog">
-            <form action="../phpCode/codigo_elemento_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
+            <form action="../phpCode/codigo_elemento_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data" onsubmit="return validar_visitante();">
                 <a href="#close" title="Cerrar" class="close">X</a>
                 <h3 id="titulo-editar">Registrar elemento</h3>
                 <hr class="linea-ele">
                 <div id="contenedor-editar">
-                    <input type="text" class="input-editar" name="documento" placeholder="Número de documento" required>
-                    <input type="text" class="input-editar"  name="nombre" placeholder="Nombre" required>
-                    <input type="text" class="input-editar"name="descripcion" placeholder ="Descripción">
-                    <input type="text" class="input-editar" name="numero_serial" placeholder ="Código serial" required>
+                    <input type="text" class="input-editar" id="documen" name="documento" placeholder="Número de documento" onkeypress="return numeros(event)">
+                    <input type="text" class="input-editar" id="nom" name="nombre" placeholder="Nombre" onkeypress="return Letras(event)">
+                    <input type="text" class="input-editar" id="descripcion"  name="descripcion" placeholder ="Descripción">
+                    <input type="text" class="input-editar" id="numero" name="numero_serial" placeholder="Código serial" onkeypress="return numeros(event)">
                     <a href="verificacion.php#openModal3" id="sin-serial" class="serial">No tiene codigo serial</a>
                     <div id="subir-foto">
                         <p id="txt-subir-foto">subir foto</p> 
-                        <input id="btn-subir-foto" type="file" name="foto" required>
+                        <input id="btn-subir-foto" type="file" name="foto">
                     </div>
                     <input type="submit" class="input-btn-visitante" name="Guardar" value="Guardar">  
                 </div>
@@ -203,11 +197,11 @@
             if(isset($_POST['submit'])){
 
             $search = $_POST['busqueda'];
-<<<<<<< HEAD
+
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos WHERE numero_documento_persona like '%$search%' 
             and estado_elemento = '1'");
                 
-=======
+
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos  WHERE numero_documento_persona like '%$search%' and estado_elemento='1'");
             
             /**
@@ -216,7 +210,7 @@
              * 
              * @var string $elemento     Almacena cada dato entrado en la consulta $elementos
              */
->>>>>>> b5eaec0c8ef1b009da248affbaba54bbe050178b
+
             while ($elemento =  mysqli_fetch_array($elementos)) {
         ?>
             <div class="contenedor-carta">
@@ -266,10 +260,6 @@
                     $conexion = mysqli_connect("localhost","root","","registroagil");
 
                     $fecha = $_POST['fecha1'];
-<<<<<<< HEAD
-                    
-=======
->>>>>>> b5eaec0c8ef1b009da248affbaba54bbe050178b
                     $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
                     WHERE tbl_elementos.numero_serial_elemento=tbl_historial.numero_serial_elemento AND
                     CAST(hora_ingreso_historial AS DATE) =  '$fecha' ");
@@ -300,14 +290,7 @@
             </tr>
         </table>
 <!--fin_historial-->
-
-
-
-
-
-    
 <!-- fin lado derecho -->
-
 </body>
 </html>
 

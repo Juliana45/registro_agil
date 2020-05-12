@@ -34,7 +34,7 @@ if (isset($_SESSION['vigi'])) {
 <head>
     <script type="text/javascript" src="../js/validacion_num.js"></script>
     <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+    <script type="text/javascript" src="../js/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/mis_elementos.css">
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
@@ -42,21 +42,6 @@ if (isset($_SESSION['vigi'])) {
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <title>Registro ágil</title>
-
-    <script>
-        $(document).ready(function(){
-
-            $('#formulario-elemento').click(function(){
-            $("#contenido").load("../vistas/formulario-elemento-vigilante.php");
-            });
-
-            $('#elemento').click(function(){
-            $("#contenido").load("../vistas/elementos_vigilante.php");
-            });
-
-            
-        });
-    </script>
 </head>
 <body>
 
@@ -188,10 +173,11 @@ if (isset($_SESSION['vigi'])) {
     
         <!--inicio_actualizar_elemento-->
         <div id="form-registro-elemento">
+
             <h3 class="registrar-elemento">Actualizar Elemento</h3>
             <hr class="linea-ele">
             <div id="registro">
-                <form action="../phpCode/codigo_editar_vigilante.php" method="POST" enctype="multipart/form-data">
+                <form action="../phpCode/codigo_editar_vigilante.php" method="POST" enctype="multipart/form-data" onsubmit="return validar_elemento();">
                     <input class="input" type="text" id="input" name="nombre" value="<?php echo $elemento['nombre_elemento'];?>"
                      onkeypress="return Letras(event)" onpaste="return false">
                     <input class="input" type="text" id="input2" name="descripcion" value="<?php echo $elemento['descripcion_elemento'];?>"
@@ -199,7 +185,7 @@ if (isset($_SESSION['vigi'])) {
                     <input class="input" type="text" id="input3" name="numero_serial" hidden value="<?php echo $elemento['numero_serial_elemento'];?>">
                     <div class="subir-foto">
                         <p class="txt-subir-foto">subir foto</p> 
-                        <input class="btn-subir-foto" type="file" name="foto" required>
+                        <input class="btn-subir-foto" id="foto_ele" type="file" name="foto">
                     </div>
                     <input class="input_btn" type="submit" id="submit" name="registro_ele" value="Guardar">
                 </form>
