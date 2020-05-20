@@ -1,7 +1,15 @@
 <?php
+    /**
+    * session_start()  se autoinicia la sesion
+    */
     session_start();
+    /**
+    * se incluye la conexion a la base de datos
+    */
     include '../conexi/conexion.php';
-
+    /** 
+    * $_SESSION       almacena el numero de documento del vigilante
+    */
     if (isset($_SESSION['vigi'])) {
 ?>
 

@@ -1,7 +1,15 @@
 <?php
+    /**
+    * session_start()  se autoinicia la sesion
+    */
     session_start();
+    /**
+    * se incluye la conexion a la base de datos
+    */
     include '../conexi/conexion.php';
-
+    /** 
+    * $_SESSION       almacena el numero de documento del usuario
+    */
     if (isset($_SESSION['user'])) {
 ?>
 
@@ -44,43 +52,65 @@
 <!-- inicio lado izquierdo -->
 <div class="contenedor-izquierdo">
     <?php
-        include '../conexi/conexion.php'; 
-    /**
-     * obtener la sesion
-     *
-     * @var int  $documento       se esta almacenando la sesion del usuario
-     *           $_SESSION        almacena elnumero de documento del usuario
-     * 
-     */
-        $documento=$_SESSION['user'];
         /**
-         *  consulta a la base de datos 
-         * 
-         * @var string  $personas       se esta almacenando la consulta a la base de datos
+        *       Muestra los datos personales del usuario
+        *  
+        * se incluye la conexion a la base de datos
+        */
+        include '../conexi/conexion.php'; 
+        /**
+         * obtener la sesion del usuario
+         *
+         * @var int  $documento       Se esta almacenando la sesion del usuario.
+         *           $_SESSION        Almacena el numero de documento del usuario.
          * 
          */
-        $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
+        $documento=$_SESSION['user'];
         /**
-         *  ciclo para mostrar informacion personal del usuario
+         *  consulta a la base de datos la foto y los nombres del usuario
          * 
          * @var string  $personas       se esta almacenando la consulta a la base de datos
-         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         *                              donde el numero de documento del usuario debe ser
+         *                              al numero de documento registrado enla base de datos.
+         */
+        $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
+         /**
+         *  ciclo para mostrar informacion personal del usuario
          * 
+         * foreach                      Recorre estructura que contienen varios elementos
+         *                              (como arrays).
+         * @var string  $personas       Se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        Se esta almacenando el dato de la consulta y se muestra
+         *                              la foto y los nombres del usuario.
          */
         foreach ($personas as $persona):
     ?>
     <!-- inicio fotos y botones de menu -->
         <div class="contenedor-foto">
-            <?php echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando la foto del usuario.
+            */
+             echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
             <button class="editar">
+            <!-- se esta mandado por la url la variable persona que contiene el numero  
+                 de documento del usuario.-->     
                 <a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>">
                 <i class="fas fa-user-edit"></i></a>
             </button>
         </div>
 
         <h3 class="nombre">
-            <?php echo $persona['nombre1_persona'];?>
-            <?php echo $persona['apellido1_persona'];?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando el primer nombre del usuario.
+            */
+             echo $persona['nombre1_persona'];?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando el primer apellido del usuario.
+            */
+             echo $persona['apellido1_persona'];?>
         </h3>
 
         <hr class="linea">
@@ -93,7 +123,7 @@
     <!-- fin foto y botones de menu -->
 
     <!--inicio_actualizar_informacion-->
-        <!-- manda por la url la variable persona que contiene el numero del documento -->
+        <!-- manda por la url la variable persona que contiene el numero del documento del usuario -->
         <div  id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
 
             <form action="../phpCode/codigo_informacion_usuario.php" method="POST" id="formulario-editar" enctype="multipart/form-data" onsubmit="return validar_info();">
@@ -124,6 +154,7 @@
                     </div>
 
                     <input type="submit" class="input-btn-editar" name="guardar" value="Actualizar"> 
+                    <!-- manda por la url la variable persona que contiene el numero del documento del usuario -->
                     <a href="#openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" id="item-cambia-clave">cambiar clave </a>
                 </div>
             </form>
@@ -131,7 +162,7 @@
     <!--fin_actualizar_informacion-->
     <!--inicio cambiar contraseña-->
 
-    <!-- manda por la url la variable persona que contiene el numero del documento -->
+       <!-- manda por la url la variable persona que contiene el numero del documento del usuario -->
         <div id="openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <a href="#close" title="Cerrar" class="close" id="close-clave">X</a>
             <form action="../phpCode/cambiar_clave_usuario.php" method="POST" id="formulario-clave" onsubmit="return validar_contra();">

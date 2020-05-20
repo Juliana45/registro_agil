@@ -1,16 +1,17 @@
 <?php
     /**
-     *session_start()  se autoinicia una sesión
-     * 
-     * $_SESSION       almacena el numero de documaneto del vigilante
+    * session_start()  se autoinicia la sesion del vigilante
     */
-
     session_start();
+    /**
+    * se incluye la conexion a la base de datos
+    */
     include '../conexi/conexion.php';
-
+    /** 
+    * $_SESSION       almacena el numero de documento del vigilante
+    */
     if (isset($_SESSION['vigi'])) {
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,35 +31,49 @@
 <!-- inicio lado izquierdo -->
 <div class="contenedor-izquierdo">
     <?php
+        /**
+        *       Muestra los datos personales del vigilante 
+        *  
+        * se incluye la conexion a la base de datos
+        */
         include '../conexi/conexion.php';
     /**
-     * obtener la sesion
+     * obtener la sesion del vigilante
      *
      * @var int  $documento       se esta almacenando la sesion del vigilante
-     *           $_SESSION        almacena elnumero de documento del vigilante
+     *           $_SESSION        almacena el numero de documento del vigilante
      */
 
         $documento=$_SESSION['vigi'];
-        /**
-        *  consulta a la base de datos la foto y los nombres del vigilante
-        * 
-        * @var string  $personas       se esta almacenando la consulta a la base de datos
-        * 
-        */
-
+         /**
+         *  consulta a la base de datos la foto y los nombres del vigilante
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         *                              donde el numero de documento del vigilante debe ser
+         *                              al numero de documento registrado enla base de datos.
+         * 
+         */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
          /**
          *  ciclo para mostrar informacion personal del vigilante
          * 
-         * @var string  $personas       se esta almacenando la consulta a la base de datos.
-         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+         * foreach                      Recorre estructura que contienen varios elementos
+         *                              (como arrays).
+         * @var string  $personas       Se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        Se esta almacenando el dato de la consulta y se muestra
          *                              la foto y los nombres del vigilante.
          */
         foreach ($personas as $persona):
     ?>
     <!-- inicio fotos y botones de menu -->
         <div class="contenedor-foto">
-            <?php echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando la foto del vigilante 
+            */
+             echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
+            <!-- se esta mandado por la url la variable persona que contiene el numero  
+                 de documento del vigilante -->
             <button class="editar" id="icono-sticker"><a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>"> 
                 <i class="fas fa-user-edit"></i></a>
             </button>
@@ -66,8 +81,16 @@
 
         <h3 class="nombre">
             <a class="nombre_verificar">
-            <?php echo $persona['nombre1_persona'];?>
-            <?php echo $persona['apellido1_persona'];?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando el primer nombre del vigilante 
+            */
+             echo $persona['nombre1_persona'];?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando el primer apellido del vigilante 
+            */
+             echo $persona['apellido1_persona'];?>
             </a>
         </h3>
 
@@ -97,8 +120,12 @@
     <div id="barra">
         <!-- buscador historial -->
         
-        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" class="buscador-fecha">
-            <input type="date" name="fecha1" id="bus-fecha" value="<?php echo date("Y-m-d");?>" >
+        <form action="<?php  echo $_SERVER['PHP_SELF']?>" method="post" class="buscador-fecha">
+            <input type="date" name="fecha1" id="bus-fecha" value="<?php
+            /**
+            * date("Y-m-d")       Esta mostrando la fecha del dia actual
+            */
+             echo date("Y-m-d");?>" >
             <input type="submit" name="submit1" id="fecha" value="Buscar">
         </form>
         <!-- fin buscador historial -->
@@ -189,44 +216,64 @@
         <?php
             /**
              * El condicional indica si se presionó el boton llamado submit 
-             * 
-             * @var string $search      almacena los datos ingresados en el campo busqueda
-             * @var string $elementos   almacena la consulta a la base de datos
-             * 
              */
             if(isset($_POST['submit'])){
-
+            /**
+             * @var string $search      Almacena el dato ingresado en el campo busqueda
+             */
             $search = $_POST['busqueda'];
-
-            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos WHERE numero_documento_persona like '%$search%' 
-            and estado_elemento = '1'");
-                
-
+            /**
+             * @var string $elementos   Almacena la consulta a la base de datos donde se
+             *                          esta buscando en numero de documento del usuario
+             *                          y el estado del elemento debe ser igual a 1.
+             */
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos  WHERE numero_documento_persona like '%$search%' and estado_elemento='1'");
             
             /**
              * Buscador de elementos mediante el numero de documento 
-             *  WHILE                    Mientras elemento contenga contenido a mostrar recorrer
-             * 
-             * @var string $elemento     Almacena cada dato entrado en la consulta $elementos
+             *
+             *  WHILE                    Mientras elemento contenga contenido a mostrar 
+             *                           recorrer
+             * @var string $elemento     Almacena cada dato que arroja la consulta a la
+             *                           base de datos por medio de la varianle $elementos.
              */
-
             while ($elemento =  mysqli_fetch_array($elementos)) {
         ?>
             <div class="contenedor-carta">
                 <div class="contenedor-imagen">
-                    <?php echo '<img class="foto" src="'.$elemento['foto_elemento'].'"> ' ?>
+                    <?php
+                    /**
+                    * @var string  $elemento       Se esta mostrando la foto del elemento.
+                    */
+                     echo '<img class="foto" src="'.$elemento['foto_elemento'].'"> ' ?>
                 </div>
                 <div class="contenedor-txt"> 
-                    <?php echo'<h2>'.$elemento['nombre_elemento'].'</h2>'?>    
+                    <?php
+                    /**
+                    * @var string  $elemento       Se esta mostrando el nombre del elemento.
+                    */
+                     echo'<h2>'.$elemento['nombre_elemento'].'</h2>'?>    
                     <hr>
-                    <p>
-                        <?php echo $elemento['descripcion_elemento'];?>
+                    <p><?php
+                    /**
+                    * @var string  $elemento       Se esta mostrando la descripcion del
+                    *                              elemento.
+                    */
+                        echo $elemento['descripcion_elemento'];?>
                     </p>
-                    <p class="letra"><?php echo $elemento['numero_serial_elemento'];?></p>
+                    <p class="letra"><?php
+                    /**
+                    * @var string  $elemento       Se esta mostrando el numero serial del
+                    *                              elemento.
+                    */
+                     echo $elemento['numero_serial_elemento'];?></p>
+                    <!-- se esta mandado por la url la variable ingreso que contiene 
+                    el numero serial del elemento -->
                     <a href="../phpCode/codigo_guardar_historial.php?ingreso=<?php echo $elemento['numero_serial_elemento']; ?>">
                         <button id="boton_ingreso" name="ingreso">INGRESO</button>
                     </a>
+                    <!-- se esta mandado por la url la variable salida que contiene 
+                    el numero serial del elemento -->
                     <a href="../phpCode/codigo_guardar_historial.php?salida=<?php echo $elemento['numero_serial_elemento']; ?>">
                         <button id="salida" class="" name="salida">SALIDA</button>
                     </a>
@@ -249,17 +296,23 @@
              * Buscador del historial por fecha
              * 
              * Condicional que inicia la busqueda al presionar el boton llamado submit1 
-             * 
-             * @var string $conexion    almacena la conexion a la base de datos
-             * @var date $fecha         almacena la fecha en el campo llamado fecha1
-             * @var string $historial1  almacena la consulta a la base de datos
-             * 
              */
                 if(isset($_POST['submit1'])){
-
+            /**
+             * @var string $conexion    almacena la conexion a la base de datos
+             */
                     $conexion = mysqli_connect("localhost","root","","registroagil");
-
+            /**
+             * @var date $fecha         almacena la fecha en el campo llamado fecha1
+             */
                     $fecha = $_POST['fecha1'];
+                /**
+                 * Colsulta a la base de datos de la fechas de ingreso y salida
+                 *
+                 * @var string $historial1      Almacena la colsulta a la base de datos 
+                 *                              donde se debe traer el nombre, la descripcion,
+                 *                              la fecha del ingreso y salida del elemento.
+                 */                
                     $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
                     WHERE tbl_elementos.numero_serial_elemento=tbl_historial.numero_serial_elemento AND
                     CAST(hora_ingreso_historial AS DATE) =  '$fecha' ");
@@ -273,16 +326,37 @@
                 </tr>
             </thead>
                 <?php
-                    /**
-                     * While         mientras la consulta tenga resultados se mostrarán
-                     */
+                /**
+                 *  WHILE                   Mientras la consulta tenga resultados se mostrarán.
+                 * @var string $elemento1   Almacena cada dato que arroja la consulta a la
+                 *                          base de datos por medio de la varianle $historial1.
+                 */
                     while($elemento1 =  mysqli_fetch_array($historial1)){
                 ?>
             <tr>
-                <td> <?php echo $elemento1['nombre_elemento'];?></td>
-                <td> <?php echo $elemento1['descripcion_elemento'];?></td>
-                <td> <?php echo $elemento1['hora_ingreso_historial'];?></td>
-                <td> <?php echo $elemento1['hora_salida_historial'];?></td>      
+                <td> <?php
+                /**
+                * @var string  $elemento       Se esta mostrando el nombre del elemento.
+                */
+                 echo $elemento1['nombre_elemento'];?></td>
+                <td> <?php
+                /**
+                * @var string  $elemento       Se esta mostrando la descripcion del
+                *                              elemento.
+                */
+                 echo $elemento1['descripcion_elemento'];?></td>
+                <td> <?php
+                /**
+                * @var string  $elemento       Se esta mostrando la hora de ingreso del
+                *                              elemento.
+                */
+                echo $elemento1['hora_ingreso_historial'];?></td>
+                <td> <?php
+                /**
+                * @var string  $elemento       Se esta mostrando la hora de salida del
+                *                              elemento.
+                */                
+                 echo $elemento1['hora_salida_historial'];?></td>      
                     <?php
                                 }
                             }  

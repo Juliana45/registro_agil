@@ -1,7 +1,15 @@
 <?php
+    /**
+    * session_start()  se autoinicia la sesion
+    */
     session_start();
+    /**
+    * se incluye la conexion a la base de datos
+    */
     include '../conexi/conexion.php';
-
+    /** 
+    * $_SESSION       almacena el numero de documento del supervisor
+    */
     if (isset($_SESSION['super'])) {
 ?>
 
@@ -37,49 +45,81 @@
             </tr>
         </thead>
         <?php
+        /**
+        *    Muestra todos los vigilante que estan registrados
+        *
+        * se incluye la conexion a la base de datos
+        */
           include '../conexi/conexion.php';
         /**
-         *  consulta a la base de datos 
+         *  consulta a la base de datos los datos de vigilante
          * 
-         * @var string  $infrmacion      Se esta almacenando la consulta a la base 
-         *                               de datos donde se muestran todos los vigilantes
-         *                               registrados.
+         * @var string  $informacion     Se esta almacenando la consulta a la base 
+         *                               de datos donde el rol de la persona debe ser 
+         *                               igual a vigilante.
          */
         $informacion = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE rol_persona = 'vigilante'");
          /**
          *  ciclo para listar todos los vigilantes
          * 
+         * foreach                      Recorre estructura que contienen varios elementos
+         *                              (como arrays).
          * @var string  $informacion     Se esta almacenando la consulta a la base de datos.
-         * @var string  $info            Se esta almacenando el dato de la consulta y se muestra
-         *                               numero de documento, nombre, apellido y el estado del vigilante.
+         * @var string  $info            Se esta almacenando el dato de la consulta y se
+         *                               muestra numero de documento, nombre, apellido y el
+         *                               estado del vigilante.
          */
          foreach ($informacion as $info):
         ?>
         <tr>
-            <td> <?php echo $info['numero_documento_persona']; ?></td>
-            <td> <?php echo $info['nombre1_persona']; ?></td>
-            <td><?php echo $info['apellido1_persona']; ?></td>
-            <td><?php echo $info['apellido2_persona']; ?></td>
-            <td><?php echo $info['estado_persona']; ?></td>      
+            <td> <?php
+            /**
+            * @var string  $info       Se esta mostrando el numero de documento del vigilante.
+            */
+             echo $info['numero_documento_persona']; ?></td>
+            <td> <?php 
+            /**
+            * @var string  $info       Se esta mostrando el primer nombre del vigilante.
+            */
+            echo $info['nombre1_persona']; ?></td>
+            <td><?php 
+            /**
+            * @var string  $info       Se esta mostrando el primer apellido del vigilante.
+            */
+            echo $info['apellido1_persona']; ?></td>
+            <td><?php 
+            /**
+            * @var string  $info       Se esta mostrando el segundo apellido del vigilante.
+            */
+            echo $info['apellido2_persona']; ?></td>
+            <td><?php 
+            /**
+            * @var string  $info       Se esta mostrando el estado de la persona del vigilante.
+            */
+            echo $info['estado_persona']; ?></td>      
 
             <?php
 
             /**
-             * mostrar estado del vigilante
+             * muestra el estado del vigilante
              * 
              * @var string $info            Se almacena el estado del vigilante.
-             * @var string desactivar       Se almacena el estado desactivar.
-             * @var string activar          Se almacena el estado activar.
              */
                 if ($info['estado_persona'] == 'activo') {
             ?>
-
+            <!-- manda por la url la variable desactivar que contiene el numero de documento del supervisor  -->
             <td><a href="../phpCode/codigo_habilitar.php?desactivar=<?php echo $info['numero_documento_persona']; ?>">
                 <button id="boto_ingreso" name="desactivar" value="desactivar">Desactivar</button></a>
             </td>
             <?php
+
+            /**
+            * si el estado de vigilante no es = a activo, se mostrara el boton de activar el
+            * vigilante.
+            */
                 }else{
             ?>
+            <!-- manda por la url la variable desactivar que contiene el numero de documento del supervisor  -->
             <td><a href="../phpCode/codigo_habilitar.php?activar=<?php echo $info['numero_documento_persona']; ?>">
                 <button id="boto_ingreso" name="activar" value="activar">Activar</button></a>
             </td>
