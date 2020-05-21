@@ -33,18 +33,14 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-<<<<<<< HEAD
+
     /**
      * obtener la sesion
      *
      * @var int  $documento       se esta almacenando la sesion del vigilante
      *           $_SESSION        almacena elnumero de documento del vigilante
      */
-=======
-        /**
-         * vale 
-         */
->>>>>>> cdf31a0ca875609a4b08b6a2228f227cd2fb60c3
+
         $documento=$_SESSION['vigi'];
         /**
         *  consulta a la base de datos la foto y los nombres del vigilante
@@ -193,6 +189,7 @@
     
     <div class="resultado_buscar">
         <?php
+            
             /**
              * El condicional indica si se presionó el boton llamado submit 
              * 
@@ -203,12 +200,10 @@
             if(isset($_POST['submit'])){
 
             $search = $_POST['busqueda'];
-<<<<<<< HEAD
+
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos WHERE numero_documento_persona like '%$search%' 
             and estado_elemento = '1'");
-                
-=======
-            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos  WHERE numero_documento_persona like '%$search%' and estado_elemento='1'");
+           
             
             /**
              * Buscador de elementos mediante el numero de documento 
@@ -216,7 +211,7 @@
              * 
              * @var string $elemento     Almacena cada dato entrado en la consulta $elementos
              */
->>>>>>> b5eaec0c8ef1b009da248affbaba54bbe050178b
+
             while ($elemento =  mysqli_fetch_array($elementos)) {
         ?>
             <div class="contenedor-carta">
@@ -229,9 +224,10 @@
                     <p>
                         <?php echo $elemento['descripcion_elemento'];?>
                     </p>
+                     
                     <p class="letra"><?php echo $elemento['numero_serial_elemento'];?></p>
                     <a href="../phpCode/codigo_guardar_historial.php?ingreso=<?php echo $elemento['numero_serial_elemento']; ?>">
-                        <button id="boton_ingreso" name="ingreso">INGRESO</button>
+                        <button id="boton_ingreso" name="ingreso" >INGRESO</button>
                     </a>
                     <a href="../phpCode/codigo_guardar_historial.php?salida=<?php echo $elemento['numero_serial_elemento']; ?>">
                         <button id="salida" class="" name="salida">SALIDA</button>
@@ -266,10 +262,7 @@
                     $conexion = mysqli_connect("localhost","root","","registroagil");
 
                     $fecha = $_POST['fecha1'];
-<<<<<<< HEAD
-                    
-=======
->>>>>>> b5eaec0c8ef1b009da248affbaba54bbe050178b
+
                     $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
                     WHERE tbl_elementos.numero_serial_elemento=tbl_historial.numero_serial_elemento AND
                     CAST(hora_ingreso_historial AS DATE) =  '$fecha' ");

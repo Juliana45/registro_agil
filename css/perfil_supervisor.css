@@ -1,3 +1,4 @@
+/*Linea horizontal ubicada debajo del nombre*/
 hr.linea-lis{
 	margin-top: .5%;
 	width: 4%;
@@ -5,6 +6,7 @@ hr.linea-lis{
 	border:2px solid #EAECEE;
 	margin-left: 47%;
 }
+/*Boton llamado "Registar vigilante" que despliega todos los campos necesarios para registrar un vigilante*/
 input.registrar-vigi{
 	margin-top: 2%;
 	background-color: #0097A7;
@@ -16,9 +18,13 @@ input.registrar-vigi{
 	border: none;
 	border-radius: 3px;
 }
+
+/*Hover(cambio de color o enfoque en el boton "Registrar visitante"*/
 input.registrar-vigi:hover{
 	background-color: #00ACC1;
 }
+
+/*Tabla donde aparecen los datos de los vigilantes*/
 table{
 	margin-top: 2%;
 	background-color: #FFF;
@@ -26,17 +32,26 @@ table{
 	width: 100%;
 	border-collapse: collapse;
 }
+
+/*th representa una celda de encabezado en una tabla de los vigilantes,
+td representa una celda en una tabla de los vigilantes*/
 th,td{
 	padding: 15px;
 	font-size: 1em;
 }
+
+/*thead contiene un bloque de filas del encabezado*/
 thead{
 	background-color:#0097A7; 
 	color: #FFF; 
 }
+
+/*:nth-child(even) coincide con uno o más elementos en función de su posición entre el grupo even*/
 tr:nth-child(even){
 	background-color: #ddd;
 }
+
+/*Boton para desactivar vigilantes ubicado al lado de la informacion de los vigilantes*/
 button#boto_ingreso[value='desactivar'] {
 	background-color: #0097A7;
     color: #FFF;
@@ -46,9 +61,13 @@ button#boto_ingreso[value='desactivar'] {
     font-size: 1em;
     border-radius: 2px;
 }
+
+/*Hover o enfoque del boton para desactivar*/
 button#boto_ingreso:hover{
 	background-color: #00ACC1;	
 }
+
+/*Boton para activar vigilantes ubicado al lado de la informacion de los vigilantes*/
 button#boto_ingreso[value='activar'] {
 	background-color: #1ABC9C;
     color: #FFF;
@@ -58,10 +77,13 @@ button#boto_ingreso[value='activar'] {
     font-size: 1em;
     border-radius: 2px;
 }
+
+/*Hover o enfoque del boton para desactivar*/
 button#boto_ingreso[value='activar']:hover{
 	background-color: #48C9B0;	
 }
 /*-----------------------------------------------------*/
+/*Boton llamado "Guardar" ubicado en el formulario de registro del vigilante*/
 .input-btn-vigi{
 	background: #0097A7;
 	color: #fff;
@@ -75,6 +97,8 @@ button#boto_ingreso[value='activar']:hover{
 
 	
 }
+
+/*Hover o enfoque del boton llamado "Guardar"*/
 .input-btn-vigi:hover{
 	background-color: #00ACC1;
 }

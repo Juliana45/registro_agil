@@ -9,6 +9,7 @@ include  "../conexi/conexion.php";
  */
 if(isset($_GET["ingreso"])){
 
+
     /**
      * date_default_timezone_set define zona horaria 
      * 
@@ -50,6 +51,7 @@ if(isset($_GET["ingreso"])){
         header('Location: ../vistas/verificacion.php');
     
     }
+
 
 
 ?>

@@ -1,14 +1,17 @@
+/* Con el asterisco indicamos que estos ajustes se deben hacer a todo el archivo(tipo de letra) */
 *{
     margin:0;
     padding:0;
 	font-family: 'Roboto Slab', sans-serif;
 }
-
+/* div que contiene el buscador de fecha(historial) y el buscador de los elementos*/
 div#barra{
 	height: 87px;
 	width: 90%;
 	margin: auto;
 }
+
+/*Buscador del historial por fecha y el buscador de los elementos*/
 .buscador-fecha, .buscador{
     position: absolute;
 	height: 30px;
@@ -16,36 +19,52 @@ div#barra{
 	margin-left: 15px;
 	border: 1.5px solid #D5D8DC;
 }
+
+/*Se ubica el buscador del historial encima del buscador de los elementos*/
 .buscador-fecha{
 	width: 220px;
 	top: 24%;
 }
+
+
+/*Se define el tamaño del input tipo fecha y de la fecha como tal*/
 #bus-fecha, #fecha{
     width: 150px;
 }
+
+/*Añade posiciones y direcionalidad a el buscador por fecha, el buscador de los elementos y al boton de este*/
 #bus-fecha, #fecha,#bus, #buscar-ele{
     float: left;
     position: relative;
     height: 30px;
     padding: 0;
 }
+
+/*Añade color y borde al buscador por fecha y el buscador de los elementos*/
 #bus-fecha, #bus{
 	color: #666;
     border:none;
 	z-index: 2;
 }
+
+/*Formulario que contiene el buscador de los elemento*/
 .buscador{
 	width: 550px;
 	margin-top: 55px; 
 }
+/*Tamaño del buscador de los elementos*/
 #bus, #buscar-ele{
     width: 500px;
 }
+
+/*Boton llamado "Buscar" situado al lado del buscador del historial*/
 #fecha{
     font-size: .8em;
     width: 70px;
     border:none;
 }
+
+/*Boton que contiene la lupa en el buscador de los elementos*/
 #buscar-ele{
     font-size: 1.1em;
     width: 50px;
@@ -53,7 +72,8 @@ div#barra{
 }
 
 
-/* registro visitante*/
+/* Registro visitante*/
+/*Color  y tamaños del boton "Registrar visitante" que se encuntra al lado del buscador de los elementos*/
 button#registra-visitante{
 	background-color:#0097A7; 
 	height: 32px;
@@ -67,9 +87,14 @@ button#registra-visitante{
 	margin-left: 70%;
 	margin-top: 54px;
 }
+
+/*Hover o señalador del puntero sobre el boton "Registrar visitante" que se encuentra al 
+lado del buscador de los elementos*/
 button#registra-visitante:hover{
 	background-color: #00ACC1;
 }
+
+/*Color y tamaño del boton llamado "siguiente" que se encuentra dentro del formulario "Registrar visitante"*/
 .input-btn-visitante{
     background: #0097A7;
     color: #fff;
@@ -80,9 +105,12 @@ button#registra-visitante:hover{
     margin-top: 3%;
     cursor: pointer;
 }
-/* fin formulario registro visitante*/
+/*Fin formulario registro visitante*/
 
-/* resultado buscar */
+/*Resultado del buscador de los elementos  */
+
+/*Div que contiene el resultado del buscador de los elementos
+Overflow creará un nuevo contexto de formatos de bloques en este caso de a 1 bloque*/
 .resultado_buscar{
 	width: 100%;
 	height: 405px;
@@ -90,6 +118,10 @@ button#registra-visitante:hover{
 	margin: auto;
 	margin-top: 10%;
 }
+
+/*Div que contiene la carta de los elementos resultados del buscador
+"grid-template-columns: auto auto;" divide el div en dos columnas
+"display: inline-grid" el elemento en sí y su contenido se establecen de acuerdo con el modelo de cuadrícula*/
 div.contenedor-carta{
     background-color: #EAECEE;
     box-shadow: 3px 0px 10px -2px rgba(0,0,0,0.75);
@@ -101,6 +133,8 @@ div.contenedor-carta{
     position: relative;
 	display: inline-grid;
 }
+
+/*Tamaño y color de los botones salida e ingreso que se encuentran en la carta del elemento*/
 #boton_ingreso, #salida{
 	height: 26px;
 	width: 20%;
@@ -112,26 +146,34 @@ div.contenedor-carta{
 	position: absolute;
 	margin-top: 24px;
 }
+/*Color y posicion del boton ingreso*/
 #boton_ingreso{
 	background-color:#0097A7; 
 	margin-left: 50%;
 }
+
+/*Hover o señalador del puntero sobre el boton "Ingreso" que se encuentra en la carta de los elementos*/
 #boton_ingreso:hover{
 	background-color: #00ACC1;
 }
+
+/*Color y posicion del boton salida*/
 #salida{
 	background-color:#1ABC9C; 
 	margin-left: 75%;
 }
+
+/*Hover o señalador del puntero sobre el boton "Salida" que se encuentra en la carta de los elementos*/
 #salida:hover{
 	background-color: #48C9B0;
 }
-/* fin resultado buscar */
+/*Fin resultado del buscador de los elementos*/
 
 
 
-/*historial*/
+/*Inicio resultado buscador historial*/
 
+/*Tabla donde aparecen los datos de los elementos que se buscaron en el buscador del historial*/
 table{
 	background-color: #FFF;
 	text-align: left;
@@ -142,23 +184,29 @@ table{
 	border: 1px solid #E5E7E9;
 }
 
+/*th representa una celda de encabezado en una tabla, en este caso de la tabla de los elementos
+td representa una celda en una tabla, en este caso de la tabla de los elementos*/
 th,td{
 	padding: 15px;
 	font-size: 1em;
 	border: 1px solid #E5E7E9;
 }
 
+/*thead contiene un bloque de filas del encabezado*/
 thead{ 
 	color: #000; 
 }
 
+/*:nth-child(even) coincide con uno o más elementos en función de su posición entre el grupo even*/
 tr:nth-child(even){
 	background-color: #E5E7E9;
 }
+
+/* 
 .nombre_verificar{
 	text-decoration: none;
 	color: #000;
-}
+} */
 
 
 
