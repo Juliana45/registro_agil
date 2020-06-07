@@ -60,7 +60,7 @@ function Letras(evento){
 
 	function validar_registro(){
 
-    var documento,nombre1,nombre2,apellido1,apellido2,foto,clave,tipo,correo,expresion,expre;
+    var documento,nombre1,nombre2,apellido1,apellido2,foto,clave,tipo,correo,expresion,expre,expreFoto;
     documento = document.getElementById("documento").value;
     nombre1 = document.getElementById("nombre1").value;
     nombre2 = document.getElementById("nombre2").value;
@@ -73,6 +73,7 @@ function Letras(evento){
 
     expresion = /\w+@\w+\.+[a-z]/;
     expre = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{0,30}$/;
+    expreFoto = /\.(jpg|png|gif)$/;
 
     if(documento === "" || nombre1 === "" || apellido1 === "" || foto === "" || clave === "" || tipo === "" || correo === ""){
         alert("Todos los campos son obligatorios");
@@ -102,7 +103,10 @@ function Letras(evento){
         alert("La contraseña debe tener al menos una minuscula, mayuscula y un número");
         return false; 
     }
-
+    else if(!expreFoto.test(foto)){
+        alert("El archivo a adjuntar no es una imagen");
+        return false; 
+    }
 }
 
     
@@ -125,12 +129,14 @@ function validar_login(){
 
 function validar_elemento(){
 
-	var nombre,descripcion,serial,foto;
+	var nombre,descripcion,serial,foto,expreFoto;
 
 	nombre = document.getElementById("input").value;
 	descripcion = document.getElementById("input2").value;
 	serial = document.getElementById("input3").value;
 	foto = document.getElementById("foto_ele").value;
+
+    expreFoto = /\.(jpg|png|gif)$/;
 
 	if(nombre === "" || descripcion === "" || serial === "" || foto === ""){
         alert("Todos los campos son obligatorios");
@@ -156,15 +162,20 @@ function validar_elemento(){
         alert("El numero serial no es correcto");
         return false;
     }
+        else if(!expreFoto.test(foto)){
+        alert("El archivo a adjuntar no es una imagen");
+        return false; 
+    }
 }
 
 function validar_sinserial(){
 
-    var nombre,descripcion,serial,foto;
+    var nombre,descripcion,serial,foto,expreFoto;
 
     nombre = document.getElementById("nombre").value;
     descripcion = document.getElementById("descripcion").value;
     foto = document.getElementById("foto_ele").value;
+    expreFoto = /\.(jpg|png|gif)$/;
 
     if(nombre === "" || descripcion === "" || serial === "" || foto === ""){
         alert("Todos los campos son obligatorios");
@@ -186,11 +197,15 @@ function validar_sinserial(){
         alert("La descripción esta muy largo");
         return false;
     }
+    else if(!expreFoto.test(foto)){
+        alert("El archivo a adjuntar no es una imagen");
+        return false; 
+    }
 }
 
 function validar_info(){
 
-    var documento,nombre1,nombre2,apellido1,apellido2,foto,tipo;
+    var documento,nombre1,nombre2,apellido1,apellido2,foto,tipo,expreFoto;
     documento = document.getElementById("documento").value;
     nombre1 = document.getElementById("nombre1").value;
     nombre2 = document.getElementById("nombre2").value;
@@ -198,6 +213,7 @@ function validar_info(){
     apellido2 = document.getElementById("apellido2").value;
     foto = document.getElementById("btn-subir-foto").value;
     tipo = document.getElementById("tipo").value;
+    expreFoto = /\.(jpg|png|gif)$/;
 
     if(documento === "" || nombre1 === "" || apellido1 === "" || foto === "" || tipo === ""){
         alert("Todos los campos son obligatorios");
@@ -214,6 +230,10 @@ function validar_info(){
     else if(nombre1.length<2 || nombre1.length<2 || apellido1.length<3 || apellido2.length<3){
         alert("Los nombres y los apellidos estan muy cortos");
         return false;
+    }
+    else if(!expreFoto.test(foto)){
+        alert("El archivo a adjuntar no es una imagen");
+        return false; 
     }
 
 }
@@ -243,7 +263,7 @@ function validar_contra(){
 
     function validar_visi(){
 
-    var docu,nom1,nom2,ape1,ape2,clave,tipo,correo,expresion,expre;
+    var docu,nom1,nom2,ape1,ape2,clave,tipo,correo,expresion,expre,expreFoto;
     docu = document.getElementById("docu").value;
     nom1 = document.getElementById("nom1").value;
     nom2 = document.getElementById("nom2").value;
@@ -255,6 +275,7 @@ function validar_contra(){
 
     expresion = /\w+@\w+\.+[a-z]/;
     expre = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{0,30}$/;
+    expreFoto = /\.(jpg|png|gif)$/;
 
     if(docu === "" || nom1 === "" || ape1 === "" || clave === "" || tipo === "" || correo === ""){
         alert("Todos los campos son obligatorios");
@@ -284,6 +305,10 @@ function validar_contra(){
         alert("La contraseña debe tener al menos una minuscula, mayuscula y un número");
         return false; 
     }
+    else if(!expreFoto.test(foto)){
+        alert("El archivo a adjuntar no es una imagen");
+        return false; 
+    }
 
 }
 
@@ -305,13 +330,14 @@ function validar_buscador(){
 
 function validar_visitante(){
 
-    var documen,nombre,descripcion,serial,foto;
+    var documen,nombre,descripcion,serial,foto,expreFoto;
 
     documen = document.getElementById("documen").value;
     nombre = document.getElementById("nom").value;
     descripcion = document.getElementById("descripcion").value;
     serial = document.getElementById("numero").value;
     foto = document.getElementById("btn-subir-foto").value;
+    expreFoto = /\.(jpg|png|gif)$/;
 
     if(documen === "" || nombre === "" || descripcion === "" || serial === "" || foto === ""){
         alert("Todos los campos son obligatorios");
@@ -341,4 +367,10 @@ function validar_visitante(){
         alert("El numero serial no es correcto");
         return false;
     }
+    else if(!expreFoto.test(foto)){
+        alert("El archivo a adjuntar no es una imagen");
+        return false; 
+    }
 }
+
+

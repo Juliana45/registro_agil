@@ -154,7 +154,6 @@
                         <option value="ti">Tarjeta de Identidad</option>
                         <option value="ce">Cédula de Extranjería</option>
                     </select>
-
                     <div id="subir-foto" class="input-editar">
                         <p id="txt-subir-foto">subir foto</p> 
                         <input id="btn-subir-foto" type="file" name="foto">
