@@ -1,20 +1,21 @@
 <?php
 
 /**
- * Cambio de clave usuario
+ * Cambio de clave supervisor
  * 
  * incluye el archivo donde se encuentra la conexion a la base de datos
+ * incluye el archivo del perfil del vigilante
  */
 include '../conexi/conexion.php';
-include "../vistas/perfil_usuario.php";
+include "../vistas/perfil_vigilante.php";
 
 /**
- * si le dio clic en el boton 'enviar' del formulario cambiar clave en perfil_usuario.php 
+ * si le dio clic en el boton 'enviar' del formulario cambiar clave en perfil_vigilante.php 
  */
 if (isset($_POST['enviar'])) {
 
     /**
-     * se compara si las claves ingresadas en el formulario cambiar clave en perfil_usuario.php son iguuales
+     * se compara si las claves ingresadas en el formulario cambiar clave en perfil_vigilante.php son iguales
      */
     if ($_POST['clave'] == $_POST['clave2']) {
 
@@ -22,7 +23,7 @@ if (isset($_POST['enviar'])) {
          * trim         eliminar espacios en blanco u otros caracteres al inicio y final de una cadena de texto
          * 
          * se definen tres variables para capturar la informacion del input del 
-         * formulario cambiar clave en perfil_usuario.php
+         * formulario cambiar clave en perfil_vigilante.php
          * @var String $documento
          * @var String $clave 
          * @var String $clave2 
@@ -39,16 +40,11 @@ if (isset($_POST['enviar'])) {
 
         echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
         echo    '<script src="../js/alertas.js"></script>';
-        echo    "<script language = javascript>  perfilUsuarioActualizar(); </script>";
+        echo    "<script language = javascript>  perfilVigilanteActualizar(); </script>";
     }else{
-<<<<<<< HEAD
         echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
         echo    '<script src="../js/alertas.js"></script>';
-        echo    "<script language = javascript>  perfilUsuarioCompletarDatos(); </script>";
-=======
-       echo '<script>alert("Las contraseñas deben estar igual") ;</script>';
-       echo "<script>window.location='../vistas/perfil_usuario.php';</script>";
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+        echo    "<script language = javascript>  perfilVigilanteError(); </script>";
     }
 }
 ?>

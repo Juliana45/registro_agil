@@ -1,23 +1,30 @@
 <?php
-
-include '../conexi/conexion.php';
-
 /**
  * Recuperar clave
  * 
- *'enviar' se esta verificando que si se le haya dadon click en el boton enviar 
- *
- * se definen tres variables para capturar la informacion del input
- * @var string $clave
- * @var string $clave2
- * @var string $correo
+ * incluye el archivo donde se encuentra la conexion a la base de datos
  */
+include '../conexi/conexion.php';
 
-if (isset($_POST['enviar'])) {
+/**
+ * si le dio clic en el boton 'enviar' del formulario recuperar clave en formulario.php 
+ */
+ if (isset($_POST['enviar'])) {
+    
     /**
-     * se compara si las claves son iguales
+     * se compara si las claves ingresadas en el formulario recuperar clave 
+     * en formulario.php son iguuales
      */
     if ($_POST['clave'] == $_POST['clave2']) {
+        
+        /**
+         * se definen tres variables para capturar la informacion del input 
+         * del formulario recuperar clave en formulario.php
+         * 
+         * @var string $clave
+         * @var string $clave2
+         * @var string $correo
+         */
         $clave = trim($_POST['clave']);
         $clave2= trim($_POST['clave2']); 
         $correo= trim($_POST['correo']);
@@ -34,5 +41,4 @@ if (isset($_POST['enviar'])) {
        echo "<script>window.location='../formulario.php';</script>";
     }
 }
-
 ?>
