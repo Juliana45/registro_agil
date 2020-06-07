@@ -1,5 +1,11 @@
 <?php
+    /**
+    * session_start()  se autoinicia la sesion
+    */
 session_start();
+    /**
+    * se incluye la conexion a la base de datos
+    */
 include '../conexi/conexion.php';
      /**
      * obtiene la sesion 
@@ -7,23 +13,32 @@ include '../conexi/conexion.php';
      * isset            verifica que la sesion si este definida.
      * $_session        contiene el numero de documento del supervisor.
      * $_GET            contiene el numero serial del elemento. 
-     *            
+     * 
+     * si se le da clik al boton que contiene el icono del lapiz del  archivo
+     * elemento_supervisor.php         
      */
 if (isset($_SESSION['super'])) {
+     /**
+     * $_GET            contiene el numero serial del elemento enviada por la 
+     *                  por la url en la variable elemento del archivo
+     *                  mis_elementos.php.        
+     */
     if ($_GET['elemento']) {
     /**
-     * consulta a la base de datos
+     * @var string $sola           Contiene la variable elemento.                  
+     */
+    $sola = $_GET['elemento'];
+    /**
+     * consulta a la base de datos 
      *
-     * @var string $sola           Contiene el get con la variable elemento envida
-     *                             por la url.
      * @var string $quey           Contiene la consulta a la base de datos, donde el
-     *                             el numero seria debe ser igual a la variable sola.    
+     *                             el numero seria debe ser igual a la variable sola.     
+     */ 
+            $query = "SELECT * FROM tbl_elementos where numero_serial_elemento=$sola";
+    /**   
      *@var string $consulta        Realiza la consulta a la base de datos.
      *@var string $elemento        Almacena los datos de la consulta.   
      */
-            $sola = $_GET['elemento'];
-            $query = "SELECT * FROM tbl_elementos where numero_serial_elemento=$sola";
-
             $consulta=mysqli_query($conexion,$query);
             if (mysqli_num_rows($consulta)==1) {
                 $elemento= mysqli_fetch_array($consulta);
@@ -33,9 +48,7 @@ if (isset($_SESSION['super'])) {
 <html lang="en">
 <head>
     <title>Editar Elemento</title>
-    <script type="text/javascript" src="../js/validacion_num.js"></script>
-    <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+    <script type="text/javascript" src="../js/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/mis_elementos.css">
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
@@ -43,70 +56,72 @@ if (isset($_SESSION['super'])) {
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <title>Registro ágil</title>
-
-    <script>
-        $(document).ready(function(){
-
-            $('#formulario-elemento').click(function(){
-            $("#contenido").load("../vistas/formulario-elemento-super.php");
-            });
-
-            $('#elemento').click(function(){
-            $("#contenido").load("../vistas/elemento_supervisor.php");
-            });
-
-            $('#listar').click(function(){
-            $("#contenido").load("../vistas/lista_vigilantes.php");
-            });
-        });
-    </script>
 </head>
 <body>
 
 <!-- inicio lado izquierdo -->
 <div class="contenedor-izquierdo">
     <?php
+        /**
+        *       Muestra los datos personales del supervisor 
+        *  
+        * se incluye la conexion a la base de datos
+        */
         include '../conexi/conexion.php';
-    /**
-     * obtener la sesion
-     *
-     * @var int  $documento       se esta almacenando la sesion del supervisor.
-     *           $_SESSION        almacena elnumero de documento del supervisor.
-     * 
-     */
+        /**
+         * obtener la sesion del supervisor
+         *
+         * @var int  $documento       Se esta almacenando la sesion del supervisor.
+         *           $_SESSION        Almacena el numero de documento del supervisor.
+         * 
+         */
         $documento=$_SESSION['super'];
         /**
-        *  consulta a la base de datos 
-        * 
-        * @var string  $personas       se esta almacenando la consulta a la base de datos
-        *                              donde el documento debe ser igual a la variable
-        *                              $documento.
-        * 
-        */
+         *  consulta a la base de datos la foto y los nombres del supervisor
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         *                              donde el numero de documento del supervisor debe ser
+         *                              al numero de documento registrado enla base de datos.
+         */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
          /**
          *  ciclo para mostrar informacion personal del supervisor
          * 
-         * @var string  $personas       se esta almacenando la consulta a la base de datos
-         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
-                                        la foto, nombre y apellido del supervisor.
-         * 
+         * foreach                      Recorre estructura que contienen varios elementos
+         *                              (como arrays).
+         * @var string  $personas       Se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        Se esta almacenando el dato de la consulta y se muestra
+         *                              la foto y los nombres del supervisor.
          */
         foreach ($personas as $persona):
     ?>
 
     <!-- inicio fotos y botones de menu -->
         <div class="contenedor-foto">
-            <?php echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando la foto del supervisor.
+            */
+             echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
             <button class="editar" id="icono-sticker">
+            <!-- se esta mandado por la url la variable persona que contiene el numero  
+                 de documento del supervisor.--> 
                 <a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>">
                 <i class="fas fa-user-edit"></i></a>
             </button>
         </div>
 
         <h3 class="nombre">
-            <?php echo $persona['nombre1_persona'];?>
-            <?php echo $persona['apellido1_persona'];?>
+            <?php
+            /**
+            * @var string  $persona       Se esta mostrando el primer nombre del supervisor.
+            */
+             echo $persona['nombre1_persona'];?>
+            <?php 
+            /**
+            * @var string  $persona       Se esta mostrando el primer apellido del supervisor.
+            */
+            echo $persona['apellido1_persona'];?>
         </h3>
         <hr class="linea">
 
@@ -121,7 +136,7 @@ if (isset($_SESSION['super'])) {
     <!--inicio_actualizar_informacion-->
          <!-- manda por la url la variable persona que contiene el numero de documento -->
         <div  id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
-            <form action="../phpCode/codigo_informacion_supervisor.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
+            <form action="../phpCode/codigo_informacion_supervisor.php" method="POST" id="formulario-editar" enctype="multipart/form-data" >
                 <h3 id="titulo-editar">Actualizar información</h3>
                 <hr class="linea-ele">
                 <a href="#close" title="Cerrar" class="close">X</a>
@@ -195,7 +210,7 @@ if (isset($_SESSION['super'])) {
         <h3 class="registrar-elemento">Actualizar Elemento</h3>
         <hr class="linea-ele">
         <div id="registro">
-        <form action="../phpCode/codigo_editar_supervisor.php" method="POST" enctype="multipart/form-data">
+        <form action="../phpCode/codigo_editar_supervisor.php" method="POST" enctype="multipart/form-data" onsubmit="return validar_elemento();">
             <input class="input" type="text" id="input" name="nombre" value="<?php echo $elemento['nombre_elemento'];?>"
             onkeypress="return Letras(event)" onpaste="return false">
             <input class="input" type="text" id="input2" name="descripcion" value="<?php echo $elemento['descripcion_elemento'];?>"

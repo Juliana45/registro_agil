@@ -13,6 +13,7 @@ include "../conexi/conexion.php";
 if (isset($_POST['siguiente'])) {
 	
 	/**
+<<<<<<< HEAD
      * strlen    Obtener la longitud de una cadena string
      * 
      * si todos los campos del formulario registrar usuario en verificacion.php estan llenos 
@@ -20,6 +21,12 @@ if (isset($_POST['siguiente'])) {
 	if (strlen($_POST['nombre1']) >=1 &&  strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
 	strlen($_POST['tipo']) >=1 && strlen($_POST['documento_e']) >=1 && strlen($_POST['clave_e']) >=1) {
 		
+=======
+	 * si los campos estan llenos
+	 */
+	if (strlen($_POST['nombre1']) >=1 &&  strlen($_POST['apellido1']) >=1 && 
+	strlen($_POST['tipo']) >=1 && strlen($_POST['documento']) >=1 && strlen($_POST['clave_e']) >=1) {
+>>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
 		/**
      	 * se compara si las claves ingresadas en el formulario registrar usuario en verificacion.php son iguales
      	 */
@@ -42,16 +49,18 @@ if (isset($_POST['siguiente'])) {
 			 * @var String $clave2
 			 */
 			$visitante = "usuario";
-			$documento = trim($_POST['documento_e']) ;
+			$documento = trim($_POST['documento']) ;
 			$nombre1 = trim($_POST['nombre1']);
 			$nombre2 = trim($_POST['nombre2']);
 			$apellido1 = trim($_POST['apellido1']);
 			$apellido2 = trim($_POST['apellido2']);
+			$correo = trim($_POST['correo']);
 			$tipo_documento = trim($_POST['tipo']);
 			$clave = trim($_POST['clave_e']);
 			$clave2= trim($_POST['clave2']); 
 
 			/**
+<<<<<<< HEAD
         	 * consulta a la base de datos
         	 * 
         	 * @var String $insertar       	se estan insertando los datos ingresados en el formulario registrar 
@@ -61,6 +70,14 @@ if (isset($_POST['siguiente'])) {
 			$insertar = "INSERT INTO tbl_personas(numero_documento_persona,nombre1_persona,nombre2_persona,
 			apellido1_persona,apellido2_persona,tipo_documento_persona,clave_persona,rol_persona) values('$documento',
 			'$nombre1','$nombre2','$apellido1','$apellido2','$tipo_documento',SHA('$clave'),'$visitante')";
+=======
+         	 * @var $insertar       almacena los datos insertados
+        	 * @var $resultado      realiza la consulta a la base de datos 
+        	*/
+			$insertar = "INSERT INTO tbl_personas(numero_documento_persona,nombre1_persona,nombre2_persona,apellido1_persona,
+			apellido2_persona,tipo_documento_persona,clave_persona,correo_persona,rol_persona) values('$documento','$nombre1','$nombre2','$apellido1',
+			'$apellido2','$tipo_documento',SHA('$clave'),'$correo','$visitante')";
+>>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
 			$resultado = mysqli_query($conexion,$insertar);
 
 			/**
