@@ -29,8 +29,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/validacion_num.js"></script>
-    <script type="text/javascript" src="js/validacion_letra.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/registro.css">
@@ -156,7 +155,7 @@
         <div class="img"><img src="img/login.png" alt="" class="iconos"></div>
         <div><br>
           <h2>Iniciar sesión</h2><br>
-          <p>Some quick example text to build on the card title.</p>
+          <p>Se debe iniciar sesión para registrar los elementos y poder ver los mismo.</p>
         </div>
       </div>
       <div class="card">

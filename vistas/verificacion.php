@@ -18,9 +18,7 @@
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="../js/validacion_num.js"></script>
-    <script type="text/javascript" src="../js/validacion_letra.js"></script>
-    <script type="text/javascript" src="../js/validacion_letraynumero.js"></script>
+    <script type="text/javascript" src="../js/validaciones.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" type="text/css" href="../css/verificacion.css">
     <link rel="stylesheet" type="text/css" href="../css/mis_elementos.css">
@@ -33,18 +31,14 @@
 <div class="contenedor-izquierdo">
     <?php
         include '../conexi/conexion.php';
-<<<<<<< HEAD
+
     /**
      * obtener la sesion
      *
      * @var int  $documento       se esta almacenando la sesion del vigilante
      *           $_SESSION        almacena elnumero de documento del vigilante
      */
-=======
-        /**
-         * vale 
-         */
->>>>>>> cdf31a0ca875609a4b08b6a2228f227cd2fb60c3
+
         $documento=$_SESSION['vigi'];
         /**
         *  consulta a la base de datos la foto y los nombres del vigilante
@@ -121,7 +115,7 @@
         <a href="#openModal" ><button id="registra-visitante">Registrar visitante</button><br></a>
 
         <div id="openModal" class="modalDialog">
-            <form action="../phpCode/codigo_visitante.php" method="POST" id="formulario-editar">
+            <form action="../phpCode/codigo_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
                 <a href="#close" title="Cerrar" class="close">X</a>
                 <h3 id="titulo-editar">Registrar visitante</h3>
                 <hr class="linea-ele">
@@ -151,42 +145,101 @@
                 <hr class="linea-ele">
                 <div id="contenedor-editar">
                     <input type="text" class="input-editar" name="documento" placeholder="Número de documento" required>
-                    <input type="text" class="input-editar"  name="nombre" placeholder="Nombre" required>
-                    <input type="text" class="input-editar"name="descripcion" placeholder ="Descripción">
+                    <input type="text" class="input-editar"  name="nombre" placeholder="Nombre elemento" required>
+                    <input type="text" class="input-editar"name="descripcion" placeholder ="Descripción elemento">
                     <input type="text" class="input-editar" name="numero_serial" placeholder ="Código serial" required>
-                    <a href="verificacion.php#openModal3" id="sin-serial" class="serial">No tiene codigo serial</a>
-                    <div id="subir-foto">
+                    <div id="subir-foto" class="input-editar">
                         <p id="txt-subir-foto">subir foto</p> 
                         <input id="btn-subir-foto" type="file" name="foto" required>
                     </div>
-                    <input type="submit" class="input-btn-visitante" name="Guardar" value="Guardar">  
+                    <input type="submit" class="input-editar" id="elemento-visitante" name="Guardar" value="Guardar"> 
+                    <a href="verificacion.php#openModal3" id="sin-serial" class="sin-serial">No tiene codigo serial</a>
                 </div>
             </form>
         </div>
 
         <div  id="openModal3" class="modalDialog">
-        <a href="#close" title="Cerrar" class="close">X</a>
-        <div id="form-registro-elemento">
-        <h3 class="registrar-elemento">Registrar Elemento</h3>
-        <hr class="linea-ele">
-        <div id="registro">
-            <form action="../phpCode/insertar_sin_serial_visitante.php" method="POST" enctype="multipart/form-data">
-            
-            <input type="text" class="input" name="documento" placeholder="Número de documento" required>
-                <input class="input" type="text" id="input" name="nombre" placeholder="Nombre" onkeypress="return Letras(event)" onpaste="return false">
-                <input class="input" type="text" id="input2" name="descripcion" placeholder ="Descripción" onkeypress="return Letrasynumeros(event)" onpaste="return false">
-                    
-                <div class="subir-foto">
-                    <p class="txt-subir-foto">subir foto</p> 
-                    <input class="btn-subir-foto" type="file" name="foto" required>
-                </div>
-
-                <input class="input_btn" type="submit" id="submit" name="registro_ele" value="Guardar">
+            <form action="../phpCode/insertar_sin_serial_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
+                <a href="#close" title="Cerrar" class="close">X</a>
+                <h3 id="titulo-editar">Registrar Elemento</h3>
+                <hr class="linea-ele">
+                <div id="contenedor-editar">
+                    <input class="input-editar" type="text"  name="documento" placeholder="Número de documento" required>
+                    <input class="input-editar" type="text" name="nombre" placeholder="Nombre elemento" onkeypress="return Letras(event)" onpaste="return false">
+                    <input class="input-editar" type="text" name="descripcion" placeholder ="Descripción elemento" onkeypress="return Letrasynumeros(event)" onpaste="return false">
+                    <div id="subir-foto" class="input-editar">
+                        <p class="txt-subir-foto">subir foto</p> 
+                        <input class="btn-subir-foto" type="file" name="foto" required>
+                    </div>
+                    <input class="input-btn-visitante" type="submit" name="registro_ele" value="Guardar">
+                </div>           
             </form>
         </div>
-        </form>
-    </div>
-    </div>
+
+        <!-- inicio modal buscar sticker visitante -->
+        <div  id="openModal4" class="modalDialog">
+            <div id="formulario-editar">
+                <a href="#close" title="Cerrar" class="close">X</a>
+                <h3 class="registrar-elemento">Generar sticker</h3>
+                <hr class="linea-ele">
+                <div id="registro">
+                    <h2 class="generar-serial">De click para generar el código de barras<h2>
+
+                    <?php
+                    /**
+                     * se incluye el archivo donde esta la conexion a la base de datos
+                     */
+                    include '../conexi/conexion.php';
+                    
+                    /**
+                     * obtener la sesion
+                     *
+                     * @var int  $documento       se esta almacenando la sesion del vigilante
+                     *           $_SESSION        almacena elnumero de documento del vigilante
+                     * 
+                     */
+                     $documento=$_SESSION['vigi'];
+                   
+                     /**
+                     *  consulta a la base de datos 
+                     * 
+                     * @var string  $personas       se esta almacenando la consulta a la base de datos
+                     * 
+                     */            
+                    $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos 
+                    WHERE numero_documento_persona = $documento AND estado_elemento <> '0'");
+                    
+                    /**
+                     *  ciclo para mostrar el numero serial del elemento
+                     * 
+                     * @var string  $personas       se esta almacenando la consulta a la base de datos.
+                     * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
+                     *                              el codigo serial del elemento.
+                     */
+                        foreach ($elementos as $elemento):
+                    ?>
+        
+                    <?php
+                        endforeach
+                    ?> 
+                    
+                    <!-- manda por la url la variable persona que contiene el numero del documento -->
+                    <a href="verificacion.php#openModal5?elemento=<?php echo $elemento['numero_serial_elemento'];?>">
+                        <input type="submit" class="input_btn-serial" name="buscar" value="Buscar">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- inicio modal buscar sticker visitante -->
+
+        <!-- inicio modal descargar sticker visitante -->
+
+        <!-- fin modal descargar sticker visitante -->
+        <div  id="openModal5" class="modalDialog">
+            <div id="formulario-editar">
+            HOLAA
+            </div>
+        </div>
         <!-- fin registrar usuario -->
    
     <!--inicio_resultado/buscador-->
@@ -203,12 +256,9 @@
             if(isset($_POST['submit'])){
 
             $search = $_POST['busqueda'];
-<<<<<<< HEAD
-            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos WHERE numero_documento_persona like '%$search%' 
-            and estado_elemento = '1'");
-                
-=======
-            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos  WHERE numero_documento_persona like '%$search%' and estado_elemento='1'");
+
+            $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos WHERE numero_documento_persona 
+            like '%$search%' and estado_elemento = '1'");
             
             /**
              * Buscador de elementos mediante el numero de documento 
@@ -216,9 +266,10 @@
              * 
              * @var string $elemento     Almacena cada dato entrado en la consulta $elementos
              */
->>>>>>> b5eaec0c8ef1b009da248affbaba54bbe050178b
+    
             while ($elemento =  mysqli_fetch_array($elementos)) {
         ?>
+        
             <div class="contenedor-carta">
                 <div class="contenedor-imagen">
                     <?php echo '<img class="foto" src="'.$elemento['foto_elemento'].'"> ' ?>
@@ -229,17 +280,41 @@
                     <p>
                         <?php echo $elemento['descripcion_elemento'];?>
                     </p>
+                    
                     <p class="letra"><?php echo $elemento['numero_serial_elemento'];?></p>
+                    
+                    <?php
+                        $desactivar = mysqli_query($conexion, "SELECT * FROM tbl_historial");
+                        $boton = "";
+                        $boton1 = "";
+                        while($boton_desactivar = mysqli_fetch_array($desactivar)){
+                            if($boton_desactivar['numero_serial_elemento'] == $elemento['numero_serial_elemento'] && $boton_desactivar['estado_boton'] == 0){
+                                $boton = " disabled";
+                            }else{
+                                $boton = " ";
+                            }
+
+                            if($boton_desactivar['numero_serial_elemento'] == $elemento['numero_serial_elemento'] && $boton_desactivar['estado_boton'] == 1){
+                                $boton1 = " disabled";
+                            }else{
+                                $boton1 = " ";
+                            }
+                        }
+                    ?>
+
                     <a href="../phpCode/codigo_guardar_historial.php?ingreso=<?php echo $elemento['numero_serial_elemento']; ?>">
-                        <button id="boton_ingreso" name="ingreso">INGRESO</button>
+                        <button id="boton_ingreso" name="ingreso" <?php echo $boton; ?>>INGRESO</button>
                     </a>
                     <a href="../phpCode/codigo_guardar_historial.php?salida=<?php echo $elemento['numero_serial_elemento']; ?>">
-                        <button id="salida" class="" name="salida">SALIDA</button>
+                        <button id="salida" class="" name="salida" <?php echo $boton1; ?>>SALIDA</button>
                     </a>
+                    
                 </div>
             </div>   
         <?php
                 }
+
+                
             }
         ?>
     </div>
@@ -266,10 +341,7 @@
                     $conexion = mysqli_connect("localhost","root","","registroagil");
 
                     $fecha = $_POST['fecha1'];
-<<<<<<< HEAD
-                    
-=======
->>>>>>> b5eaec0c8ef1b009da248affbaba54bbe050178b
+
                     $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
                     WHERE tbl_elementos.numero_serial_elemento=tbl_historial.numero_serial_elemento AND
                     CAST(hora_ingreso_historial AS DATE) =  '$fecha' ");

@@ -128,7 +128,7 @@
             
         </div>
     </div>
-    <!-- inicio generar sticker -->     
+    <!-- fin generar sticker -->     
     </div>
 </div>  
 <!-- fin lado derecho --> 

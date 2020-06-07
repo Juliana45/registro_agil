@@ -125,7 +125,6 @@
                         <td>Código de barras</td>
                     </tr>
         
-<<<<<<< HEAD
                 <?php 
                 /**
                  * ciclo que muestra stikers.
@@ -135,9 +134,8 @@
                  *                                         
                  */
                 while($ver=mysqli_fetch_row($result)): 
-=======
-                <?php while($ver = mysqli_fetch_row($result)): 
->>>>>>> cdf31a0ca875609a4b08b6a2228f227cd2fb60c3
+
+               
                     $arraycodigo[]=(String)$ver[0];
                 ?>
 

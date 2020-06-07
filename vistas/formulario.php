@@ -11,7 +11,7 @@
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <form action="../phpCode/cambiar_clave.php" method="POST" id="formulario-login" class="recuperar_clave">
+    <form action="../phpCode/recuperar_clave.php" method="POST" id="formulario-login" class="recuperar_clave">
     <h2 id="titulo-registro">Recuperar contraseña</h2>
         <div id="contenedor-registro">
             <input type="text" class="input-login" name="correo" placeholder="Correo" required>
