@@ -15,15 +15,11 @@ include "../vistas/perfil_usuario.php";
 if(isset($_POST['guardar'])){
     
     /**
-<<<<<<< HEAD
      * strlen    Obtener la longitud de una cadena string
      * 
      * si todos los campos del formulario actualizar informacion en perfil_usuario.php estan llenos 
+     * 
      */
-=======
-     * si todos los campos estan llenos 
-    */
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
     if ( strlen($_POST['nombre1']) >=1 && strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
     strlen($_POST['tipo']) >=1 ) {
 

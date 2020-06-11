@@ -75,31 +75,73 @@ function Letras(evento){
     expre = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{0,30}$/;
 
     if(documento === "" || nombre1 === "" || apellido1 === "" || foto === "" || clave === "" || tipo === "" || correo === ""){
-        alert("Todos los campos son obligatorios");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(documento.length>10 || documento.length<8){
-        alert("El documento no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El número de documento no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre1.length>45 || nombre1.length>45 || apellido1.length>50 || apellido2.length>50){
-        alert("Los nombres y los apellidos estan muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Los nombres y los apellidos estan muy largo', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre1.length<=2 || nombre1.length<=2 || apellido1.length<4 || apellido2.length<4){
-        alert("Los nombres y los apellidos estan muy cortos");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Los nombres y los apellidos estan muy cortos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(clave.length>80 || clave.length<6){
-        alert("la contraseña debe mas de 6 y menos de 80 caracteres");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'la contraseña debe mas de 6 y menos de 80 caracteres', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(!expresion.test(correo)){
-        alert("El correo no es valido");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El correo no es valido', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;      
     }
     else if(!expre.test(clave)){
-        alert("La contraseña debe tener al menos una minuscula, mayuscula y un número");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La contraseña debe tener al menos una minuscula, mayuscula y un número', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false; 
     }
 
@@ -114,11 +156,23 @@ function validar_login(){
 	documento = document.getElementById("documento2").value;
 
 	if(documento === "" || tipo === ""){
-        alert("Todos los campos son obligatorios");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(documento.length>10 || documento.length<8){
-        alert("El documento no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El número de documento no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
 }
@@ -133,27 +187,63 @@ function validar_elemento(){
 	foto = document.getElementById("foto_ele").value;
 
 	if(nombre === "" || descripcion === "" || serial === "" || foto === ""){
-        alert("Todos los campos son obligatorios");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre.length<4){
-        alert("El nombre esta muy corto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El nombre esta muy corto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre.length>=50){
-        alert("El nombre esta muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El nombre esta muy largo', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(descripcion.length<4){
-        alert("La descripción esta muy corto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy corta', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(descripcion.length>=110){
-        alert("La descripción esta muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy larga', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(serial.length>=20 || serial.length<6){
-        alert("El numero serial no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El número serial no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
 }
@@ -167,23 +257,53 @@ function validar_sinserial(){
     foto = document.getElementById("foto_ele").value;
 
     if(nombre === "" || descripcion === "" || serial === "" || foto === ""){
-        alert("Todos los campos son obligatorios");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre.length<4){
-        alert("El nombre esta muy corto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El nombre esta muy corto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre.length>=50){
-        alert("El nombre esta muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El nombre esta muy largo', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(descripcion.length<4){
-        alert("La descripción esta muy corto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy corta', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(descripcion.length>=110){
-        alert("La descripción esta muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy larga', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
 }
@@ -200,19 +320,33 @@ function validar_info(){
     tipo = document.getElementById("tipo").value;
 
     if(documento === "" || nombre1 === "" || apellido1 === "" || foto === "" || tipo === ""){
-        alert("Todos los campos son obligatorios");
-        return false;
-    }
-    else if(documento.length>10 || documento.length<8){
-        alert("El documento no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre1.length>45 || nombre1.length>45 || apellido1.length>50 || apellido2.length>50){
-        alert("Los nombres y los apellidos estan muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Los nombres y los apellidos estan muy largos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
-    else if(nombre1.length<2 || nombre1.length<2 || apellido1.length<3 || apellido2.length<3){
-        alert("Los nombres y los apellidos estan muy cortos");
+    else if(nombre1.length<3 || nombre1.length<3 || apellido1.length<3 || apellido2.length<3){
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Los nombres y los apellidos estan muy cortos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
 
@@ -227,15 +361,33 @@ function validar_contra(){
     expre = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{0,30}$/;
 
     if(clave === "" || clave2 === ""){
-        alert("Todos los campos son obligatorios");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(clave.length>80 || clave.length<6){
-        alert("la contraseña debe mas de 6 y menos de 80 caracteres");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La contraseña debe ser de más de 6 y menos de 80 caracteres', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(!expre.test(clave)){
-        alert("La contraseña debe tener al menos una minuscula, mayuscula y un número");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La contraseña debe tener al menos una minuscula, mayuscula y un número', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false; 
     }
 
@@ -257,31 +409,73 @@ function validar_contra(){
     expre = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{0,30}$/;
 
     if(docu === "" || nom1 === "" || ape1 === "" || clave === "" || tipo === "" || correo === ""){
-        alert("Todos los campos son obligatorios");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(docu.length>10 || docu.length<8){
-        alert("El documento no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El número de documento no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nom1.length>45 || nom1.length>45 || ape1.length>50 || ape2.length>50){
-        alert("Los nombres y los apellidos estan muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Los nombres y los apellidos estan muy largo', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nom1.length<=2 || nom1.length<=2 || ape1.length<4 || ape2.length<4){
-        alert("Los nombres y los apellidos estan muy cortos");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Los nombres y los apellidos estan muy cortos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(clave.length>80 || clave.length<6){
-        alert("la contraseña debe mas de 6 y menos de 80 caracteres");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La contraseña debe ser de más de 6 y menos de 80 caracteres', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(!expresion.test(correo)){
-        alert("El correo no es valido");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El correo no es valido', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;      
     }
     else if(!expre.test(clave)){
-        alert("La contraseña debe tener al menos una minuscula, mayuscula y un número");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La contraseña debe tener al menos una minuscula, mayuscula y un número', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false; 
     }
 
@@ -293,11 +487,23 @@ function validar_buscador(){
     documento = document.getElementById("bus").value;
 
     if(documento === ""){
-        alert("El campo no puede estar vacio");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El campo no puede estar vacio', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(documento.length>10 || documento.length<8){
-        alert("El documento no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El documento no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
 
@@ -314,31 +520,144 @@ function validar_visitante(){
     foto = document.getElementById("btn-subir-foto").value;
 
     if(documen === "" || nombre === "" || descripcion === "" || serial === "" || foto === ""){
-        alert("Todos los campos son obligatorios");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(documen.length>10 || documen.length<8){
-        alert("El documento no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El número de documento no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre.length<4){
-        alert("El nombre esta muy corto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El nombre esta muy corto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(nombre.length>=50){
-        alert("El nombre esta muy largo");
+        Swal.fire({
+        title: 'Ups!',
+        text: 'El nombre esta muy largo', 
+        confirmButtonText: 'Aceptar', 
+        confirmButtonColor: '#1ABC9C',
+        backdrop: false
+    });
         return false;
     }
     else if(descripcion.length<4){
-        alert("La descripción esta muy corto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy corta', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(descripcion.length>=110){
-        alert("La descripción esta muy largo");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy larga', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
     else if(serial.length>=20 || serial.length<6){
-        alert("El numero serial no es correcto");
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El numero serial no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
+        return false;
+    }
+}
+
+function visitante_sinserial(){
+
+    var docum,nomb,descri,foto;
+
+    docum = document.getElementById("docum").value;
+    nomb = document.getElementById("nomb").value;
+    descri = document.getElementById("descri").value;
+    foto = document.getElementById("foto").value;
+
+    if(docum === "" || nomb === "" || descri === "" || foto === ""){
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Todos los campos son obligatorios', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
+        return false;
+    }
+    else if(docum.length>10 || docum.length<8){
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El número de documento no es correcto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
+        return false;
+    }
+    else if(nomb.length<4){
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El nombre esta muy corto', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
+        return false;
+    }
+    else if(nomb.length>=50){
+        Swal.fire({
+            title: 'Ups!',
+            text: 'El nombre esta muy largo', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
+        return false;
+    }
+    else if(descri.length<4){
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy corta', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
+        return false;
+    }
+    else if(descri.length>=110){
+        Swal.fire({
+            title: 'Ups!',
+            text: 'La descripción esta muy larga', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        });
         return false;
     }
 }

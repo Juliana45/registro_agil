@@ -65,15 +65,18 @@ if(isset($_POST['registro_ele'])) {
              * si la consulta a la base de datos se hizo correctamente
              */
             if ($resultado) {
-                echo '<script>alert("Los datos se ingresaron correctamente") ;</script>';
-                echo "<script>window.location='../vistas/verificacion.php#openModal4';</script>";
+                echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+                echo    '<script src="../js/alertas.js"></script>';
+                echo    "<script language = javascript>  visitante_sticker(); </script>";
 			}else{
-				echo '<script>alert("Ese numero serial ya ha sido registrado") ;</script>';
-                echo "<script>window.location='../vistas/verificacion.php';</script>";
+				echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+                echo    '<script src="../js/alertas.js"></script>';
+                echo    "<script language = javascript>  visitante_serial_registrado(); </script>";
             }        
     }else{
-        echo '<script>alert("Complete los campos") ;</script>';
-        echo "<script>window.location='../vistas/perfil_usuario.php';</script>";
+        echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+        echo    '<script src="../js/alertas.js"></script>';
+		echo    "<script language = javascript>  visitante_complete_campos(); </script>";
     }
 } 
 ?>

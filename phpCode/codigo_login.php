@@ -7,7 +7,7 @@
  * incluye el archivo del index
  */
 include '../conexi/conexion.php';
-include "../index.php";
+
 
  /**
   * si le da clic en el boton 'iniciar' del formulario login en index.php
@@ -128,9 +128,8 @@ if (isset($_POST['iniciar'])) {
         exit();
 
 }else {
-    echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
-    echo    '<script src="../js/alertas.js"></script>';
-    echo    "<script language = javascript>  login(); </script>";
+    echo '<script>alert("El usuario y la contraseña son incorrectos.") ;</script>';
+	echo "<script>window.location='../index.php';</script>";
 }
 
 }

@@ -1,7 +1,7 @@
 <?php
     /**
-    * session_start()  se autoinicia la sesion
-    */
+     * session_start()  se autoinicia la sesion
+     */
     session_start();
     /**
     * se incluye la conexion a la base de datos
@@ -162,11 +162,7 @@
                         <td>Nombre elemento</td>
                         <td>Código de barras</td>
                     </tr>
-        
-<<<<<<< HEAD
-=======
 
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
                 <?php 
                 /**
                  * ciclo que muestra stikers.
@@ -174,17 +170,12 @@
                  * @var int $ver               Almacena el resultado de la variable
                  *                             result.                                       
                  */
-<<<<<<< HEAD
-                while($ver=mysqli_fetch_row($result)): 
-
-               
-=======
                 while($ver=mysqli_fetch_row($result)):  
-                /**
+                
+                    /**
                  * @var string $arraycodigo    Convierte la variable ver en un 
                  *                             string.                                       
                  */  
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
                     $arraycodigo[]=(String)$ver[0];
                 ?>
 

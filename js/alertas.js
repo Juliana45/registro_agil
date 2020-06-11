@@ -1,7 +1,5 @@
 /**
  * inicio alerta login
- * 
- * 
  */
 function login(){ 
     Swal.fire({
@@ -294,3 +292,85 @@ function perfilSupervisorClaveDiferente(){
 /**
  * fin perfil supervisor
  */
+
+ /**
+  * inicio verificacion
+  */
+ function visitante(){ 
+    Swal.fire({
+        title: 'Muy bien!',
+        text: 'Los datos se ingresaron correctamente', 
+        confirmButtonText: 'Aceptar', 
+        confirmButtonColor: '#0097A7',
+        backdrop: false
+    }).then(function(){
+        setTimeout(function(){     
+            location = '../vistas/verificacion.php#openModal1';  
+        });
+    });
+}
+function visitante_sticker(){ 
+    Swal.fire({
+        title: 'Muy bien!',
+        text: 'Los datos se ingresaron correctamente', 
+        confirmButtonText: 'Aceptar', 
+        confirmButtonColor: '#0097A7',
+        backdrop: false
+    }).then(function(){
+        setTimeout(function(){     
+            location = '../vistas/verificacion.php#openModal4';  
+        });
+    });
+}
+function visitante_clave_diferentes(){ 
+    Swal.fire({
+        title: 'Ups!',
+        text: 'Las contraseñas no son iguales', 
+        confirmButtonText: 'Aceptar', 
+        confirmButtonColor: '#1ABC9C',
+        backdrop: false
+    }).then(function(){
+        setTimeout(function(){     
+            location = '../vistas/verificacion.php#openModal';  
+        });
+    });
+}
+function visitante_error(){ 
+    Swal.fire({
+        title: 'Ups!',
+        text: 'Ha ocurrido un error', 
+        confirmButtonText: 'Aceptar', 
+        confirmButtonColor: '#1ABC9C',
+        backdrop: false
+    }).then(function(){
+        setTimeout(function(){     
+            location = '../vistas/verificacion.php';  
+        });
+    });
+}
+function visitante_complete_campos(){ 
+    Swal.fire({
+        title: 'Ups!',
+        text: 'Complete los campos', 
+        confirmButtonText: 'Aceptar', 
+        confirmButtonColor: '#1ABC9C',
+        backdrop: false
+    }).then(function(){
+        setTimeout(function(){     
+            location = '../vistas/verificacion.php#openModal';  
+        });
+    });
+}
+function visitante_serial_registrado(){ 
+    Swal.fire({
+        title: 'Ups!',
+        text: 'Ese número serial ya ha sido registrado', 
+        confirmButtonText: 'Aceptar', 
+        confirmButtonColor: '#1ABC9C',
+        backdrop: false
+    }).then(function(){
+        setTimeout(function(){     
+            location = '../vistas/verificacion.php#openModal1';  
+        });
+    });
+}

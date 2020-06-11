@@ -19,13 +19,8 @@
     <title>Registro ágil</title>
     <link rel="stylesheet" type="text/css" href="../css/perfil_supervisor.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js" 
-<<<<<<< HEAD
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../js/validaciones.js"></script>
-=======
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/validacion.js"></script>
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
     integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">

@@ -4,10 +4,10 @@
  * Insertar elemento del visitante
  * 
  * incluye el archivo donde se encuentra la conexion a la base de datos
- * incluye el archivo del perfil del vigilante
+ * incluye el archivo de la vista de la verificacion
  */
 include  "../conexi/conexion.php";
-include "../vistas/perfil_vigilante.php";
+include "../vistas/verificacion.php";
 
 /**
  * si le dio clic en el boton 'Guardar' del formulario registro elemento en verificacion.php 
@@ -58,27 +58,26 @@ if(isset($_POST['Guardar'])) {
          * @var String $resultado       verifica si la consulta a la base de datos fue correcta
          */
         $insertar = "INSERT INTO tbl_elementos(numero_serial_elemento,nombre_elemento,descripcion_elemento,foto_elemento,
-<<<<<<< HEAD
-        numero_documento_persona,estado_elemento) VALUES('$numero_serial','$nombre','$descripcion','$destino',
-        '$documento','$estado')";    
-=======
         numero_documento_persona,estado_elemento) VALUES('$numero_serial','$nombre','$descripcion','$destino','$documento','$estado')";    
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+
         $resultado = mysqli_query($conexion,$insertar);
 
             /**
              * si la consulta a la base de datos se hizo correctamente
              */
 			if ($resultado) {
-                echo '<script>alert("Los datos se ingresaron correctamente") ;</script>';
-                echo "<script>window.location='../vistas/verificacion.php#openModal1';</script>";
+                echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+                echo    '<script src="../js/alertas.js"></script>';
+                echo    "<script language = javascript>  visitante(); </script>";
 			}else{
-				echo '<script>alert("Ese numero serial ya ha sido registrado") ;</script>';
-                echo "<script>window.location='../vistas/verificacion.php#openModal1';</script>";
+				echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+                echo    '<script src="../js/alertas.js"></script>';
+                echo    "<script language = javascript>  visitante_serial_registrado(); </script>";
 			}
     }else{
-       echo '<script>alert("Complete los campos") ;</script>';
-       echo "<script>window.location='../vistas/verificacion.php#openModal1';</script>";
+        echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+        echo    '<script src="../js/alertas.js"></script>';
+		echo    "<script language = javascript>  visitante_complete_campos(); </script>";
     }
 } 
 ?>

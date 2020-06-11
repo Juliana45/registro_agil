@@ -41,14 +41,10 @@ if (isset($_POST['enviar'])) {
         echo    '<script src="../js/alertas.js"></script>';
         echo    "<script language = javascript>  perfilUsuarioActualizar(); </script>";
     }else{
-<<<<<<< HEAD
         echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
         echo    '<script src="../js/alertas.js"></script>';
         echo    "<script language = javascript>  perfilUsuarioCompletarDatos(); </script>";
-=======
-       echo '<script>alert("Las contraseñas deben estar igual") ;</script>';
-       echo "<script>window.location='../vistas/perfil_usuario.php';</script>";
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+
     }
 }
 ?>

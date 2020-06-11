@@ -19,16 +19,13 @@
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<<<<<<< HEAD
-    <script type="text/javascript" src="../js/validaciones.js"></script>
-=======
     <script type="text/javascript" src="../js/validacion.js"></script>
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" type="text/css" href="../css/verificacion.css">
     <link rel="stylesheet" type="text/css" href="../css/mis_elementos.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
     integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
 <body>
 
@@ -41,17 +38,12 @@
         * se incluye la conexion a la base de datos
         */
         include '../conexi/conexion.php';
-<<<<<<< HEAD
-
-=======
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
     /**
      * obtener la sesion del vigilante
      *
      * @var int  $documento       se esta almacenando la sesion del vigilante
      *           $_SESSION        almacena el numero de documento del vigilante
      */
-<<<<<<< HEAD
 
         $documento=$_SESSION['vigi'];
         /**
@@ -60,8 +52,6 @@
         * @var string  $personas       se esta almacenando la consulta a la base de datos
         * 
         */
-=======
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
 
         $documento=$_SESSION['vigi'];
          /**
@@ -160,11 +150,8 @@
         <a href="#openModal" ><button id="registra-visitante">Registrar visitante</button><br></a>
 
         <div id="openModal" class="modalDialog">
-<<<<<<< HEAD
-            <form action="../phpCode/codigo_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
-=======
-            <form action="../phpCode/codigo_visitante.php" method="POST" id="formulario-editar" onsubmit="return validar_visi();">
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+            <form action="../phpCode/codigo_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data" 
+            onsubmit="return validar_visi();">
                 <a href="#close" title="Cerrar" class="close">X</a>
                 <h3 id="titulo-editar">Registrar visitante</h3>
                 <hr class="linea-ele">
@@ -183,33 +170,25 @@
                     <input type="text" class="input-editar" id="ape2" name="apellido2" placeholder="Segundo Apellido" onkeypress="return Letras(event)">
                     <input type="password" class="input-editar" name="clave2" placeholder="Repita su contraseña">
                     <input type="text" class="input-editar" id="correo" name="correo" placeholder="Correo">
-                    <input type="submit" class="input-btn-visitante" name="siguiente" value="Siguiente">  
+                    <input type="submit" class="input-editar" id="elemento-visitante" name="siguiente" value="Siguiente">  
                 </div> 
             </form>
         </div>
 
         <div  id="openModal1" class="modalDialog">
-            <form action="../phpCode/codigo_elemento_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data" onsubmit="return validar_visitante();">
+            <form action="../phpCode/codigo_elemento_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data" 
+            onsubmit="return validar_visitante();">
                 <a href="#close" title="Cerrar" class="close">X</a>
                 <h3 id="titulo-editar">Registrar elemento</h3>
                 <hr class="linea-ele">
                 <div id="contenedor-editar">
-<<<<<<< HEAD
-                    <input type="text" class="input-editar" name="documento" placeholder="Número de documento" required>
-                    <input type="text" class="input-editar"  name="nombre" placeholder="Nombre elemento" required>
-                    <input type="text" class="input-editar"name="descripcion" placeholder ="Descripción elemento">
-                    <input type="text" class="input-editar" name="numero_serial" placeholder ="Código serial" required>
+                    <input type="text" class="input-editar" id="documen" name="documento" placeholder="Número de documento" required>
+                    <input type="text" class="input-editar" id="nom" name="nombre" placeholder="Nombre elemento" required>
+                    <input type="text" class="input-editar" id="descripcion" name="descripcion" placeholder ="Descripción elemento">
+                    <input type="text" class="input-editar" id="numero" name="numero_serial" placeholder ="Código serial" required>
                     <div id="subir-foto" class="input-editar">
-=======
-                    <input type="text" class="input-editar" id="documen" name="documento" placeholder="Número de documento" onkeypress="return numeros(event)">
-                    <input type="text" class="input-editar" id="nom" name="nombre" placeholder="Nombre" onkeypress="return Letras(event)">
-                    <input type="text" class="input-editar" id="descripcion"  name="descripcion" placeholder ="Descripción">
-                    <input type="text" class="input-editar" id="numero" name="numero_serial" placeholder="Código serial" onkeypress="return numeros(event)">
-                    <a href="verificacion.php#openModal3" id="sin-serial" class="serial">No tiene codigo serial</a>
-                    <div id="subir-foto">
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
                         <p id="txt-subir-foto">subir foto</p> 
-                        <input id="btn-subir-foto" type="file" name="foto">
+                        <input id="btn-subir-foto" type="file" id="btn-subir-foto" name="foto">
                     </div>
                     <input type="submit" class="input-editar" id="elemento-visitante" name="Guardar" value="Guardar"> 
                     <a href="verificacion.php#openModal3" id="sin-serial" class="sin-serial">No tiene codigo serial</a>
@@ -218,17 +197,18 @@
         </div>
 
         <div  id="openModal3" class="modalDialog">
-            <form action="../phpCode/insertar_sin_serial_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data">
+            <form action="../phpCode/insertar_sin_serial_visitante.php" method="POST" id="formulario-editar" enctype="multipart/form-data"
+            onsubmit="return visitante_sinserial();">
                 <a href="#close" title="Cerrar" class="close">X</a>
                 <h3 id="titulo-editar">Registrar Elemento</h3>
                 <hr class="linea-ele">
                 <div id="contenedor-editar">
-                    <input class="input-editar" type="text"  name="documento" placeholder="Número de documento" required>
-                    <input class="input-editar" type="text" name="nombre" placeholder="Nombre elemento" onkeypress="return Letras(event)" onpaste="return false">
-                    <input class="input-editar" type="text" name="descripcion" placeholder ="Descripción elemento" onkeypress="return Letrasynumeros(event)" onpaste="return false">
+                    <input class="input-editar" type="text" id="docum" name="documento" placeholder="Número de documento" required>
+                    <input class="input-editar" type="text" id="nomb" name="nombre" placeholder="Nombre elemento" onkeypress="return Letras(event)" onpaste="return false">
+                    <input class="input-editar" type="text" id="descri" name="descripcion" placeholder ="Descripción elemento" onkeypress="return Letrasynumeros(event)" onpaste="return false">
                     <div id="subir-foto" class="input-editar">
                         <p class="txt-subir-foto">subir foto</p> 
-                        <input class="btn-subir-foto" type="file" name="foto" required>
+                        <input class="btn-subir-foto" type="file" id="foto" name="foto" require>
                     </div>
                     <input class="input-btn-visitante" type="submit" name="registro_ele" value="Guardar">
                 </div>           
@@ -238,7 +218,7 @@
         <!-- inicio modal buscar sticker visitante -->
         <div  id="openModal4" class="modalDialog">
             <div id="formulario-editar">
-                <a href="#close" title="Cerrar" class="close">X</a>
+                <a href="#close" title="Cerrar" class="close_visitante">X</a>
                 <h3 class="registrar-elemento">Generar sticker</h3>
                 <hr class="linea-ele">
                 <div id="registro">
@@ -283,7 +263,7 @@
                     ?> 
                     
                     <!-- manda por la url la variable persona que contiene el numero del documento -->
-                    <a href="verificacion.php#openModal5?elemento=<?php echo $elemento['numero_serial_elemento'];?>">
+                    <a href="../vistas/generar_visitante.php?elemento=<?php echo $elemento['numero_serial_elemento'];?>">
                         <input type="submit" class="input_btn-serial" name="buscar" value="Buscar">
                     </a>
                 </div>
@@ -291,15 +271,9 @@
         </div>
         <!-- inicio modal buscar sticker visitante -->
 
-        <!-- inicio modal descargar sticker visitante -->
+        <!-- fin registro visitante -->
 
-        <!-- fin modal descargar sticker visitante -->
-        <div  id="openModal5" class="modalDialog">
-            <div id="formulario-editar">
-            HOLAA
-            </div>
-        </div>
-        <!-- fin registrar usuario -->
+       
    
     <!--inicio_resultado/buscador-->
     
@@ -313,19 +287,18 @@
              * @var string $search      Almacena el dato ingresado en el campo busqueda
              */
             $search = $_POST['busqueda'];
-<<<<<<< HEAD
+
 
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos WHERE numero_documento_persona 
             like '%$search%' and estado_elemento = '1'");
-=======
+
             /**
              * @var string $elementos   Almacena la consulta a la base de datos donde se
              *                          esta buscando en numero de documento del usuario
              *                          y el estado del elemento debe ser igual a 1.
              */
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos  WHERE numero_documento_persona like '%$search%' and estado_elemento='1'");
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
-            
+          
             /**
              * Buscador de elementos mediante el numero de documento 
              *
@@ -334,10 +307,6 @@
              * @var string $elemento     Almacena cada dato que arroja la consulta a la
              *                           base de datos por medio de la varianle $elementos.
              */
-<<<<<<< HEAD
-    
-=======
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
             while ($elemento =  mysqli_fetch_array($elementos)) {
         ?>
         
@@ -363,9 +332,15 @@
                     */
                         echo $elemento['descripcion_elemento'];?>
                     </p>
-<<<<<<< HEAD
+
                     
-                    <p class="letra"><?php echo $elemento['numero_serial_elemento'];?></p>
+                    <p class="letra"><?php 
+                        /**
+                        * @var string  $elemento       Se esta mostrando el numero serial del
+                        *                              elemento.
+                        */
+                        echo $elemento['numero_serial_elemento'];?>
+                    </p>
                     
                     <?php
                         $desactivar = mysqli_query($conexion, "SELECT * FROM tbl_historial");
@@ -386,16 +361,11 @@
                         }
                     ?>
 
-=======
-                    <p class="letra"><?php
-                    /**
-                    * @var string  $elemento       Se esta mostrando el numero serial del
-                    *                              elemento.
-                    */
-                     echo $elemento['numero_serial_elemento'];?></p>
+
+                    
                     <!-- se esta mandado por la url la variable ingreso que contiene 
                     el numero serial del elemento -->
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+
                     <a href="../phpCode/codigo_guardar_historial.php?ingreso=<?php echo $elemento['numero_serial_elemento']; ?>">
                         <button id="boton_ingreso" name="ingreso" <?php echo $boton; ?>>INGRESO</button>
                     </a>
@@ -436,9 +406,8 @@
              * @var date $fecha         almacena la fecha en el campo llamado fecha1
              */
                     $fecha = $_POST['fecha1'];
-<<<<<<< HEAD
 
-=======
+
                 /**
                  * Colsulta a la base de datos de la fechas de ingreso y salida
                  *
@@ -446,13 +415,13 @@
                  *                              donde se debe traer el nombre, la descripcion,
                  *                              la fecha del ingreso y salida del elemento.
                  */                
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+
                     $historial1 = mysqli_query($conexion,"SELECT * FROM tbl_historial,tbl_elementos 
                     WHERE tbl_elementos.numero_serial_elemento=tbl_historial.numero_serial_elemento AND
                     CAST(hora_ingreso_historial AS DATE) =  '$fecha' ");
             ?>
             <thead>
-                <tr>
+                <tr class="historial">
                     <th>Nombre elemento</th>
                     <th>Descripción</th>
                     <th>Hora ingreso</th>
@@ -467,7 +436,7 @@
                  */
                     while($elemento1 =  mysqli_fetch_array($historial1)){
                 ?>
-            <tr>
+            <tr class="historial">
                 <td> <?php
                 /**
                 * @var string  $elemento       Se esta mostrando el nombre del elemento.
