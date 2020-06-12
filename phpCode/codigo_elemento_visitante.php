@@ -10,14 +10,14 @@ include  "../conexi/conexion.php";
 include "../vistas/verificacion.php";
 
 /**
- * si le dio clic en el boton 'Guardar' del formulario registro elemento en verificacion.php 
+ * si le dio clic en el boton 'Guardar' del formulario registro elemento del visitante, en el archivo verificacion.php 
  */
 if(isset($_POST['Guardar'])) {
     
     /**
      * strlen    Obtener la longitud de una cadena string
      * 
-     * si todos los campos del formulario registro elemento en verificacion.php estan llenos 
+     * si todos los campos del formulario registro elemento del visitante, en el archivo verificacion.php estan llenos 
      */
     if(strlen($_POST['documento']) >=1  && strlen($_POST['numero_serial']) >=1 && strlen($_POST['nombre']) >=1 &&
     strlen($_POST['descripcion'])>=1){
@@ -28,7 +28,7 @@ if(isset($_POST['Guardar'])) {
          * @var String $estado          almacena el estado del elemento(activo)
          * 
          * se definen las variables para capturar la informacion de los input del formulario 
-         * registro elemento en verificacion.php
+         * registro elemento del visitante, en el archivo verificacion.php
          * @var String $documento
          * @var String $numero_serial
          * @var String $nombre
@@ -53,8 +53,8 @@ if(isset($_POST['Guardar'])) {
         /**
          * consulta a la base de datos
          * 
-         * @var String $insertar        se estan insertando los datos ingresados en el formulario registro elemento en 
-         *                              verificacion.php a la base de datos
+         * @var String $insertar        se estan insertando los datos ingresados en el formulario registro elemento del visitante, en 
+         *                              el archivo verificacion.php a la base de datos
          * @var String $resultado       verifica si la consulta a la base de datos fue correcta
          */
         $insertar = "INSERT INTO tbl_elementos(numero_serial_elemento,nombre_elemento,descripcion_elemento,foto_elemento,
@@ -66,18 +66,45 @@ if(isset($_POST['Guardar'])) {
              * si la consulta a la base de datos se hizo correctamente
              */
 			if ($resultado) {
+                /**
+                 * se agrega la libreria sweerAlert2
+                 */
                 echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+                /**
+                 * se incluye el archivo donde estan las alertas
+                 */
                 echo    '<script src="../js/alertas.js"></script>';
+                /**
+                 * se llama la alerta con la funcion visitante
+                 */
                 echo    "<script language = javascript>  visitante(); </script>";
 			}else{
+                /**
+                 * se agrega la libreria sweerAlert2
+                 */
 				echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+                /**
+                 * se incluye el archivo donde estan las alertas
+                 */
                 echo    '<script src="../js/alertas.js"></script>';
-                echo    "<script language = javascript>  visitante_serial_registrado(); </script>";
+                /**
+                 * se llama la alerta con la funcion visitanteSerialRegistrado
+                 */
+                echo    "<script language = javascript>  visitanteSerialRegistrado(); </script>";
 			}
     }else{
+        /**
+         * se agrega la libreria sweerAlert2
+         */
         echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+        /**
+         * se incluye el archivo donde estan las alertas
+         */
         echo    '<script src="../js/alertas.js"></script>';
-		echo    "<script language = javascript>  visitante_complete_campos(); </script>";
+        /**
+         * se llama la alerta con la funcion visitanteCompleteCampos
+         */
+		echo    "<script language = javascript>  visitanteCompleteCampos(); </script>";
     }
 } 
 ?>

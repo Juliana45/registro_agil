@@ -1,376 +1,531 @@
 /**
- * inicio alerta login
+ * Inicio alertas perfil vigilante
  */
-function login(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'El usuario y la contraseña son incorrectos.', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
-            location = '../index.php';  
-        });
-    });
-}
-/**
- * fin alerta login
- */
-
- /**
-  * inicio alertas perfil vigilante
-  */
-function perfilVigilante(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    function perfilVigilante(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){  
+            /**
+             *  lo direcciona a la vista del perfil_vigilante.php
+             */
             location = '../vistas/perfil_vigilante.php';  
+            
         });
-    });
-}
-
-function perfilVigilanteElemetoSinSerial(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilVigilanteElemetoSinSerial(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo insertar_sin_serial_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){  
+            /**
+             *  lo direcciona a la vista del stiker_vigilante.php
+             */
             location = '../vistas/stiker_vigilante.php';  
         });
-    });
-}
-
-function perfilVigilanteActualizar(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se actualizaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilVigilanteActualizar(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo cambiar_clave_vigilante.php,
+         * codigo_editar_vigilante.php, codigo_informacion_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se actualizaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){   
+            /**
+             *  lo direcciona a la vista del perfil_vigilante.php
+             */ 
+            location = '../vistas/perfil_vigilante.php';
+        });
+    }
+    function perfilVigilanteError(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo cambiar_clave_vigilante.php,codigo_editar_vigilante.php,
+         * codigo_elemento_vigilante.php, codigo_informacion_vigilante.php, insertar_sin_serial_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Por favor completa los campos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){ 
+            /**
+             *  lo direcciona a la vista del perfil_vigilante.php
+             */ 
             location = '../vistas/perfil_vigilante.php';  
         });
-    });
-}
-
-function perfilVigilanteError(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Por favor completa los campos', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilVigilanteErrorElemento(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_vigilante.php, 
+         * insertar_sin_serial_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Ese número serial ya ha sido registrado', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){   
+            /**
+             *  lo direcciona a la vista del perfil_vigilante.php
+             */ 
             location = '../vistas/perfil_vigilante.php';  
         });
-    });
-}
-
-function perfilVigilanteErrorElemento(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Ese número serial ya ha sido registrado', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
-            location = '../vistas/perfil_vigilante.php';  
-        });
-    });
-}
-
+    }
 /**
  * fin alertas perfil vigilante
  */
 
 /**
- *inicio alertas perfil usuario 
+ * Inicio alertas perfil usuario 
  */
-
-function perfilUsuario(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    function perfilUsuario(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_usuario.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){   
+            /**
+             *  lo direcciona a la vista del perfil_usuario.php
+             */
             location = '../vistas/perfil_usuario.php';  
         });
-    });
-}
-
-function perfilUsuarioCompletarDatos(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Por favor completa los campos', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilUsuarioCompletarDatos(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_editar_usuario.php,
+         * codigo_clave_usuario.php, codigo_elemento_usuario.php, codigo_informacion_usuario.php, insertar_sin_serial.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Por favor completa los campos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){    
+            /**
+             *  lo direcciona a la vista del perfil_usuario.php
+             */
             location = '../vistas/perfil_usuario.php';  
         });
-    });
-}
-
-function perfilUsuarioActualizar(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se actualizaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilUsuarioActualizar(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_editar_usuario.php,
+         * codigo_clave_usuario.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se actualizaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){   
+            /**
+             *  lo direcciona a la vista del perfil_usuario.php
+             */
+            location = '../vistas/perfil_usuario.php'; 
+        });
+    }
+    function perfilUsuarioSerialExiste(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_usuario.php,
+         * insertar_sin_serial.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Ese número serial ya ha sido registrado', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){ 
+            /**
+             *  lo direcciona a la vista del perfil_usuario.php
+             */  
             location = '../vistas/perfil_usuario.php';  
         });
-    });
-}
-
-function perfilUsuarioSerialExiste(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Ese número serial ya ha sido registrado', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
-            location = '../vistas/perfil_usuario.php';  
-        });
-    });
-}
-
-function perfilUsuarioElemetoSinSerial(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilUsuarioElemetoSinSerial(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo insertar_sin_serial.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){   
+            /**
+             *  lo direcciona a la vista del stiker_usuario.php
+             */
             location = '../vistas/stiker_usuario.php';  
         });
-    });
-}
-
+    }
 /**
  * fin perfil usuario
  */
 
 /**
- * inicio perfil supervisor
+ * Inicio perfil supervisor
  */
-
-function perfilSupervisor(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    function perfilSupervisor(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_supervisor.php,
+         * codigo_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){               
+            /**
+             *  lo direcciona a la vista del perfil_supervisor.php
+             */
+            location = '../vistas/perfil_supervisor.php';      
+        });
+    }
+    function perfilSupervisorCompletarDatos(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_editar_supervidor.php,cambiar_clave_supervisor.php,
+         * codigo_elemento_supervisor.php, codigo_informacion_supervisor.php, insertar_sin_serial_super.php, codigo_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Por favor completa los campos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista del perfil_supervisor.php
+             */
             location = '../vistas/perfil_supervisor.php';  
         });
-    });
-}
-
-function perfilSupervisorCompletarDatos(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Por favor completa los campos', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilSupervisorActualizar(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_editar_supervidor.php,cambiar_clave_supervisor.php,
+         * codigo_informacion_supervisor.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se actualizaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista del perfil_supervisor.php
+             */
             location = '../vistas/perfil_supervisor.php';  
+            
         });
-    });
-}
-
-function perfilSupervisorActualizar(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se actualizaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilSupervisorSerialExiste(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_supervidor.php,
+         * insertar_sin_serial_super.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Ese número serial ya ha sido registrado', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista del perfil_supervisor.php
+             */
             location = '../vistas/perfil_supervisor.php';  
+            
         });
-    });
-}
-
-function perfilSupervisorCompletarDatos(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Por favor completa los campos', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
-            location = '../vistas/perfil_supervisor.php';  
-        });
-    });
-}
-
-function perfilSupervisorSerialExiste(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Ese número serial ya ha sido registrado', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
-            location = '../vistas/perfil_supervisor.php';  
-        });
-    });
-}
-
-function perfilSupervisorElemetoSinSerial(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilSupervisorElemetoSinSerial(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo insertar_sin_serial_super.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista del stiker_super.php
+             */
             location = '../vistas/stiker_super.php';  
+        
         });
-    });
-}
-
-function perfilSupervisorError(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Ha ocurrido un error', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilSupervisorError(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Ha ocurrido un error', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista del perfil_supervisor.php
+             */
             location = '../vistas/perfil_supervisor.php';  
         });
-    });
-}
-
-function perfilSupervisorClaveDiferente(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Las contraseñas no son iguales', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function perfilSupervisorClaveDiferente(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_vigilante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Las contraseñas no son iguales', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista del perfil_supervisor.php
+             */
             location = '../vistas/perfil_supervisor.php';  
         });
-    });
-}
+    }
+/**
+ * fin alertas perfil supervisor
+ */
 
 /**
- * fin perfil supervisor
+ * Inicio alertas verificacion
  */
-
- /**
-  * inicio verificacion
-  */
- function visitante(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    function visitante(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_visitante.php, 
+         * codigo_visitante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista de la modal con el formulario para registrar el elemento en verificacion.php
+             */
             location = '../vistas/verificacion.php#openModal1';  
         });
-    });
-}
-function visitante_sticker(){ 
-    Swal.fire({
-        title: 'Muy bien!',
-        text: 'Los datos se ingresaron correctamente', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#0097A7',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function visitanteSticker(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo insertar_sin_serial_visitante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista de la modal con la tabla para generar el sticker del elemento en verificacion.php
+             */
             location = '../vistas/verificacion.php#openModal4';  
+            
         });
-    });
-}
-function visitante_clave_diferentes(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Las contraseñas no son iguales', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function visitanteClaveDiferentes(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_visitante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Las contraseñas no son iguales', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista de la modal con el formulario para registrar el visitante en verificacion.php
+             */
             location = '../vistas/verificacion.php#openModal';  
         });
-    });
-}
-function visitante_error(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Ha ocurrido un error', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function visitanteError(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_visitante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Ha ocurrido un error', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista de la verificacion.php
+             */
             location = '../vistas/verificacion.php';  
+            
         });
-    });
-}
-function visitante_complete_campos(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Complete los campos', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function visitanteCompleteCampos(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_visitante.php, codigo_elemento_visitante.php,
+         * insertar_sin_serial_visitante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Complete los campos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista de la modal con el formulario registrar el visitante de la verificacion.php
+             */
             location = '../vistas/verificacion.php#openModal';  
+            
         });
-    });
-}
-function visitante_serial_registrado(){ 
-    Swal.fire({
-        title: 'Ups!',
-        text: 'Ese número serial ya ha sido registrado', 
-        confirmButtonText: 'Aceptar', 
-        confirmButtonColor: '#1ABC9C',
-        backdrop: false
-    }).then(function(){
-        setTimeout(function(){     
+    }
+    function visitanteSerialRegistrado(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo codigo_elemento_visitante.php,
+         * insertar_sin_serial_visitante.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Ese número serial ya ha sido registrado', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista de la modal con el formulario registrar elemento de la verificacion.php
+             */
             location = '../vistas/verificacion.php#openModal1';  
+            
         });
-    });
-}
+    }
+/**
+ * Fin alertas verificacion
+ */

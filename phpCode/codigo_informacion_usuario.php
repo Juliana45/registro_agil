@@ -10,15 +10,14 @@ include "../conexi/conexion.php";
 include "../vistas/perfil_usuario.php";
 
 /**
- * si le dio clic en el boton 'guardar' del formulario actualizar informacion en perfil_usuario.php 
+ * si le dio clic en el boton 'guardar' del formulario actualizar informacion del usuario, en el archivo perfil_usuario.php 
  */
 if(isset($_POST['guardar'])){
     
     /**
      * strlen    Obtener la longitud de una cadena string
      * 
-     * si todos los campos del formulario actualizar informacion en perfil_usuario.php estan llenos 
-     * 
+     * si todos los campos del formulario actualizar informacion del usuario, en el archivo perfil_usuario.php estan llenos 
      */
     if ( strlen($_POST['nombre1']) >=1 && strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
     strlen($_POST['tipo']) >=1 ) {
@@ -27,7 +26,7 @@ if(isset($_POST['guardar'])){
          * trim      eliminar espacios en blanco u otros caracteres al inicio y final de una cadena de text
          * 
          * se definen las variables para capturar la informacion de los input del formulario 
-         * actualizar informacion en perfil_usuario.php
+         * actualizar informacion del usuario, en el archivo perfil_usuario.php
          * @var String $numero_documento
          * @var String $nombre1
          * @var String $nombre2
@@ -57,12 +56,30 @@ if(isset($_POST['guardar'])){
         apellido1_persona='$apellido1',apellido2_persona='$apellido2',tipo_documento_persona='$tipo_documento',
         foto_persona = '$destino' WHERE numero_documento_persona = '$documento' ");
 
-        echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
-        echo    '<script src="../js/alertas.js"></script>';
-        echo    "<script language = javascript>  perfilUsuario(); </script>";
+            /**
+             * se agrega la libreria sweerAlert2
+             */
+            echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+            /**
+             * se incluye el archivo donde estan las alertas
+             */
+            echo    '<script src="../js/alertas.js"></script>';
+            /**
+             * se llama la alerta con la funcion perfilSupervisorActualizar
+             */
+            echo    "<script language = javascript>  perfilUsuario(); </script>";
     }else{
+        /**
+         * se agrega la libreria sweerAlert2
+         */
         echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+        /**
+         * se incluye el archivo donde estan las alertas
+         */
         echo    '<script src="../js/alertas.js"></script>';
+        /**
+         * se llama la alerta con la funcion perfilSupervisorActualizar
+         */
         echo    "<script language = javascript>  perfilUsuarioCompletarDatos(); </script>";
     }
 }

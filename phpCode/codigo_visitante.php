@@ -10,20 +10,20 @@ include "../conexi/conexion.php";
 include "../vistas/verificacion.php";
 
 /**
- * si le da clic en el boton 'siguiente' del formulario registrar usuario en verificacion.php
+ * si le da clic en el boton 'siguiente' del formulario registrar usuario, en el archivo verificacion.php
  */
 if (isset($_POST['siguiente'])) {
 	
 	/**
      * strlen    Obtener la longitud de una cadena string
      * 
-     * si todos los campos del formulario registrar usuario en verificacion.php estan llenos 
+     * si todos los campos del formulario registrar usuario, en el archivo verificacion.php estan llenos 
      */
 	if (strlen($_POST['nombre1']) >=1 &&  strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
 	strlen($_POST['tipo']) >=1 && strlen($_POST['documento']) >=1 && strlen($_POST['clave_e']) >=1) {
 		
 		/**
-     	 * se compara si las claves ingresadas en el formulario registrar usuario en verificacion.php son iguales
+     	 * se compara si las claves ingresadas en el formulario registrar usuario, en el archivo verificacion.php son iguales
      	 */
 		if ($_POST['clave_e'] == $_POST['clave2']) {
 			
@@ -33,7 +33,7 @@ if (isset($_POST['siguiente'])) {
 			 * @var String $visitante 	almacena el rol (usuario)
 			 * 
 			 * se definen las variables para capturar la informacion de los input del formulario registrar 
-			 * usuario en verificacion.php 
+			 * usuario, en el archivo verificacion.php 
 			 * @var String $documento
 			 * @var String $nombre1
 			 * @var String $nombre2	
@@ -59,7 +59,7 @@ if (isset($_POST['siguiente'])) {
         	 * consulta a la base de datos
         	 * 
         	 * @var String $insertar       	se estan insertando los datos ingresados en el formulario registrar 
-			 * 								usuario en verificacion.php a la base de datos
+			 * 								usuario, en el archivo verificacion.php a la base de datos
         	 * @var String $resultado      	verifica si la consulta a la base de datos fue correcta
         	 */
 		
@@ -73,25 +73,60 @@ if (isset($_POST['siguiente'])) {
 			 * si la consula a la base de datos se hizo correctamente
 			 */
 			if ($resultado) {
+				/**
+            	 * se agrega la libreria sweerAlert2
+            	 */
 				echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
-                echo    '<script src="../js/alertas.js"></script>';
+				/**
+                 * se incluye el archivo donde estan las alertas
+                 */
+				echo    '<script src="../js/alertas.js"></script>';
+				/**
+            	 * se llama la alerta con la funcion visitante
+            	 */
                 echo    "<script language = javascript>  visitante(); </script>";
 			}else{
+				/**
+            	 * se agrega la libreria sweerAlert2
+            	 */
 				echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
-                echo    '<script src="../js/alertas.js"></script>';
-                echo    "<script language = javascript>  visitante_error(); </script>";
+				/**
+                 * se incluye el archivo donde estan las alertas
+                 */
+				echo    '<script src="../js/alertas.js"></script>';
+				/**
+            	 * se llama la alerta con la funcion visitanteError
+            	 */
+                echo    "<script language = javascript>  visitanteError(); </script>";
 			}
 		}else{
+			/**
+             * se agrega la libreria sweerAlert2
+             */
 			echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
-            echo    '<script src="../js/alertas.js"></script>';
-            echo    "<script language = javascript>  visitante_clave_diferentes(); </script>";
+			/**
+             * se incluye el archivo donde estan las alertas
+             */
+			echo    '<script src="../js/alertas.js"></script>';
+			/**
+        	 * se llama la alerta con la funcion visitanteClaveDiferentes
+             */
+            echo    "<script language = javascript>  visitanteClaveDiferentes(); </script>";
 		}
 	}else{
+		/**
+         * se agrega la libreria sweerAlert2
+         */
 		echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
-        echo    '<script src="../js/alertas.js"></script>';
-		echo    "<script language = javascript>  visitante_complete_campos(); </script>";
+		/**
+         * se incluye el archivo donde estan las alertas
+         */
+		echo    '<script src="../js/alertas.js"></script>';
+		/**
+    	 * se llama la alerta con la funcion visitanteCompleteCampos
+         */
+		echo    "<script language = javascript>  visitanteCompleteCampos(); </script>";
 	}
-
 }
 ?>
 

@@ -336,26 +336,66 @@
                     
                     <p class="letra"><?php 
                         /**
-                        * @var string  $elemento       Se esta mostrando el numero serial del
+                        * @var String  $elemento       Se esta mostrando el numero serial del
                         *                              elemento.
                         */
                         echo $elemento['numero_serial_elemento'];?>
                     </p>
                     
                     <?php
+                        /**
+                         * desactivar botones ingreso y salida de lo elementos
+                         * 
+                         * @var String Sdesactivar       Almacena la consulta a la base de datos donde se esta buscando 
+                         *                               todo lo que hay en la tabla historial
+                         */
                         $desactivar = mysqli_query($conexion, "SELECT * FROM tbl_historial");
+                        /**
+                         * se inician dos variables vacias 
+                         * @var String $boton
+                         * @var String $boton1
+                         */
                         $boton = "";
                         $boton1 = "";
+
+                        /**
+                         * se genera un ciclo
+                         * 
+                         * @var String $boton_desactivar    almacena el array que recorre la consulta realizada a la base de datos
+                         */
                         while($boton_desactivar = mysqli_fetch_array($desactivar)){
+
+                            /**
+                             * si el dato(numero_serial_elemento) almacenado en la variable $boton_desactivar es igual al dato(numero_serial_elemento)
+                             * almacenado en la variable $elemento y el dato(estado_boton) almacenado en la variable $boton_desactivar es igual a 0
+                             */
                             if($boton_desactivar['numero_serial_elemento'] == $elemento['numero_serial_elemento'] && $boton_desactivar['estado_boton'] == 0){
+                                /**
+                                 * la variable $boton se desactiva
+                                 */
                                 $boton = " disabled";
                             }else{
+                                /**
+                                 * si no cumple la condicion 
+                                 * la variable $boton queda vacia
+                                 */
                                 $boton = " ";
                             }
-
+                            
+                            /**
+                             * si el dato(numero_serial_elemento) almacenado en la variable $boton_desactivar es igual al dato(numero_serial_elemento)
+                             * almacenado en la variable $elemento y el dato(estado_boton) almacenado en la variable $boton_desactivar es igual a 1
+                             */
                             if($boton_desactivar['numero_serial_elemento'] == $elemento['numero_serial_elemento'] && $boton_desactivar['estado_boton'] == 1){
+                                /**
+                                 * la variable $boton se desactiva
+                                 */
                                 $boton1 = " disabled";
                             }else{
+                                /**
+                                 * si no cumple la condicion 
+                                 * la variable $boton queda vacia
+                                 */
                                 $boton1 = " ";
                             }
                         }
