@@ -1,7 +1,15 @@
 <?php
+    /**
+    * session_start()  se autoinicia la sesion
+    */
     session_start();
+    /**
+    * se incluye la conexion a la base de datos
+    */
     include '../conexi/conexion.php';
-
+    /** 
+    * $_SESSION       almacena el numero de documento del supervisor
+    */
     if (isset($_SESSION['super'])) {
 ?>
 
@@ -25,45 +33,64 @@
 <!-- inicio lado izquierdo -->
 <div class="contenedor-izquierdo">
     <?php
+        /**
+        *       Muestra los datos personales del usuario 
+        *  
+        * se incluye la conexion a la base de datos
+        */
         include '../conexi/conexion.php';
-    /**
-     * obtener la sesion
-     *
-     * @var int  $documento       se esta almacenando la sesion del supervisor.
-     *           $_SESSION        almacena elnumero de documento del supervisor.
-     * 
-     */       
+        /**
+         * obtener la sesion del supervisor
+         *
+         * @var int  $documento       Se esta almacenando la sesion del supervisor.
+         *           $_SESSION        Almacena el numero de documento del supervisor.
+         * 
+         */      
         $documento=$_SESSION['super'];
         /**
-        *  consulta a la base de datos 
-        * 
-        * @var string  $personas       se esta almacenando la consulta a la base de datos
-        *                              donde el documento debe ser igual a la variable
-        *                              $documento.
-        * 
-        */
+         *  consulta a la base de datos la foto y los nombres del supervisor
+         * 
+         * @var string  $personas       se esta almacenando la consulta a la base de datos
+         *                              donde el numero de documento del supervisor debe ser
+         *                              al numero de documento registrado enla base de datos.
+         */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
          /**
          *  ciclo para mostrar informacion personal del supervisor
          * 
-         * @var string  $personas       se esta almacenando la consulta a la base de datos
-         * @var string  $persona        se esta almacenando el dato de la consulta y se muestra
-                                        la foto, nombre y apellido del supervisor.
-         * 
+         * foreach                      Recorre estructura que contienen varios elementos
+         *                              (como arrays).
+         * @var string  $personas       Se esta almacenando la consulta a la base de datos.
+         * @var string  $persona        Se esta almacenando el dato de la consulta y se muestra
+         *                              la foto y los nombres del supervisor.
          */
         foreach ($personas as $persona):
     ?>
         <!-- inicio fotos y botones de menu -->
             <div class="contenedor-foto">
-                <?php echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
+                <?php
+            /**
+            * @var string  $persona       Se esta mostrando la foto del supervisor.
+            */ 
+                 echo '<img class="foto-perfil" src="'.$persona['foto_persona'].'"> ' ?>
+            <!-- se esta mandado por la url la variable persona que contiene el numero  
+                 de documento del supervisor.-->                 
                 <button class="editar" id="icono-sticker"><a href="#openModal?persona=<?php echo $persona['numero_documento_persona']; ?>"> 
                     <i class="fas fa-user-edit"></i></a>
                 </button>
             </div>
 
             <h3 class="nombre">
-                <?php echo $persona['nombre1_persona'];?>
-                <?php echo $persona['apellido1_persona'];?>
+                <?php
+            /**
+            * @var string  $persona       Se esta mostrando el primer nombre del supervisor.
+            */
+                 echo $persona['nombre1_persona'];?>
+                <?php
+            /**
+            * @var string  $persona       Se esta mostrando el primer apellido del supervisor.
+            */
+                 echo $persona['apellido1_persona'];?>
             </h3>
 
             <hr class="linea">
@@ -91,30 +118,41 @@
     
     <!-- inicio codigo barras -->
     <?php
+        /**
+        *       Se genera el codigo serial
+        *  
+        * se incluye la conexion a la base de datos
+        */
         include '../conexi/conexion.php';
-     /**
-     * obtiene la sesion
-     *
-     * isset            verifica que la sesion si este definida.
-     * $_session        contiene el numero de documento del supervisor.
-     * $_GET            contiene el numero serial del elemento. 
-     *            
-     */
+         /**
+         * obtiene la sesion del supervisor
+         *
+         * isset            verifica que la sesion si este definida.
+         * $_session        contiene el numero de documento del supervisor.           
+         */
         if (isset($_SESSION['super'])) {
+         /**
+         * $_GET            obtiene el numero serial del elemento enviada por la url en
+         *                  la variable elemento del archivo stiker_supervisor.php.          
+         */
             if($_GET['elemento']){
-    /**
-     * consulta a la base de datos
-     *
-     * @var string $codigo         Contiene el get con la variable elemento envida
-     *                             por la url.
-     * @var string $sql            Contiene la consulta a la base de datos, donde el
-     *                             el numero seria debe ser igual a la variable codigo.    
-     *@var string $result          Realiza la consulta a la base de datos.
-     *@var string $arraycodigo     Almacena un vector donde se guarda la foto y el numero serial 
-     *                             generado.   
-     */
+            /**
+             * @var string $codigo         Guarda la variable elemento. 
+             */
                 $codigo = $_GET['elemento'];
+            /**
+             * consulta a la base de datos el numero serial
+             *
+             * @var string $sql            Contiene la consulta a la base de datos, donde el
+             *                             el numero seria debe ser igual a la variable 
+             *                             codigo.      
+             */
                 $sql = "SELECT * FROM tbl_elementos WHERE numero_serial_elemento = $codigo";
+            /**  
+             * @var string $result         Realiza la consulta a la base de datos.
+             * @var string $arraycodigo    Almacena un vector donde se guarda la foto y el
+             *                             numero serial generado.   
+             */
                 $result = mysqli_query($conexion,$sql);
                 
                 $arraycodigo = array();?>
@@ -129,20 +167,35 @@
                 /**
                  * ciclo que muestra stikers.
                  *
-                 * @var int $ver               Almacena el resultado de la variable result.
-                 * @var string $arraycodigo    Convierte la variable ver en un string.
-                 *                                         
+                 * @var int $ver               Almacena el resultado de la variable
+                 *                             result.                                       
                  */
                  while($ver=mysqli_fetch_row($result)): 
+                /**
+                 * @var string $arraycodigo    Convierte la variable ver en un 
+                 *                             string.                                       
+                 */ 
                     $arraycodigo[]=(String)$ver[0];
                 ?>
 
                     <!-- WHERE id = $id  -->
                     <tr>
-                        <td> <?php echo $ver[1]; ?></td>
+                        <td> <?php
+                        /**
+                         * @var string $ver     Esta mostrando la posision 1 que contiene
+                         *                      el nombre del elemento.               
+                         */
+                         echo $ver[1]; ?></td>
                         <td>
-                        <img src="../vistas/barcode.php?text=<?php echo $ver[0];?>&print=true" usemap="#img"/>
+                        <img src="../vistas/barcode.php?text=<?php
+                        /**
+                         * @var string $ver     Esta mostrando la posision 0 que contiene
+                         *                      la imagen con el codigo de 
+                         *                      barras.               
+                         */ 
+                         echo $ver[0];?>&print=true" usemap="#img"/>
                         <map name="img">
+                        <!-- se descarga la imagen con el codigo serial -->
                         <area shape="rect" coords="0,0,80,50" download 
                         href="../vistas/barcode.php?text=<?php echo $ver[0];?>&print=true">
                         </map>       

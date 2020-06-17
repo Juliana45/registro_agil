@@ -22,7 +22,7 @@ if(isset($_POST['guardar'])){
     /**
      * si todos los campos estan llenos 
     */
-    if ( strlen($_POST['nombre1']) >=1 &&  && strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
+    if ( strlen($_POST['nombre1']) >=1 && strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
     strlen($_POST['tipo']) >=1 ) {
 
         $documento = trim($_REQUEST['documento']);
