@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
    
     <title>Registro agil</title>
 </head>
@@ -155,7 +156,7 @@
         <div class="img"><img src="img/login.png" alt="" class="iconos"></div>
         <div><br>
           <h2>Iniciar sesión</h2><br>
-          <p>Some quick example text to build on the card title.</p>
+          <p>Se debe iniciar sesión para registrar los elementos y poder ver los mismo.</p>
         </div>
       </div>
       <div class="card">

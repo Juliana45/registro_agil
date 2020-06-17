@@ -24,6 +24,7 @@
     integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script>
             /**
@@ -123,6 +124,7 @@
     <!-- fin foto y botones de menu -->
 
     <!--inicio_actualizar_informacion-->
+
         <!-- manda por la url la variable persona que contiene el numero del documento del usuario -->
         <div  id="openModal?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
 
@@ -132,7 +134,7 @@
                 <hr class="linea-ele">
                 <div id="contenedor-editar">
                     <input type="text" class="input-editar" id="nombre1" name="nombre1" value="<?php echo $persona['nombre1_persona'];?>"
-                    onkeypress="return Letras(event)" onpaste="return false" required>
+                    onkeypress="return Letras(event)" onpaste="return false" >
                     <input type="text" class="input-editar" id="nombre2" name="nombre2"  value="<?php echo $persona['nombre2_persona'];?>"
                     onkeypress="return Letras(event)" onpaste="return false">
                     <input type="text" class="input-editar" id="apellido1" name="apellido1"  value="<?php echo $persona['apellido1_persona'];?>"
@@ -150,7 +152,7 @@
 
                     <div id="subir-foto" class="input-editar">
                         <p id="txt-subir-foto">subir foto</p> 
-                        <input id="btn-subir-foto" type="file" name="foto" required>
+                        <input id="btn-subir-foto" type="file" name="foto" >
                     </div>
 
                     <input type="submit" class="input-btn-editar" name="guardar" value="Actualizar"> 
@@ -159,11 +161,11 @@
                 </div>
             </form>
         </div>
-    <!--fin_actualizar_informacion-->
-    <!--inicio cambiar contraseña-->
-
-       <!-- manda por la url la variable persona que contiene el numero del documento del usuario -->
-        <div id="openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
+        <!--fin_actualizar_informacion-->
+    
+        <!--inicio cambiar contraseña-->
+            <!-- manda por la url la variable persona que contiene el numero del documento del usuario -->
+            <div id="openModal2?persona=<?php echo $persona['numero_documento_persona']; ?>" class="modalDialog">
             <a href="#close" title="Cerrar" class="close" id="close-clave">X</a>
             <form action="../phpCode/cambiar_clave_usuario.php" method="POST" id="formulario-clave" onsubmit="return validar_contra();">
                 <h3 id="titulo-editar">Cambiar clave</h3>

@@ -4,7 +4,10 @@
     padding:0;
 	font-family: 'Roboto Slab', sans-serif;
 }
+<<<<<<< HEAD
 /* div que contiene el buscador de fecha(historial) y el buscador de los elementos*/
+=======
+>>>>>>> 4aebc3bb51a7dcf4c396f650f5130ef367fc2e7a
 div#barra{
 	height: 87px;
 	width: 90%;
@@ -100,14 +103,29 @@ button#registra-visitante:hover{
     color: #fff;
     border: none;
     border-radius: 4%;
-    padding: 9px 40px;
-    margin-left: 65%;
+    padding: 9px 60px;
+    margin-left: 56%;
     margin-top: 3%;
     cursor: pointer;
 }
+<<<<<<< HEAD
 /*Fin formulario registro visitante*/
 
 /*Resultado del buscador de los elementos  */
+=======
+#elemento-visitante{
+    background: #0097A7;
+    color: #fff;
+    cursor: pointer;
+}
+.sin-serial{
+    text-decoration: none;
+	color: #000;
+	margin-left: 57%;
+	margin-top: 2%;
+}
+/* fin formulario registro visitante*/
+>>>>>>> 4aebc3bb51a7dcf4c396f650f5130ef367fc2e7a
 
 /*Div que contiene el resultado del buscador de los elementos
 Overflow creará un nuevo contexto de formatos de bloques en este caso de a 1 bloque*/
@@ -171,9 +189,13 @@ div.contenedor-carta{
 
 
 
+<<<<<<< HEAD
 /*Inicio resultado buscador historial*/
 
 /*Tabla donde aparecen los datos de los elementos que se buscaron en el buscador del historial*/
+=======
+/*historial*/
+>>>>>>> 4aebc3bb51a7dcf4c396f650f5130ef367fc2e7a
 table{
 	background-color: #FFF;
 	text-align: left;
@@ -197,8 +219,12 @@ thead{
 	color: #000; 
 }
 
+<<<<<<< HEAD
 /*:nth-child(even) coincide con uno o más elementos en función de su posición entre el grupo even*/
 tr:nth-child(even){
+=======
+tr.historial:nth-child(even){
+>>>>>>> 4aebc3bb51a7dcf4c396f650f5130ef367fc2e7a
 	background-color: #E5E7E9;
 }
 
@@ -207,6 +233,53 @@ tr:nth-child(even){
 	text-decoration: none;
 	color: #000;
 } */
+
+/*sticker visitante */
+#tabla_sticker_visitante{
+	margin-top: 13%;
+	background-color: #fff;
+	text-align: left;
+    width: 50%;
+    margin-left: 28%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;;
+}
+#tabla_sticker_visitante th,td{
+	padding: 15px;
+    font-size: 1em;
+    border: 1px solid #ddd;;
+}
+#tabla_sticker_visitante thead{
+	color: #ddd; 
+}
+.sticker{
+    font-size: 1em;
+    margin-top: 2%;
+    margin-left: 35%;
+}
+Button#terminado_visitante{
+	background-color:#0097A7; 
+	height: 32px;
+	width: 18%;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 1em;
+	position: absolute;
+	margin-left: 40%;
+	margin-top: 20px;
+}
+.close_visitante{
+	color: #DDD;
+	position: absolute;
+	left: 94%;
+	text-align: center;
+	top: 4px;
+	width: 20px;
+	font-weight: bold;
+	text-decoration: none;
+}
 
 
 

@@ -21,6 +21,7 @@
     integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
    
     <script>
             /**
@@ -115,8 +116,8 @@
             <a href="../phpCode/codigo_eliminar_usuario.php?desactivar=<?php echo $elemento['numero_serial_elemento']; ?>" 
             onClick="return confirm('¿Estas seguro que desea eliminar?');"><button class="boton"><i class="fas fa-trash-alt"></i></button></a>
             <!-- manda por la url la variable elemento que contiene el numero serial del elemento al archivo editar_elemento_usuario.php-->
-           <a href="editar_elemento_usuario.php?elemento=<?php echo $elemento['numero_serial_elemento']?>">
-           <button class="boton1"><i class="icono-editar fas fa-pencil-alt"></i></button>
+            <a href="editar_elemento_usuario.php?elemento=<?php echo $elemento['numero_serial_elemento']?>">
+            <button class="boton1"><i class="icono-editar fas fa-pencil-alt"></i></button>
             </a>
         </div>
     </div>

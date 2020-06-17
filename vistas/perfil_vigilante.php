@@ -18,12 +18,14 @@
 <head>
     <title>Registro ágil</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="../js/validaciones.js"></script>
     <script type="text/javascript" src="../js/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
     integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
    
     <script>
             /**
@@ -170,8 +172,8 @@
                 <hr class="linea-ele">
                 <div id="editar-clave">
                 <input type="text" name="documento" hidden class="input" value="<?php echo $persona['numero_documento_persona'];?>">
-                <input type="password" class="input" id="clave" name="clave" placeholder="Contraseña nueva" required>
-                <input type="password" class="input" id="clave2" name="clave2" placeholder="Confirmar contraseña nueva" required>
+                <input type="password" class="input" id="clave" name="clave" placeholder="Contraseña nueva">
+                <input type="password" class="input" id="clave2" name="clave2" placeholder="Confirmar contraseña nueva">
                 <input type="submit" class="input-btn" name="enviar" value="Enviar">
                 <br><br>
                 </div>

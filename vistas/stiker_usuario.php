@@ -125,6 +125,7 @@
             */
             include '../conexi/conexion.php';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     /**
      * obetiene la sesion
@@ -134,6 +135,9 @@
      * 
      */
 =======
+=======
+
+>>>>>>> 4aebc3bb51a7dcf4c396f650f5130ef367fc2e7a
             /**
              * obtener la sesion del usuario
              *
@@ -141,7 +145,11 @@
              *           $_SESSION        Almacena el numero de documento del usuario.
              * 
              */
+<<<<<<< HEAD
 >>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+=======
+
+>>>>>>> 4aebc3bb51a7dcf4c396f650f5130ef367fc2e7a
             $documento=$_SESSION['user'];
             /**
              *  consulta a la base de datos el numero serial del elemento 
@@ -154,6 +162,7 @@
              */
             $elementos = mysqli_query($conexion,"SELECT * FROM tbl_elementos 
             WHERE numero_documento_persona = $documento AND estado_elemento <> '0'");
+<<<<<<< HEAD
          /**
          *  ciclo para mostrar el numero serial del elemento
          * 
@@ -173,6 +182,18 @@
 
 =======
 >>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
+=======
+            
+            /**
+             *  ciclo para mostrar el numero serial del elemento
+             * 
+             * foreach                      Recorre estructura que contienen varios elementos
+             *                              (como arrays).
+             * @var string  $elementos      Se esta almacenando la consulta a la base de datos.
+             * @var string  $elemento       Se esta almacenando el dato de la consulta y se 
+             *                              muestra el codigo serial del elemento.
+             */
+>>>>>>> 4aebc3bb51a7dcf4c396f650f5130ef367fc2e7a
             foreach ($elementos as $elemento):
         ?>
         

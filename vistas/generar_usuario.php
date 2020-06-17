@@ -1,7 +1,7 @@
 <?php
     /**
-    * session_start()  se autoinicia la sesion
-    */
+     * session_start()  se autoinicia la sesion
+     */
     session_start();
     /**
     * se incluye la conexion a la base de datos
@@ -162,7 +162,6 @@
                         <td>Nombre elemento</td>
                         <td>Código de barras</td>
                     </tr>
-        
 
                 <?php 
                 /**
@@ -172,7 +171,8 @@
                  *                             result.                                       
                  */
                 while($ver=mysqli_fetch_row($result)):  
-                /**
+                
+                    /**
                  * @var string $arraycodigo    Convierte la variable ver en un 
                  *                             string.                                       
                  */  

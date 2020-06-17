@@ -1,21 +1,21 @@
 <?php
 
 /**
- * Cambio de clave en el perfil del usuario
+ * Cambio de clave en el perfil del supervisor
  * 
  * incluye el archivo donde se encuentra la conexion a la base de datos
- * incluye el archivo del perfil del usuario
+ * incluye el archivo del perfil del supervisor
  */
 include '../conexi/conexion.php';
-include "../vistas/perfil_usuario.php";
+include "../vistas/perfil_supervisor.php";
 
 /**
- * si le dio clic en el boton 'enviar' del formulario cambiar clave del perfil del usuario, en el archivo perfil_usuario.php 
+ * si le dio clic en el boton 'enviar' del formulario cambiar clave del perfil del supervisor, en el archivo perfil_supervisor.php 
  */
 if (isset($_POST['enviar'])) {
 
     /**
-     * se compara si las claves ingresadas en el formulario cambiar clave del perfil del usuario, en el archivo perfil_usuario.php son iguuales
+     * se compara si las claves ingresadas en el formulario cambiar clave del perfil del supervisor, en el archivo perfil_supervisor.php son iguales
      */
     if ($_POST['clave'] == $_POST['clave2']) {
 
@@ -23,7 +23,7 @@ if (isset($_POST['enviar'])) {
          * trim         eliminar espacios en blanco u otros caracteres al inicio y final de una cadena de texto
          * 
          * se definen tres variables para capturar la informacion del input del 
-         * formulario cambiar clave del perfil del usuario, en el archivo perfil_usuario.php
+         * formulario para cambiar la clave del perfil del supervisor, en el archivo perfil_supervisor.php
          * @var String $documento
          * @var String $clave 
          * @var String $clave2 
@@ -47,9 +47,9 @@ if (isset($_POST['enviar'])) {
              */
             echo    '<script src="../js/alertas.js"></script>';
             /**
-             * se llama la alerta con la funcion perfilUsuarioActualizar
+             * se llama la alerta con la funcion perfilVigilanteActualizar 
              */
-            echo    "<script language = javascript> perfilUsuarioActualizar(); </script>";
+            echo    "<script language = javascript>  perfilSupervisorActualizar(); </script>";
     }else{
         /**
          * se agrega la libreria sweerAlert2
@@ -60,9 +60,9 @@ if (isset($_POST['enviar'])) {
          */
         echo    '<script src="../js/alertas.js"></script>';
         /**
-         * se llama la alerta con la funcion perfilUsuarioCompletarDatos
+         * se llama la alerta con la funcion perfilVigilanteActualizar 
          */
-        echo    "<script language = javascript> perfilUsuarioCompletarDatos(); </script>";
+        echo    "<script language = javascript>  perfilSupervisorCompletarDatos(); </script>";
     }
 }
 ?>
