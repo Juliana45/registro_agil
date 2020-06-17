@@ -529,3 +529,54 @@
 /**
  * Fin alertas verificacion
  */
+
+/**
+ * Inicio alertas recuperar clave
+ */
+    function recuperarClave(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo recuperar_clave.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Muy bien!',
+            text: 'Los datos se ingresaron correctamente', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#0097A7',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){  
+            /**
+             *  lo direcciona a la vista del index.php
+             */
+            location = '../index.php';  
+            
+        });
+    }
+    function recuperarClaveCompleteDatos(){ 
+        /**
+         * se llama la funcion Swal.fire de la libreria SweetAlert2(agregada en el archivo recuperar_clave.php) para mostrar la alerta
+         */
+        Swal.fire({
+            title: 'Ups!',
+            text: 'Complete los campos', 
+            confirmButtonText: 'Aceptar', 
+            confirmButtonColor: '#1ABC9C',
+            backdrop: false
+        })
+        /**
+         * .then        redirige despues de dar click en el boton
+         */
+        .then(function(){
+            /**
+             *  lo direcciona a la vista del formulario para recuperar la clave, en el archivo formulario.php
+             */
+            location = '../vistas/formulario.php';  
+            
+        });
+    }
+/**
+ * Fin alertas recuperar clave
+ */

@@ -34,11 +34,31 @@ include '../conexi/conexion.php';
         */
         mysqli_query($conexion,"UPDATE tbl_personas SET clave_persona= SHA('$clave') WHERE correo_persona='$correo'");
         
-        echo '<script>alert("Los datos se actualizaron correctamente") ;</script>';
-        echo "<script>window.location='../index.php';</script>"; 
+            /**
+             * se agrega la libreria sweerAlert2
+             */
+            echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+            /**
+             * se incluye el archivo donde estan las alertas
+             */
+            echo    '<script src="../js/alertas.js"></script>';
+            /**
+             * se llama la alerta con la funcion recuperarClave
+             */
+            echo    "<script language = javascript> recuperarClave(); </script>"; 
     }else{
-       echo '<script>alert("Complete los campos") ;</script>';
-       echo "<script>window.location='../formulario.php';</script>";
+        /**
+         * se agrega la libreria sweerAlert2
+         */
+        echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+        /**
+         * se incluye el archivo donde estan las alertas
+         */
+        echo    '<script src="../js/alertas.js"></script>';
+        /**
+         * se llama la alerta con la funcion recuperarClaveCompleteDatos
+         */
+        echo    "<script language = javascript> recuperarClaveCompleteDatos(); </script>"; 
     }
 }
 ?>

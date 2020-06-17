@@ -38,18 +38,18 @@ if (isset($_POST['enviar'])) {
         mysqli_query($conexion,"UPDATE tbl_personas SET clave_persona=SHA('$clave') WHERE 
         numero_documento_persona='$documento'");
 
-        /**
-         * se agrega la libreria sweerAlert2
-         */
-        echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
-        /**
-         * se incluye el archivo donde estan las alertas
-         */
-        echo    '<script src="../js/alertas.js"></script>';
-        /**
-         * se llama la alerta con la funcion perfilVigilanteActualizar 
-         */
-        echo    "<script language = javascript>  perfilSupervisorActualizar(); </script>";
+            /**
+             * se agrega la libreria sweerAlert2
+             */
+            echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+            /**
+             * se incluye el archivo donde estan las alertas
+             */
+            echo    '<script src="../js/alertas.js"></script>';
+            /**
+             * se llama la alerta con la funcion perfilVigilanteActualizar 
+             */
+            echo    "<script language = javascript>  perfilSupervisorActualizar(); </script>";
     }else{
         /**
          * se agrega la libreria sweerAlert2

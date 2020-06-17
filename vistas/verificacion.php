@@ -38,23 +38,16 @@
         * se incluye la conexion a la base de datos
         */
         include '../conexi/conexion.php';
-    /**
-     * obtener la sesion del vigilante
-     *
-     * @var int  $documento       se esta almacenando la sesion del vigilante
-     *           $_SESSION        almacena el numero de documento del vigilante
-     */
-
-        $documento=$_SESSION['vigi'];
+        
         /**
-        *  consulta a la base de datos la foto y los nombres del vigilante
-        * 
-        * @var string  $personas       se esta almacenando la consulta a la base de datos
-        * 
-        */
-
+         * obtener la sesion del vigilante
+         *
+         * @var int  $documento       se esta almacenando la sesion del vigilante
+         *           $_SESSION        almacena el numero de documento del vigilante
+         */
         $documento=$_SESSION['vigi'];
-         /**
+        
+        /**
          *  consulta a la base de datos la foto y los nombres del vigilante
          * 
          * @var string  $personas       se esta almacenando la consulta a la base de datos
@@ -63,7 +56,8 @@
          * 
          */
         $personas = mysqli_query($conexion,"SELECT * FROM tbl_personas WHERE numero_documento_persona= $documento");
-         /**
+        
+        /**
          *  ciclo para mostrar informacion personal del vigilante
          * 
          * foreach                      Recorre estructura que contienen varios elementos
