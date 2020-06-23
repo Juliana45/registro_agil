@@ -29,11 +29,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<<<<<<< HEAD
-    <script type="text/javascript" src="js/validaciones.js"></script>
-=======
     <script type="text/javascript" src="js/validacion.js"></script>
->>>>>>> 82f929c72a75f7128708a6e9fe739d3f61c44ea8
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/registro.css">
