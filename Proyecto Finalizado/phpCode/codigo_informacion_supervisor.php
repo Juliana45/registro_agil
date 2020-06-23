@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * Actualizar informacion del supervisor
+ * 
+ * incluye el archivo donde se encuentra la conexion a la base de datos
+ * incluye el archivo del perfil del supervisor
+ */
+include "../conexi/conexion.php";
+include "../vistas/perfil_supervisor.php";
+
+/**
+ * si le dio clic en el boton 'guardar' del formulario actualizar informacion del supervisor, en el archivo perfil_supervisor.php 
+ */
+if(isset($_POST['guardar'])){
+    
+    /**
+     * strlen    Obtener la longitud de una cadena string
+     * 
+     * si todos los campos del formulario actualizar informacion del supervisor, en el archivo perfil_supervisor.php estan llenos 
+     */
+    if ( strlen($_POST['nombre1']) >=1 && strlen($_POST['apellido1']) >=1 && strlen($_POST['apellido2']) >=1 && 
+    strlen($_POST['tipo']) >=1) {
+
+        /**
+         * trim      eliminar espacios en blanco u otros caracteres al inicio y final de una cadena de text
+         * 
+         * se definen las variables para capturar la informacion de los input del formulario 
+         * actualizar informacion del supervisor, en el archivo perfil_supervisor.php
+         * @var String $numero_documento
+         * @var String $nombre1
+         * @var String $nombre2
+         * @var String $apellido1
+         * @var String $apellido2
+         * @var String $tipo_documento
+         * @var String $foto        nombre original del archivo en la maquina del usuario
+         * @var String $ruta        nombre del archivo en el cual se almacena el archivo subida al servidor
+         * @var String $destido     ruta donde se guarda el archivo
+         * copy                     se copie lo que se esta almacenando en $ruta y $destino en la base de datos
+         */
+        $numero_documento = trim($_REQUEST['documento']);
+        $nombre1 = trim($_REQUEST['nombre1']);
+        $nombre2 = trim($_REQUEST['nombre2']);
+        $apellido1 = trim($_REQUEST['apellido1']);
+        $apellido2 = trim($_REQUEST['apellido2']);
+        $tipo_documento = trim($_REQUEST['tipo']);
+        $foto = $_FILES['foto'] ['name'];
+        $ruta =$_FILES['foto'] ['tmp_name'];
+    	$destino = "../img/".$foto;
+        copy($ruta,$destino);
+        
+        /**
+         * se realiza la consulta a la base de datos para actualizar la informacion
+         */
+        mysqli_query($conexion,"UPDATE tbl_personas SET nombre1_persona='$nombre1',nombre2_persona='$nombre2',
+        apellido1_persona='$apellido1',apellido2_persona='$apellido2',tipo_documento_persona='$tipo_documento',
+        foto_persona = '$destino' WHERE numero_documento_persona = '$numero_documento' ");
+
+            /**
+             * se agrega la libreria sweerAlert2
+             */
+            echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+            /**
+             * se incluye el archivo donde estan las alertas
+             */
+            echo    '<script src="../js/alertas.js"></script>';
+            /**
+             * se llama la alerta con la funcion perfilSupervisorActualizar
+             */
+            echo    "<script language = javascript>  perfilSupervisorActualizar(); </script>";
+    }else{
+        /**
+         * se agrega la libreria sweerAlert2
+         */
+        echo    '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>';
+        /**
+         * se incluye el archivo donde estan las alertas
+         */
+        echo    '<script src="../js/alertas.js"></script>';
+        /**
+         * se llama la alerta con la funcion perfilSupervisorCompletarDatos
+         */
+        echo    "<script language = javascript>  perfilSupervisorCompletarDatos(); </script>";
+    }
+}
+?>  

@@ -1,0 +1,98 @@
+/*Formulario que contiene el registro de los usuarios*/
+#formulario-registro{
+	width: 55%;
+	max-width: 500px;
+	margin: auto;
+	margin-top: 5%;
+	background-color: #fff;
+	border-radius: 3%;
+}
+/*Titulo del formulario del registro "Registrate"*/
+#titulo-registro{
+	background: #0097A7;
+	font-size: 1.5em;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+/*Contiene el formulario del registro de los usuarios*/
+#contenedor-registro{
+	padding: 15px 30px;
+	display: flex;
+	flex-wrap: wrap;
+}
+/*Input o campos de inicio de sesion*/
+.input-registro{
+	width: 45%;
+	padding: 6px; 
+	margin: 4px;
+	background-color: #EAEDED;
+	border:none;
+	border-radius: 2%;
+	margin-left: 14px;
+	border-bottom: solid #EAEDED;
+	-webkit-box-sizing: border-box;
+}
+
+/*Se especifica el enfoque en el campo de texto*/
+.input-registro:focus{
+	border-bottom: solid #0097A7;
+}
+
+/*Boton llamado "Registrar"*/
+.input-btn-registro{
+	background: #0097A7;
+	color: #fff;
+	margin: auto;
+	border: none;
+	border-radius: 2%;
+	padding: 7px 72px;
+	cursor: pointer;
+	margin-top: 7px;
+}
+
+/*Hover en el boton llamado "Registrar" */
+.input-btn-registro:hover{
+	background-color: #00ACC1;
+}
+
+/*p o campo donde se encuentra la pregunta de si ya tiene una cuenta*/
+#btn-login{
+	width: 100%;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 14px;
+}
+
+/*a que expresa que si tiene una cuenta que "Ingresa aqui"*/
+#a-btn-login{
+	color: #00ACC1;
+}
+
+/*Div que contiene el subir foto*/
+div#subir-foto {
+    position: relative;
+    background-color: #fff;
+    border: 2px dashed #C8C8C8;
+}
+
+/*p  que contiene el mensaje "subir foto"*/
+p#txt-subir-foto {
+    text-align: left;
+    color: #85929E;
+}
+
+/*Input tipo archivo que permite adjuntar una foto*/
+input#btn-subir-foto {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
