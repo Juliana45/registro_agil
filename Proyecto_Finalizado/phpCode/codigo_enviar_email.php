@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
      */
     $correo = $_POST['correo'];
     $nombre = "Cambio de contraseña";
-    $ruta = 'localhost/proyecto_20/vistas/formulario.php';
+    $ruta = 'localhost/proyecto_20/Proyecto_Finalizado/vistas/formulario.php';
     $mensaje = "<a href='$ruta'>Click en el link para cambiar tu contraseña</a>";
 
     /**

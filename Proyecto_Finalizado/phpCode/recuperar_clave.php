@@ -3,8 +3,10 @@
  * Recuperar clave
  * 
  * incluye el archivo donde se encuentra la conexion a la base de datos
+ * incluye el archivo con el formulario de recuperar contraseña
  */
 include '../conexi/conexion.php';
+include "../vistas/formulario.php";
 
 /**
  * si le dio clic en el boton 'enviar' del formulario recuperar clave en formulario.php 

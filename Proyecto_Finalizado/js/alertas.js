@@ -539,7 +539,7 @@
          */
         Swal.fire({
             title: 'Muy bien!',
-            text: 'Los datos se ingresaron correctamente', 
+            text: 'Los datos se actualizaron correctamente', 
             confirmButtonText: 'Aceptar', 
             confirmButtonColor: '#0097A7',
             backdrop: false
