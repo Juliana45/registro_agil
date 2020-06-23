@@ -1,0 +1,104 @@
+/*Formulario que contiene el iniciar sesion*/
+#formulario-login{
+	width: 30%;
+	max-width: 500px;
+	margin: auto;
+	margin-top: 5%;
+	background-color: #fff;
+	border-radius: 3%;
+}
+
+/*Input o campos de inicio de sesion*/
+.input-login{
+	width: 85%;
+	padding: 7px; 
+	margin: 4px;
+	background-color: #EAEDED;
+	border:none;
+	border-radius: 2%;
+	margin-left: 25px;
+	border-bottom: solid #EAEDED;
+	-webkit-box-sizing: border-box; /*queden del mismo tamaño*/
+}
+
+/*Se especifica el enfoque en el campo de texto*/
+.input-login:focus{
+	border-bottom: solid #0097A7;
+}
+
+/*Campo del formulario de inicio con -webkit-input-placeholder se representa el marcador de posición de texto*/
+.input-login::-webkit-input-placeholder {
+  text-align: center;
+  line-height: 100px;
+}
+
+/*Select del "Tipo de documento" */
+#select-login{
+	text-align-last: center; 
+}
+
+/*Boton llamado "Iniciar sesion"*/
+.input-btn-login{
+	width: 85%;
+	background: #0097A7;
+	color: #fff;
+	margin: auto;
+	border: none;
+	border-radius: 2%;
+	padding: 7px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+/*Hover en el boton llamado "Iniciar sesion" */
+.input-btn-login:hover{
+	background-color: #00ACC1;
+}
+
+/*p o campo donde se encuentran las preguntas de si ya se registro o si olvido la contraseña*/
+#btn-login{
+	width: 100%;
+	margin-top: 15px;
+	text-align: center;
+	font-size: 14px;
+}
+
+/*Items que contiene las siguientes frases "No tienes cuenta,registrate." y "¿Olvidaste la contraseña?"*/
+.item-login{
+	text-decoration: none;
+	color: #000;
+	font-size: 1.05em;
+	line-height: 13pt;
+}
+/*Hover de los items*/
+.item-login:hover{
+	text-decoration:underline #000;
+}
+
+/*Recuperar contraseña*/
+/*H2 que contiene el titulo del formulario "Recuperar contraseña"*/
+#titulo-recuperar{
+	font-size: 1.3em;
+	color: #fff;
+    padding: 12px;
+    text-align: center;
+    background: #0097A7;
+    border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+/*p que contiene "Ingrese el correo con el que se registro:"*/
+#txt-recuperar{
+    margin-left: 18px;
+    padding: 10px;
+}
+/* fin recuperar contraseña*/
+
+/*Form que contiene formulario de recuperacion de contraseña */
+
+.recuperar_clave{		
+	-webkit-box-shadow: 2px 2px 18px -3px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 2px 18px -3px rgba(0,0,0,0.75);
+	box-shadow: 2px 2px 18px -3px rgba(0,0,0,0.75);
+}
+
